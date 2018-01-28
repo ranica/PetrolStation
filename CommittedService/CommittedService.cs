@@ -26,11 +26,11 @@ namespace CommittedService
         private EventLog eventLog;
         string status = string.Empty;
         private Thread connectThread = null, updateThread = null, resumeThread = null;
-        private Common.BLL.Entity.GasStation.User serviceUser;
+        private Common.BLL.Entity.PetrolStation.User serviceUser;
         private ManualResetEvent mrs = null;
-        Common.BLL.Logic.GasStation.UHF lUHF;
-        Common.BLL.Entity.GasStation.UHF uhfModel;
-        Common.BLL.Logic.GasStation.User lUser;
+        Common.BLL.Logic.PetrolStation.UHF lUHF;
+        Common.BLL.Entity.PetrolStation.UHF uhfModel;
+        Common.BLL.Logic.PetrolStation.User lUser;
         #endregion
 
         #region Method   
@@ -60,19 +60,19 @@ namespace CommittedService
             hostName = ConfigurationManager.AppSettings["hostName"];
 
             #region Get Service User
-            lUser = new Common.BLL.Logic.GasStation.User(
-                Common.Enum.EDatabase.GasStation);
+            lUser = new Common.BLL.Logic.PetrolStation.User(
+                Common.Enum.EDatabase.PetrolStation);
             CommandResult opResult = lUser.getServiceUser();
 
-            serviceUser = opResult.model as Common.BLL.Entity.GasStation.User;
+            serviceUser = opResult.model as Common.BLL.Entity.PetrolStation.User;
             writeLog("Service Name: " + serviceUser.name);
             #endregion
 
             #region Get UHF
-            lUHF = new Common.BLL.Logic.GasStation.UHF(
-                Common.Enum.EDatabase.GasStation);
+            lUHF = new Common.BLL.Logic.PetrolStation.UHF(
+                Common.Enum.EDatabase.PetrolStation);
 
-            uhfModel = new Common.BLL.Entity.GasStation.UHF
+            uhfModel = new Common.BLL.Entity.PetrolStation.UHF
             {
                 IP = hostName
             };

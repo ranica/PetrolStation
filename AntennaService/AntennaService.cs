@@ -56,7 +56,7 @@ namespace AntennaService
         private Thread powerThread = null;
         private int powerInterval = 0;
 
-        private Common.BLL.Entity.GasStation.User serviceUser;
+        private Common.BLL.Entity.PetrolStation.User serviceUser;
         #endregion
 
         #region Methods
@@ -89,11 +89,11 @@ namespace AntennaService
             makeEventLog();
 
             #region Get Service User
-            Common.BLL.Logic.GasStation.User lUser = new Common.BLL.Logic.GasStation.User(
-                Common.Enum.EDatabase.GasStation);
+            Common.BLL.Logic.PetrolStation.User lUser = new Common.BLL.Logic.PetrolStation.User(
+                Common.Enum.EDatabase.PetrolStation);
             CommandResult opResult = lUser.getServiceUser();
 
-            serviceUser = opResult.model as Common.BLL.Entity.GasStation.User;
+            serviceUser = opResult.model as Common.BLL.Entity.PetrolStation.User;
             #endregion
         }
 
@@ -401,8 +401,8 @@ namespace AntennaService
         {
             try
             {
-                Common.BLL.Logic.GasStation.Traffic lTraffic = new Common.BLL.Logic.GasStation.Traffic(Common.Enum.EDatabase.GasStation);
-                Common.BLL.Entity.GasStation.Tag tag = new Common.BLL.Entity.GasStation.Tag()
+                Common.BLL.Logic.PetrolStation.Traffic lTraffic = new Common.BLL.Logic.PetrolStation.Traffic(Common.Enum.EDatabase.PetrolStation);
+                Common.BLL.Entity.PetrolStation.Tag tag = new Common.BLL.Entity.PetrolStation.Tag()
                 {
                     tag = tagId
                 };

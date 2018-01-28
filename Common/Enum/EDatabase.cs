@@ -7,6 +7,6 @@ namespace Common.Enum
 {
 	public enum EDatabase
 	{
-		GasStation	= 1
+		PetrolStation	= 1
 	}
 }

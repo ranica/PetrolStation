@@ -1,4 +1,4 @@
-﻿using Common.BLL.Entity.GasStation;
+﻿using Common.BLL.Entity.PetrolStation;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -27,7 +27,7 @@ namespace System
                        e.TargetSite.ToString() + "\n\n" +
                        e.Data;
 
-            Common.BLL.Logic.GasStation.Error    lError = new Common.BLL.Logic.GasStation.Error(Common.Enum.EDatabase.GasStation);
+            Common.BLL.Logic.PetrolStation.Error    lError = new Common.BLL.Logic.PetrolStation.Error(Common.Enum.EDatabase.PetrolStation);
             opResult =  lError.InsertError(e);
 
             if (!opResult)

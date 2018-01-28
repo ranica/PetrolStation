@@ -14,7 +14,7 @@ namespace Common.GlobalData
 		/// <summary>
 		/// Current User data
 		/// </summary>
-		public static Common.BLL.Entity.GasStation.User currentUser
+		public static Common.BLL.Entity.PetrolStation.User currentUser
 		{
 			get;
 			set;

@@ -39,7 +39,7 @@
 			// 
 			// AntennaServiceInstaller
 			// 
-			this.AntennaServiceInstaller.Description = "GasStation Antenna Service";
+			this.AntennaServiceInstaller.Description = "PetrolStation Antenna Service";
 			this.AntennaServiceInstaller.ServiceName = "AntennaService";
 			this.AntennaServiceInstaller.StartType = System.ServiceProcess.ServiceStartMode.Automatic;
 			// 

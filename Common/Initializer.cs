@@ -24,7 +24,7 @@ namespace Common
 			};
 
 			Logger.logger	= new Helper.Logger.Logger(loggerFilename);
-			BaseDAL.Base.Connection.dataSources.Add (Common.Enum.EDatabase.GasStation.ToString (), cm);
+			BaseDAL.Base.Connection.dataSources.Add (Common.Enum.EDatabase.PetrolStation.ToString (), cm);
 		}
 	}
 }

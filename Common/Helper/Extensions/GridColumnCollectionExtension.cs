@@ -27,8 +27,8 @@ namespace System
 			model	= model??new GridColumnCollectionModel ();
 
 			#region Load data
-			Common.BLL.Logic.GasStation.Base__GridHeader	lGridHeader	= new Common.BLL.Logic.GasStation.Base__GridHeader (Common.Enum.EDatabase.GasStation);
-			Common.BLL.Entity.GasStation.Base__GridHeader	gridHeader	= new Common.BLL.Entity.GasStation.Base__GridHeader ()
+			Common.BLL.Logic.PetrolStation.Base__GridHeader	lGridHeader	= new Common.BLL.Logic.PetrolStation.Base__GridHeader (Common.Enum.EDatabase.PetrolStation);
+			Common.BLL.Entity.PetrolStation.Base__GridHeader	gridHeader	= new Common.BLL.Entity.PetrolStation.Base__GridHeader ()
 			{
 				name	= name
 			};
