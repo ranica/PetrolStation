@@ -77,7 +77,7 @@ namespace GasStation.Forms.Reports
 
         private void PageIndexComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //tryToReadTraffic();
+            tryToReadTraffic();
         }
 
         private void SearchButton_Click(object sender, EventArgs e)
@@ -103,9 +103,9 @@ namespace GasStation.Forms.Reports
             dateStartMaskedTextBox.Text =
             dateEndMaskedTextBox.Text = ExtensionsDateTime.toPersianDate(DateTime.Now);
             typeComboBox.SelectedIndex = 0;
-            pageIndexComboBox.SelectedIndex = 0;
+            //pageIndexComboBox.SelectedIndex = 0;
             reloadCombo();
-           
+
             //tryToReadTraffic();
         }
 
@@ -287,6 +287,8 @@ namespace GasStation.Forms.Reports
         {
             try
             {
+                pageIndexComboBox.SelectedIndex = 0;
+
                 string dateStart = dateStartMaskedTextBox.Text.Trim();
                 string dateEnd = dateEndMaskedTextBox.Text.Trim();
 
@@ -362,6 +364,7 @@ namespace GasStation.Forms.Reports
                 {
                     //TODO: Date isnot Valid
                 }
+                updateUi();
 
             }
             catch (Exception ex)
@@ -496,6 +499,7 @@ namespace GasStation.Forms.Reports
             {
                 //Invoke((Action)delegate
                 //{
+                    
                     Common.BLL.Logic.GasStation.Traffic lTraffic = new Common.BLL.Logic.GasStation.Traffic(Common.Enum.EDatabase.GasStation);
                     int PI = Convert.ToInt32(pageIndexComboBox.Text);
                     //int PS = Convert.ToInt32(pageSizeComboBox.Text);
@@ -503,30 +507,33 @@ namespace GasStation.Forms.Reports
                     CommandResult opResult = lTraffic.loadTraffic(date1, date2, PI, PS);
                     DataTable resultData = ExtensionsDateTable.makePersianDate(opResult.model as DataTable, "_Shamsi", true);
 
-                    if (!turn)
+                    if (resultData.Rows.Count > 0)
                     {
-                        int total = Convert.ToInt16(resultData.Rows[1].ItemArray[1]);
-
-                        pageIndexComboBox.Items.Clear();
-                        //pageSizeComboBox.Items.Clear();
-
-                        for (int i = 1; i <= (total / PS); i++)
+                        if (!turn)
                         {
-                            pageIndexComboBox.Items.Add(i);
-                            //pageSizeComboBox.Items.Add(10 * i);
-                        }
+                            int total = Convert.ToInt16(resultData.Rows[1].ItemArray[1]);
 
-                        pageIndexComboBox.SelectedIndex = 0;
+                            pageIndexComboBox.Items.Clear();
+                            //pageSizeComboBox.Items.Clear();
+
+                            for (int i = 1; i <= (total / PS); i++)
+                            {
+                                pageIndexComboBox.Items.Add(i);
+                                //pageSizeComboBox.Items.Add(10 * i);
+                            }
+
+                        //pageIndexComboBox.SelectedIndex = 0;
                         //pageSizeComboBox.SelectedIndex = 0;
 
 
                         if (pageIndexComboBox.Text == "1")
-                        {
-                            previousButton.Visible = false;
-                        }
+                            {
+                                previousButton.Visible = false;
+                            }
 
-                        turn = true;
-                    }
+                            turn = true;
+                        }
+                     }
 
 
 

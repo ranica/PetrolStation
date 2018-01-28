@@ -23,6 +23,7 @@ namespace GasStation.UserControls
         bool turn = false;
 
         #endregion
+
         //public StateTrafficUserControl ()
         public StateTrafficUserControl(DataTable tbResult)
         {
@@ -63,10 +64,10 @@ namespace GasStation.UserControls
         /// </summary>
         private void bindEvent()
         {
-            previousButton.Click += PreviousButton_Click;
-            nextButton.Click += NextButton_Click;
+            //previousButton.Click += PreviousButton_Click;
+            //nextButton.Click += NextButton_Click;
             //pageIndexComboBox.TextChanged += PageIndexComboBox_TextChanged;
-            pageIndexComboBox.SelectedIndexChanged += PageIndexComboBox_SelectedIndexChanged;
+            //pageIndexComboBox.SelectedIndexChanged += PageIndexComboBox_SelectedIndexChanged;
             //pageSizeComboBox.SelectedIndexChanged += PageSizeComboBox_SelectedIndexChanged;
         }
         /// <summary>
@@ -77,11 +78,11 @@ namespace GasStation.UserControls
 
         private void PageIndexComboBox_TextChanged(object sender, EventArgs e)
         {
-            if (pageIndexComboBox.Items.Count == pageIndexComboBox.SelectedIndex)
-            {
-            }
-            else
-                LoadFun();
+            //if (pageIndexComboBox.Items.Count == pageIndexComboBox.SelectedIndex)
+            //{
+            //}
+            //else
+               // LoadFun();
 
         }
 
@@ -92,22 +93,22 @@ namespace GasStation.UserControls
         /// <param name="e"></param>
         private void PageIndexComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            LoadFun();
+           // LoadFun();
         }
 
         private void PageSizeComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            LoadFun();
-            pageIndexComboBox.SelectedIndex = 0;
-            pageSizeComboBox.SelectedIndex = 0;
+            //LoadFun();
+            //pageIndexComboBox.SelectedIndex = 0;
+            //pageSizeComboBox.SelectedIndex = 0;
         }
         private void updateUi()
         {
-            int page = Convert.ToInt16(pageIndexComboBox.Text);
-            int count = pageIndexComboBox.Items.Count;
+            //int page = Convert.ToInt16(pageIndexComboBox.Text);
+            //int count = pageIndexComboBox.Items.Count;
 
-            previousButton.Visible = (page > 1);
-            nextButton.Visible = (page < count);
+            //previousButton.Visible = (page > 1);
+            //nextButton.Visible = (page < count);
 
         }
 
@@ -116,7 +117,7 @@ namespace GasStation.UserControls
             int page = 1;
 
             // Get page
-            page = Convert.ToInt16(pageIndexComboBox.Text);
+            //page = Convert.ToInt16(pageIndexComboBox.Text);
             nextStep(page);
 
         }
@@ -124,35 +125,35 @@ namespace GasStation.UserControls
         private void PreviousButton_Click(object sender, EventArgs e)
         {
             int page = 1;
-            page = Convert.ToInt16(pageIndexComboBox.Text);
+            //page = Convert.ToInt16(pageIndexComboBox.Text);
             // Get page
             previousePage(page);
         }
 
         private void nextStep(int page)
         {
-            if (page == pageIndexComboBox.Items.Count - 1)
-            {
-                pageIndexComboBox.SelectedIndex = page;
-                updateUi();
-            }
-            else if (++page < pageIndexComboBox.Items.Count)
-            {
-                pageIndexComboBox.SelectedIndex = page - 1;
-                updateUi();
-            }
+            //if (page == pageIndexComboBox.Items.Count - 1)
+            //{
+            //    pageIndexComboBox.SelectedIndex = page;
+            //    updateUi();
+            //}
+            //else if (++page < pageIndexComboBox.Items.Count)
+            //{
+            //    pageIndexComboBox.SelectedIndex = page - 1;
+            //    updateUi();
+            //}
         }
 
         private void previousePage(int page)
         {
-            if (--page > -1)
-            {
-                pageIndexComboBox.SelectedIndex = page - 1;
-                updateUi();
-            }            
+            //if (--page > -1)
+            //{
+            //    pageIndexComboBox.SelectedIndex = page - 1;
+            //    updateUi();
+            //}            
         }       
 
-        private void LoadFun()
+       /* private void LoadFun()
         {
             Common.BLL.Logic.GasStation.Traffic lTraffic = new Common.BLL.Logic.GasStation.Traffic(Common.Enum.EDatabase.GasStation);
             int PI = Convert.ToInt32(pageIndexComboBox.Text);
@@ -189,6 +190,6 @@ namespace GasStation.UserControls
             stateTrafficGrid.DataSource = resultData;
             stateTrafficGrid.loadHeader(this.GetType().Name);
         }           
-        
+        */
     }
 }

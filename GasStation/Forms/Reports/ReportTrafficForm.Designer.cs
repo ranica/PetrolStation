@@ -93,11 +93,11 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControl1.Controls.Add(this.stateTabPage);
             this.tabControl1.Controls.Add(this.countTabPage);
-            this.tabControl1.Location = new System.Drawing.Point(12, 223);
+            this.tabControl1.Location = new System.Drawing.Point(12, 203);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.RightToLeftLayout = true;
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(832, 394);
+            this.tabControl1.Size = new System.Drawing.Size(832, 361);
             this.tabControl1.TabIndex = 7;
             // 
             // stateTabPage
@@ -105,7 +105,7 @@
             this.stateTabPage.Location = new System.Drawing.Point(4, 23);
             this.stateTabPage.Name = "stateTabPage";
             this.stateTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.stateTabPage.Size = new System.Drawing.Size(824, 367);
+            this.stateTabPage.Size = new System.Drawing.Size(824, 334);
             this.stateTabPage.TabIndex = 0;
             this.stateTabPage.Text = "وضعیت تردد";
             this.stateTabPage.UseVisualStyleBackColor = true;
@@ -115,7 +115,7 @@
             this.countTabPage.Location = new System.Drawing.Point(4, 23);
             this.countTabPage.Name = "countTabPage";
             this.countTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.countTabPage.Size = new System.Drawing.Size(824, 367);
+            this.countTabPage.Size = new System.Drawing.Size(824, 348);
             this.countTabPage.TabIndex = 1;
             this.countTabPage.Text = "تعداد تردد";
             this.countTabPage.UseVisualStyleBackColor = true;
@@ -134,7 +134,7 @@
             this.groupBox1.Controls.Add(this.dateStartMaskedTextBox);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(843, 190);
+            this.groupBox1.Size = new System.Drawing.Size(843, 157);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "گزارش گیری براساس";
@@ -146,7 +146,7 @@
             this.flowLayoutPanel1.Controls.Add(this.plateDataGroupBox);
             this.flowLayoutPanel1.Location = new System.Drawing.Point(254, 53);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(268, 108);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(268, 99);
             this.flowLayoutPanel1.TabIndex = 13;
             // 
             // nationalCodeMaskedTextBox
@@ -185,7 +185,7 @@
             this.mainPlatePanel.Controls.Add(this.part1MainTextBox);
             this.mainPlatePanel.Location = new System.Drawing.Point(19, 31);
             this.mainPlatePanel.Name = "mainPlatePanel";
-            this.mainPlatePanel.Size = new System.Drawing.Size(262, 38);
+            this.mainPlatePanel.Size = new System.Drawing.Size(262, 37);
             this.mainPlatePanel.TabIndex = 4;
             // 
             // code1Numeric
@@ -418,7 +418,7 @@
             this.pageSizeComboBox.FormattingEnabled = true;
             this.pageSizeComboBox.Items.AddRange(new object[] {
             "10"});
-            this.pageSizeComboBox.Location = new System.Drawing.Point(254, 208);
+            this.pageSizeComboBox.Location = new System.Drawing.Point(254, 178);
             this.pageSizeComboBox.Name = "pageSizeComboBox";
             this.pageSizeComboBox.Size = new System.Drawing.Size(53, 22);
             this.pageSizeComboBox.TabIndex = 18;
@@ -426,7 +426,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(323, 211);
+            this.label5.Location = new System.Drawing.Point(323, 181);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(145, 14);
             this.label5.TabIndex = 16;
@@ -437,7 +437,7 @@
             this.pageIndexComboBox.FormattingEnabled = true;
             this.pageIndexComboBox.Items.AddRange(new object[] {
             "1"});
-            this.pageIndexComboBox.Location = new System.Drawing.Point(472, 208);
+            this.pageIndexComboBox.Location = new System.Drawing.Point(472, 178);
             this.pageIndexComboBox.Name = "pageIndexComboBox";
             this.pageIndexComboBox.Size = new System.Drawing.Size(56, 22);
             this.pageIndexComboBox.TabIndex = 19;
@@ -445,7 +445,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(534, 211);
+            this.label4.Location = new System.Drawing.Point(534, 181);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(74, 14);
             this.label4.TabIndex = 17;
@@ -456,7 +456,7 @@
             this.flowLayoutPanel2.Controls.Add(this.nextButton);
             this.flowLayoutPanel2.Controls.Add(this.previousButton);
             this.flowLayoutPanel2.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(12, 619);
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(12, 571);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
             this.flowLayoutPanel2.Size = new System.Drawing.Size(128, 44);
             this.flowLayoutPanel2.TabIndex = 20;
@@ -484,7 +484,7 @@
             this.AcceptButton = this.showButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(856, 665);
+            this.ClientSize = new System.Drawing.Size(856, 623);
             this.Controls.Add(this.flowLayoutPanel2);
             this.Controls.Add(this.pageSizeComboBox);
             this.Controls.Add(this.label5);
