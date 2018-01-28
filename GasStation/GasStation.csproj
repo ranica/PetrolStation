@@ -1,0 +1,449 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{F86E023C-FDBB-4663-9496-BB9BB82B63A6}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>GasStation</RootNamespace>
+    <AssemblyName>GasStation</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>mainIcon.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="BaseBLL">
+      <HintPath>..\..\..\ojvar-orm\BLL\bin\Debug\BaseBLL.dll</HintPath>
+    </Reference>
+    <Reference Include="BaseDAL">
+      <HintPath>..\..\..\ojvar-orm\BLL\bin\Debug\BaseDAL.dll</HintPath>
+    </Reference>
+    <Reference Include="Stimulsoft.Base, Version=2013.2.1612.0, Culture=neutral, PublicKeyToken=ebe6666cba19647a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>DLL\Stimulsoft.Base.dll</HintPath>
+    </Reference>
+    <Reference Include="Stimulsoft.Controls, Version=2013.2.1612.0, Culture=neutral, PublicKeyToken=ebe6666cba19647a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>DLL\Stimulsoft.Controls.dll</HintPath>
+    </Reference>
+    <Reference Include="Stimulsoft.Controls.Win, Version=2013.2.1612.0, Culture=neutral, PublicKeyToken=ebe6666cba19647a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>DLL\Stimulsoft.Controls.Win.dll</HintPath>
+    </Reference>
+    <Reference Include="Stimulsoft.Editor, Version=2013.2.1612.0, Culture=neutral, PublicKeyToken=ebe6666cba19647a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>DLL\Stimulsoft.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Stimulsoft.Report, Version=2013.2.1612.0, Culture=neutral, PublicKeyToken=ebe6666cba19647a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>DLL\Stimulsoft.Report.dll</HintPath>
+    </Reference>
+    <Reference Include="Stimulsoft.Report.Check, Version=2013.2.1612.0, Culture=neutral, PublicKeyToken=ebe6666cba19647a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>DLL\Stimulsoft.Report.Check.dll</HintPath>
+    </Reference>
+    <Reference Include="Stimulsoft.Report.Design, Version=2013.2.1612.0, Culture=neutral, PublicKeyToken=ebe6666cba19647a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>DLL\Stimulsoft.Report.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="Stimulsoft.Report.Helper, Version=2013.2.1612.0, Culture=neutral, PublicKeyToken=ebe6666cba19647a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>DLL\Stimulsoft.Report.Helper.dll</HintPath>
+    </Reference>
+    <Reference Include="Stimulsoft.Report.Win, Version=2013.2.1612.0, Culture=neutral, PublicKeyToken=ebe6666cba19647a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>DLL\Stimulsoft.Report.Win.dll</HintPath>
+    </Reference>
+    <Reference Include="Stimulsoft.Report.Wpf, Version=2013.2.1612.0, Culture=neutral, PublicKeyToken=ebe6666cba19647a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>DLL\Stimulsoft.Report.Wpf.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Forms\Base\PlateTypeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Base\PlateTypeForm.Designer.cs">
+      <DependentUpon>PlateTypeForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Base\PlateTypeEntryForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Base\PlateTypeEntryForm.Designer.cs">
+      <DependentUpon>PlateTypeEntryForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Base\PlateCityForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Base\PlateCityForm.Designer.cs">
+      <DependentUpon>PlateCityForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Base\PlateCityEntryForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Base\PlateCityEntryForm.Designer.cs">
+      <DependentUpon>PlateCityEntryForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Base\CarTypeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Base\CarTypeForm.Designer.cs">
+      <DependentUpon>CarTypeForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Base\CarTypeEntryForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Base\CarTypeEntryForm.Designer.cs">
+      <DependentUpon>CarTypeEntryForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Base\CarSystemForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Base\CarSystemForm.Designer.cs">
+      <DependentUpon>CarSystemForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Base\CarSystemEntryForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Base\CarSystemEntryForm.Designer.cs">
+      <DependentUpon>CarSystemEntryForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Base\CarLevelForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Base\CarLevelForm.Designer.cs">
+      <DependentUpon>CarLevelForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Base\CarLevelEntryForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Base\CarLevelEntryForm.Designer.cs">
+      <DependentUpon>CarLevelEntryForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Base\CarColorEntryForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Base\CarColorEntryForm.Designer.cs">
+      <DependentUpon>CarColorEntryForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Base\CarColorForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Base\CarColorForm.Designer.cs">
+      <DependentUpon>CarColorForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Base\CarFuelForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Base\CarFuelForm.Designer.cs">
+      <DependentUpon>CarFuelForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Base\CarFuelEntryForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Base\CarFuelEntryForm.Designer.cs">
+      <DependentUpon>CarFuelEntryForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Forms\CustomerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Forms\CustomerForm.Designer.cs">
+      <DependentUpon>CustomerForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Forms\ExistenceCustomerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Forms\ExistenceCustomerForm.Designer.cs">
+      <DependentUpon>ExistenceCustomerForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Forms\LotteryForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Forms\LotteryForm.Designer.cs">
+      <DependentUpon>LotteryForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Forms\MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Forms\MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Forms\CustomerViewForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Forms\CustomerViewForm.Designer.cs">
+      <DependentUpon>CustomerViewForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Forms\CustomerSearchForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Forms\CustomerSearchForm.Designer.cs">
+      <DependentUpon>CustomerSearchForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\General\SuperForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\General\SuperForm.Designer.cs">
+      <DependentUpon>SuperForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Reports\ReportTrafficForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Reports\ReportTrafficForm.Designer.cs">
+      <DependentUpon>ReportTrafficForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\testForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\testForm.Designer.cs">
+      <DependentUpon>testForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\User\LoginForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\User\LoginForm.Designer.cs">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Helper\AntennaClient.cs" />
+    <Compile Include="Helper\GridHeaderMaker.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\CarUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\CarUserControl.Designer.cs">
+      <DependentUpon>CarUserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\CountTrafficUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\CountTrafficUserControl.Designer.cs">
+      <DependentUpon>CountTrafficUserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\OwnerUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\OwnerUserControl.Designer.cs">
+      <DependentUpon>OwnerUserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\StateTrafficUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\StateTrafficUserControl.Designer.cs">
+      <DependentUpon>StateTrafficUserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\TrafficUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\TrafficUserControl.Designer.cs">
+      <DependentUpon>TrafficUserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="__Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Forms\Base\PlateTypeForm.resx">
+      <DependentUpon>PlateTypeForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Base\PlateTypeEntryForm.resx">
+      <DependentUpon>PlateTypeEntryForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Base\PlateCityForm.resx">
+      <DependentUpon>PlateCityForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Base\PlateCityEntryForm.resx">
+      <DependentUpon>PlateCityEntryForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Base\CarTypeForm.resx">
+      <DependentUpon>CarTypeForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Base\CarTypeEntryForm.resx">
+      <DependentUpon>CarTypeEntryForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Base\CarSystemForm.resx">
+      <DependentUpon>CarSystemForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Base\CarSystemEntryForm.resx">
+      <DependentUpon>CarSystemEntryForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Base\CarLevelForm.resx">
+      <DependentUpon>CarLevelForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Base\CarLevelEntryForm.resx">
+      <DependentUpon>CarLevelEntryForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Base\CarColorEntryForm.resx">
+      <DependentUpon>CarColorEntryForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Base\CarColorForm.resx">
+      <DependentUpon>CarColorForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Base\CarFuelForm.resx">
+      <DependentUpon>CarFuelForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Base\CarFuelEntryForm.resx">
+      <DependentUpon>CarFuelEntryForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Forms\CustomerForm.resx">
+      <DependentUpon>CustomerForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Forms\ExistenceCustomerForm.resx">
+      <DependentUpon>ExistenceCustomerForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Forms\LotteryForm.resx">
+      <DependentUpon>LotteryForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Forms\MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Forms\CustomerViewForm.resx">
+      <DependentUpon>CustomerViewForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Forms\CustomerSearchForm.resx">
+      <DependentUpon>CustomerSearchForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\General\SuperForm.resx">
+      <DependentUpon>SuperForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Reports\ReportTrafficForm.resx">
+      <DependentUpon>ReportTrafficForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\testForm.resx">
+      <DependentUpon>testForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\User\LoginForm.resx">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\CarUserControl.resx">
+      <DependentUpon>CarUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\CountTrafficUserControl.resx">
+      <DependentUpon>CountTrafficUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\OwnerUserControl.resx">
+      <DependentUpon>OwnerUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\StateTrafficUserControl.resx">
+      <DependentUpon>StateTrafficUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\TrafficUserControl.resx">
+      <DependentUpon>TrafficUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{c70ba18e-d309-4223-abff-1833f0febeb6}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Home.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\formBK.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="mainIcon.ico" />
+    <Content Include="DLL\SLABHIDDevice.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DLL\SLABHIDtoUART.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DLL\UhfReader_API_HID.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\about.png" />
+    <Content Include="Resources\accept.png" />
+    <Content Include="Resources\add.png" />
+    <None Include="Resources\جایگاه_سوخت.jpg" />
+    <None Include="Resources\Image1.bmp" />
+    <None Include="Resources\loading25.gif" />
+    <None Include="Resources\roseBK.jpg" />
+    <Content Include="Resources\spiffygif.gif" />
+    <None Include="Resources\malulin_.png" />
+    <None Include="Resources\motor.png" />
+    <Content Include="Resources\next.png" />
+    <Content Include="Resources\previous.png" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

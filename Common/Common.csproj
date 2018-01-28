@@ -1,0 +1,185 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{C70BA18E-D309-4223-ABFF-1833F0FEBEB6}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Common</RootNamespace>
+    <AssemblyName>Common</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="BaseBLL">
+      <HintPath>..\..\..\ojvar-orm\BLL\bin\Debug\BaseBLL.dll</HintPath>
+    </Reference>
+    <Reference Include="BaseDAL">
+      <HintPath>..\..\..\ojvar-orm\BLL\bin\Debug\BaseDAL.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net35\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.ServiceProcess" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BLL\Entity\GasStation\Base__CarFuel.cs" />
+    <Compile Include="BLL\Entity\GasStation\Base__CarLevel.cs" />
+    <Compile Include="BLL\Entity\GasStation\Base__CarSystem.cs" />
+    <Compile Include="BLL\Entity\GasStation\Base__CarType.cs" />
+    <Compile Include="BLL\Entity\GasStation\Base__GridHeader.cs" />
+    <Compile Include="BLL\Entity\GasStation\Base__Month.cs" />
+    <Compile Include="BLL\Entity\GasStation\Base__PlateCity.cs" />
+    <Compile Include="BLL\Entity\GasStation\Base__PlateType.cs" />
+    <Compile Include="BLL\Entity\GasStation\Base__CarColor.cs" />
+    <Compile Include="BLL\Entity\GasStation\Car.cs" />
+    <Compile Include="BLL\Entity\GasStation\CarOwner.cs" />
+    <Compile Include="BLL\Entity\GasStation\CarTag.cs" />
+    <Compile Include="BLL\Entity\GasStation\Error.cs" />
+    <Compile Include="BLL\Entity\GasStation\HC__Sexuality.cs" />
+    <Compile Include="BLL\Entity\GasStation\LegalOwner.cs" />
+    <Compile Include="BLL\Entity\GasStation\Lottery.cs" />
+    <Compile Include="BLL\Entity\GasStation\Owner.cs" />
+    <Compile Include="BLL\Entity\GasStation\Plate.cs" />
+    <Compile Include="BLL\Entity\GasStation\System__Data.cs" />
+    <Compile Include="BLL\Entity\GasStation\Tag.cs" />
+    <Compile Include="BLL\Entity\GasStation\Traffic.cs" />
+    <Compile Include="BLL\Entity\GasStation\UHF.cs" />
+    <Compile Include="BLL\Entity\GasStation\User.cs" />
+    <Compile Include="BLL\Logic\GasStation\Base__CarColor.cs" />
+    <Compile Include="BLL\Logic\GasStation\Base__CarFuel.cs" />
+    <Compile Include="BLL\Logic\GasStation\Base__CarLevel.cs" />
+    <Compile Include="BLL\Logic\GasStation\Base__CarSystem.cs" />
+    <Compile Include="BLL\Logic\GasStation\Base__CarType.cs" />
+    <Compile Include="BLL\Logic\GasStation\Base__GridHeader.cs" />
+    <Compile Include="BLL\Logic\GasStation\Base__Month.cs" />
+    <Compile Include="BLL\Logic\GasStation\Base__PlateCity.cs" />
+    <Compile Include="BLL\Logic\GasStation\Base__PlateType.cs" />
+    <Compile Include="BLL\Logic\GasStation\Car.cs" />
+    <Compile Include="BLL\Logic\GasStation\CarOwner.cs" />
+    <Compile Include="BLL\Logic\GasStation\CarTag.cs" />
+    <Compile Include="BLL\Logic\GasStation\Error.cs" />
+    <Compile Include="BLL\Logic\GasStation\HC__Sexuality.cs" />
+    <Compile Include="BLL\Logic\GasStation\LegalOwner.cs" />
+    <Compile Include="BLL\Logic\GasStation\Lottery.cs" />
+    <Compile Include="BLL\Logic\GasStation\Owner.cs" />
+    <Compile Include="BLL\Logic\GasStation\Plate.cs" />
+    <Compile Include="BLL\Logic\GasStation\System__Data.cs" />
+    <Compile Include="BLL\Logic\GasStation\Tag.cs" />
+    <Compile Include="BLL\Logic\GasStation\Traffic.cs" />
+    <Compile Include="BLL\Logic\GasStation\UHF.cs" />
+    <Compile Include="BLL\Logic\GasStation\User.cs" />
+    <Compile Include="DLL\CardReaderHelper.cs" />
+    <Compile Include="DLL\DemoPublic.cs" />
+    <Compile Include="DLL\PublicFunction.cs" />
+    <Compile Include="Enum\EDatabase.cs" />
+    <Compile Include="Enum\enumGenType.cs" />
+    <Compile Include="Enum\enumPlateType.cs" />
+    <Compile Include="GlobalData\UserManager.cs" />
+    <Compile Include="Helper\Antenna\MR6100.cs" />
+    <Compile Include="Helper\Extensions\ComboBoxExtension.cs" />
+    <Compile Include="Helper\Extensions\DateExtension.cs" />
+    <Compile Include="Helper\Extensions\DateTableExtension.cs" />
+    <Compile Include="Helper\Extensions\DateTimeExtension.cs" />
+    <Compile Include="Helper\Extensions\LoggerExtensions.cs" />
+    <Compile Include="Helper\Extensions\GridColumnCollectionExtension.cs" />
+    <Compile Include="Helper\Extensions\GridExtension.cs" />
+    <Compile Include="Helper\Extensions\JsonExtension.cs" />
+    <Compile Include="Helper\Extensions\StringExtension.cs" />
+    <Compile Include="Helper\Logger\Logger.cs" />
+    <Compile Include="Helper\Lottery\Lottery.cs" />
+    <Compile Include="Helper\Security\StringCypher.cs" />
+    <Compile Include="Helper\Setting\SettingHelper.cs" />
+    <Compile Include="Helper\Windows\RegistryHelper.cs" />
+    <Compile Include="Helper\Windows\ServiceHelper.cs" />
+    <Compile Include="Initializer.cs" />
+    <Compile Include="Model\GridColumnCollectionModel.cs" />
+    <Compile Include="Model\GridColumnModel.cs" />
+    <Compile Include="Model\Setting\SettingModel.cs" />
+    <Compile Include="Model\Tag\TagModel.cs" />
+    <Compile Include="Network\Core\NetTcpServer.cs" />
+    <Compile Include="Network\Core\NetTcpClient.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
