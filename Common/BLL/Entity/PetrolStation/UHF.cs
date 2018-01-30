@@ -8,19 +8,12 @@ namespace Common.BLL.Entity.PetrolStation
 	public class UHF : BaseBLL.Entity.BaseByViewId
 	{
 		
-		//[BaseBLL.Base.Field(nullable=false,sqlDBType=System.Data.SqlDbType.Int,primary=false,usage=BaseBLL.Base.EnumUsage.read | BaseBLL.Base.EnumUsage.update | BaseBLL.Base.EnumUsage.create)]
-		//public System.Int32 id
-		//{
-		//	get;
-		//	set;
-		//}
-
-		//[BaseBLL.Base.Field(nullable=false,sqlDBType=System.Data.SqlDbType.UniqueIdentifier,primary=false,usage=BaseBLL.Base.EnumUsage.read | BaseBLL.Base.EnumUsage.update | BaseBLL.Base.EnumUsage.create)]
-		//public System.Guid viewId
-		//{
-		//	get;
-		//	set;
-		//}
+		[BaseBLL.Base.Field(nullable=true,sqlDBType=System.Data.SqlDbType.VarChar,primary=false,usage=BaseBLL.Base.EnumUsage.read | BaseBLL.Base.EnumUsage.update | BaseBLL.Base.EnumUsage.create,size=50)]
+		public System.String name
+		{
+			get;
+			set;
+		}
 
 		[BaseBLL.Base.Field(nullable=false,sqlDBType=System.Data.SqlDbType.VarChar,primary=false,usage=BaseBLL.Base.EnumUsage.read | BaseBLL.Base.EnumUsage.update | BaseBLL.Base.EnumUsage.create,size=15)]
 		public System.String IP
@@ -81,7 +74,7 @@ namespace Common.BLL.Entity.PetrolStation
 			BLL.Logic.PetrolStation.User	logic;
 
 			entity	= new BLL.Entity.PetrolStation.User () { id = insertedById };
-			logic	= new BLL.Logic.PetrolStation.User ("PetrolStation");
+			logic	= new BLL.Logic.PetrolStation.User ("GasStation");
 			logic.read (entity);
 
 			_User_insertedById	= entity;
@@ -126,7 +119,7 @@ namespace Common.BLL.Entity.PetrolStation
 			BLL.Logic.PetrolStation.User	logic;
 
 			entity	= new BLL.Entity.PetrolStation.User () { id = updatedById.Value };
-			logic	= new BLL.Logic.PetrolStation.User ("PetrolStation");
+			logic	= new BLL.Logic.PetrolStation.User ("GasStation");
 			logic.read (entity);
 
 			_User_updatedById	= entity;

@@ -273,7 +273,6 @@ namespace PetrolStation.Forms.Reports
             }
             catch (Exception ex)
             {
-
                 LoggerExtensions.log(ex);
             }
 
@@ -504,7 +503,7 @@ namespace PetrolStation.Forms.Reports
                     int PI = Convert.ToInt32(pageIndexComboBox.Text);
                     //int PS = Convert.ToInt32(pageSizeComboBox.Text);
                     int PS = 10;
-                    CommandResult opResult = lTraffic.loadTraffic(date1, date2, PI, PS);
+                    CommandResult opResult = lTraffic.loadTraffic(date1, date2, PI, PS, Common.GlobalData.UserManager.currentUser.id);
                     DataTable resultData = ExtensionsDateTable.makePersianDate(opResult.model as DataTable, "_Shamsi", true);
 
                     if (resultData.Rows.Count > 0)

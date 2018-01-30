@@ -96,9 +96,10 @@
     <Compile Include="BLL\Entity\PetrolStation\Plate.cs" />
     <Compile Include="BLL\Entity\PetrolStation\System__Data.cs" />
     <Compile Include="BLL\Entity\PetrolStation\Tag.cs" />
-    <Compile Include="BLL\Entity\PetrolStation\Traffic.cs" />
     <Compile Include="BLL\Entity\PetrolStation\UHF.cs" />
+    <Compile Include="BLL\Entity\PetrolStation\UHFPermit.cs" />
     <Compile Include="BLL\Entity\PetrolStation\User.cs" />
+    <Compile Include="BLL\Entity\PetrolStation\Traffic.cs" />
     <Compile Include="BLL\Logic\PetrolStation\Base__CarColor.cs" />
     <Compile Include="BLL\Logic\PetrolStation\Base__CarFuel.cs" />
     <Compile Include="BLL\Logic\PetrolStation\Base__CarLevel.cs" />
@@ -121,6 +122,7 @@
     <Compile Include="BLL\Logic\PetrolStation\Tag.cs" />
     <Compile Include="BLL\Logic\PetrolStation\Traffic.cs" />
     <Compile Include="BLL\Logic\PetrolStation\UHF.cs" />
+    <Compile Include="BLL\Logic\PetrolStation\UHFPermit.cs" />
     <Compile Include="BLL\Logic\PetrolStation\User.cs" />
     <Compile Include="DLL\CardReaderHelper.cs" />
     <Compile Include="DLL\DemoPublic.cs" />

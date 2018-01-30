@@ -17,12 +17,12 @@ namespace AntennaService
         /// <summary>
         /// Antenna Event Source name 
         /// </summary>
-        public const string C_ANTENNA_EVENT_SOURCE = "GasAntennaService";
+        public const string C_ANTENNA_EVENT_SOURCE = "PetrolAntennaService";
 
         /// <summary>
         /// Antenna Event Log name 
         /// </summary>
-        public const string C_ANTENNA_EVENT_LOG = "GasAntennaLog";
+        public const string C_ANTENNA_EVENT_LOG = "PetrolAntennaLog";
 
         /// <summary>
         /// Buffer size
@@ -57,6 +57,7 @@ namespace AntennaService
         private int powerInterval = 0;
 
         private Common.BLL.Entity.PetrolStation.User serviceUser;
+        private Common.BLL.Entity.PetrolStation.UHF antenna;
         #endregion
 
         #region Methods
@@ -85,6 +86,8 @@ namespace AntennaService
         /// </summary>
         private void prepare()
         {
+            antHost = ConfigurationManager.AppSettings["AntennaHost"];
+
             mrs = new ManualResetEvent(true);
             makeEventLog();
 
@@ -94,6 +97,15 @@ namespace AntennaService
             CommandResult opResult = lUser.getServiceUser();
 
             serviceUser = opResult.model as Common.BLL.Entity.PetrolStation.User;
+            #endregion
+
+
+            #region Get Antenna
+            Common.BLL.Logic.PetrolStation.UHF lUHF = new Common.BLL.Logic.PetrolStation.UHF(
+                Common.Enum.EDatabase.PetrolStation);
+            CommandResult opResultUHF = lUHF.getAntenna(antHost);
+
+            antenna = opResultUHF.model as Common.BLL.Entity.PetrolStation.UHF;
             #endregion
         }
 
@@ -144,8 +156,8 @@ namespace AntennaService
             {
                 writeLog("Service Starting . . .");
 
-                antHost = ConfigurationManager.AppSettings["AntennaHost"];
-                antPort = ConfigurationManager.AppSettings["AntennaPort"].toInt(0);
+                
+                //antPort = ConfigurationManager.AppSettings["AntennaPort"].toInt(0);
                 sPort = ConfigurationManager.AppSettings["ServerPort"].toInt(0);
                 interval = ConfigurationManager.AppSettings["Interval"].toInt(15);
                 powerInterval = ConfigurationManager.AppSettings["IntervalRF"].toInt(15);
@@ -250,7 +262,7 @@ namespace AntennaService
             while (true)
             {
                 // Try to connect to Antenna
-                bool result = connectToAntenna(antHost, antPort);
+                bool result = connectToAntenna(antenna.IP, antenna.Port);
 
                 // Try to start client listener
                 if (result)
@@ -407,7 +419,7 @@ namespace AntennaService
                     tag = tagId
                 };
 
-                lTraffic.insertTagByService(tag, serviceUser, DateTime.Now, interval);
+                lTraffic.insertTagByService(antenna.id, tag, serviceUser, DateTime.Now, interval);
             }
             catch (Exception ex)
             {

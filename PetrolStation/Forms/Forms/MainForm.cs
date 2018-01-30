@@ -63,8 +63,11 @@ namespace PetrolStation.Forms.Forms
 			if (opResult.status == BaseDAL.Base.EnumCommandStatus.success)
 				versionToolStripStatusLabel.Text = model.value;
 
-			// Get Version
-			string version = Assembly.GetExecutingAssembly ().GetName ().Version.ToString ();
+            userToolStripStatusLabel.Text = Common.GlobalData.UserManager.currentUser.name + " " +
+                                            Common.GlobalData.UserManager.currentUser.lastname;
+
+            // Get Version
+            string version = Assembly.GetExecutingAssembly ().GetName ().Version.ToString ();
 			versionToolStripStatusLabel.Text= version;
 			dateToolStripStatusLabel.Text = ExtensionsDateTime.getWeekDay(DateTime.Now) + "  " +  ExtensionsDateTime.toPersianDate(DateTime.Now); 
 
@@ -317,6 +320,7 @@ namespace PetrolStation.Forms.Forms
 		{
 			base.OnClosed (e);
 		}
-		#endregion
-	}
+        #endregion
+               
+    }
 }
