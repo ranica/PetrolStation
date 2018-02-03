@@ -62,7 +62,7 @@ namespace PetrolStation
             luser.read(user);
             Common.GlobalData.UserManager.currentUser = user;
 
-            Helper.GridHeaderMaker.makeHeaderOwnerUserControls();
+            //Helper.GridHeaderMaker.makeHeaderOwnerUserControls();
             //Helper.GridHeaderMaker.makeHeaderCarUserControls();
             //Helper.GridHeaderMaker.makeHeaderTrafficUserControls();
             //Helper.GridHeaderMaker.makeHeaderSearchOwner();

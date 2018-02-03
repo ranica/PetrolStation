@@ -1,0 +1,9 @@
+SC create DeviceService  binpath= "C:\Program Files\MyService\MyService.exe" start= auto
+
+sc install DeviceService
+
+sc stop DeviceService
+
+sc delete DeviceService
+
+10001

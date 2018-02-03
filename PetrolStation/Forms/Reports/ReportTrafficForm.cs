@@ -285,7 +285,6 @@ namespace PetrolStation.Forms.Reports
             }
             catch (Exception ex)
             {
-
                 LoggerExtensions.log(ex);
             }
 
@@ -545,7 +544,7 @@ namespace PetrolStation.Forms.Reports
                 Common.BLL.Logic.PetrolStation.Traffic lTraffic =
                     new Common.BLL.Logic.PetrolStation.Traffic(Common.Enum.EDatabase.PetrolStation);
 
-                CommandResult opResult = lTraffic.loadTraffic(date1, date2, PI, PS);
+                CommandResult opResult = lTraffic.loadTraffic(date1, date2, PI, PS, Common.GlobalData.UserManager.currentUser.id);
                 DataTable resultData = ExtensionsDateTable.makePersianDate(opResult.model as DataTable, "_Shamsi", true);
 
                 if (resultData.Rows.Count > 0)

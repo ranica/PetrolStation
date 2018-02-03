@@ -61,6 +61,8 @@
             this.helpMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mainStatusStrip = new System.Windows.Forms.StatusStrip();
+            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.userToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.versionToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.nameTtoolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.dateToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
@@ -303,6 +305,8 @@
             this.mainStatusStrip.Font = new System.Drawing.Font("B Yekan", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.mainStatusStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.mainStatusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatusLabel1,
+            this.userToolStripStatusLabel,
             this.versionToolStripStatusLabel,
             this.nameTtoolStripStatusLabel,
             this.dateToolStripStatusLabel});
@@ -310,6 +314,18 @@
             this.mainStatusStrip.Name = "mainStatusStrip";
             this.mainStatusStrip.Size = new System.Drawing.Size(864, 26);
             this.mainStatusStrip.TabIndex = 1;
+            // 
+            // toolStripStatusLabel1
+            // 
+            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(57, 21);
+            this.toolStripStatusLabel1.Text = "نام کاربر:";
+            // 
+            // userToolStripStatusLabel
+            // 
+            this.userToolStripStatusLabel.Name = "userToolStripStatusLabel";
+            this.userToolStripStatusLabel.Size = new System.Drawing.Size(63, 21);
+            this.userToolStripStatusLabel.Text = "کاربر جاری";
             // 
             // versionToolStripStatusLabel
             // 
@@ -389,5 +405,7 @@
 		private System.Windows.Forms.ToolStripMenuItem customerSerachMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem lotteryMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem lotteryToolStripMenuItem;
-	}
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
+        private System.Windows.Forms.ToolStripStatusLabel userToolStripStatusLabel;
+    }
 }

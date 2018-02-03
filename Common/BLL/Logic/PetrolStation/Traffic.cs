@@ -7,7 +7,11 @@ namespace Common.BLL.Logic.PetrolStation
 	{
 		#region Constants
 		private const string C_spTrafficRegisterByService = "spTrafficRegisterByService";
+
 		private const string C_spGetReportTraffic = "spGetReportTraffic";
+		private const string C_spGetTraffic = "spGetTraffic";
+
+
 		private const string C_spGetReportTrafficByNationalcode = "spGetReportTrafficByNationalcode";
 		private const string C_spGetReportTrafficByPlate = "spGetReportTrafficByPlate";
 		public const string C_spGetTrafficSearchByNationalcode = "spGetTrafficSearchByNationalcode";
@@ -37,7 +41,7 @@ namespace Common.BLL.Logic.PetrolStation
 		/// Insert tag
 		/// </summary>
 		/// <returns></returns>
-		public CommandResult insertTagByService (Common.BLL.Entity.PetrolStation.Tag tag,
+		public CommandResult insertTagByService (int antennaId, Common.BLL.Entity.PetrolStation.Tag tag,
 			Common.BLL.Entity.PetrolStation.User user, DateTime regDate, int intervalTime)
 		{
 			CommandResult result = null;
@@ -46,6 +50,7 @@ namespace Common.BLL.Logic.PetrolStation
 			{
 				// Register new traffic
 				result = BaseDAL.DBaseHelper.executeCommand (BaseDAL.Base.EnumExecuteType.procedureNonQuery, connection, C_spTrafficRegisterByService, true,
+					new KeyValuePair ("@uhfId", antennaId),
 					new KeyValuePair ("@tagData", tag.tag),
 					new KeyValuePair ("@insertedById", user.id),
 					new KeyValuePair ("@trafficDate", regDate),
@@ -61,14 +66,15 @@ namespace Common.BLL.Logic.PetrolStation
 		/// Load  Traffic
 		/// </summary>
 		/// <returns></returns>
-		public CommandResult loadTraffic (DateTime startDate, DateTime endDate, int pageIndex, int pageSize)
+		public CommandResult loadTraffic (DateTime startDate, DateTime endDate, int pageIndex, int pageSize, int userId)
 		{
 			CommandResult result;
-			result = BaseDAL.DBaseHelper.executeCommand (BaseDAL.Base.EnumExecuteType.procedureReader, connection, C_spGetReportTraffic, true,
+			result = BaseDAL.DBaseHelper.executeCommand (BaseDAL.Base.EnumExecuteType.procedureReader, connection, C_spGetTraffic, true,
 				new KeyValuePair ("@startDate", startDate),
 				new KeyValuePair ("@endDate", endDate),
 				new KeyValuePair ("@pageIndex", pageIndex),
-				new KeyValuePair ("@pageSize", pageSize)
+				new KeyValuePair ("@pageSize", pageSize),
+				new KeyValuePair ("@userId", userId)
 
                 );
 

@@ -10,6 +10,38 @@ namespace Common.BLL.Logic.PetrolStation
         {
         }
 
+
+        /// <summary>
+        /// Get info Antenna
+        /// </summary>
+        /// <param name="AntennaHost"></param>
+        /// <returns></returns>
+		public CommandResult getAntenna(string AntennaHost)
+        {
+            CommandResult result;
+
+            Common.BLL.Entity.PetrolStation.UHF antenna = new Entity.PetrolStation.UHF()
+            {
+                IP = AntennaHost
+            };
+            result = read(antenna, "IP");
+
+            if (antenna.id > 0)
+            {
+                result.model = antenna;
+            }
+
+            return result;
+        }
+
+        /// <summary>
+        /// Update Satatus Service
+        /// </summary>
+        /// <param name="uhf"></param>
+        /// <param name="user"></param>
+        /// <param name="modifyDate"></param>
+        /// <returns></returns>
+
         public bool updateStatusService(Common.BLL.Entity.PetrolStation.UHF uhf,
             Common.BLL.Entity.PetrolStation.User user, DateTime modifyDate)
 
