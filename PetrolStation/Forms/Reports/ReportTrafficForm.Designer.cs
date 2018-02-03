@@ -78,10 +78,9 @@
             // 
             // showButton
             // 
-            this.showButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.showButton.Location = new System.Drawing.Point(38, 30);
+            this.showButton.Location = new System.Drawing.Point(6, 19);
             this.showButton.Name = "showButton";
-            this.showButton.Size = new System.Drawing.Size(129, 48);
+            this.showButton.Size = new System.Drawing.Size(129, 34);
             this.showButton.TabIndex = 2;
             this.showButton.Text = "نمایش";
             this.showButton.UseVisualStyleBackColor = true;
@@ -115,7 +114,7 @@
             this.countTabPage.Location = new System.Drawing.Point(4, 23);
             this.countTabPage.Name = "countTabPage";
             this.countTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.countTabPage.Size = new System.Drawing.Size(824, 348);
+            this.countTabPage.Size = new System.Drawing.Size(824, 334);
             this.countTabPage.TabIndex = 1;
             this.countTabPage.Text = "تعداد تردد";
             this.countTabPage.UseVisualStyleBackColor = true;
@@ -125,8 +124,12 @@
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox1.Controls.Add(this.flowLayoutPanel1);
+            this.groupBox1.Controls.Add(this.pageSizeComboBox);
+            this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.typeComboBox);
+            this.groupBox1.Controls.Add(this.pageIndexComboBox);
+            this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.showButton);
@@ -147,7 +150,7 @@
             this.flowLayoutPanel1.Location = new System.Drawing.Point(254, 53);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(268, 99);
-            this.flowLayoutPanel1.TabIndex = 13;
+            this.flowLayoutPanel1.TabIndex = 0;
             // 
             // nationalCodeMaskedTextBox
             // 
@@ -194,7 +197,7 @@
             this.code1Numeric.Location = new System.Drawing.Point(210, 7);
             this.code1Numeric.Name = "code1Numeric";
             this.code1Numeric.Size = new System.Drawing.Size(49, 22);
-            this.code1Numeric.TabIndex = 3;
+            this.code1Numeric.TabIndex = 0;
             this.code1Numeric.Tag = "plateCityId";
             this.code1Numeric.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -206,7 +209,7 @@
             this.part2MainTextBox.MaxLength = 3;
             this.part2MainTextBox.Name = "part2MainTextBox";
             this.part2MainTextBox.Size = new System.Drawing.Size(67, 22);
-            this.part2MainTextBox.TabIndex = 2;
+            this.part2MainTextBox.TabIndex = 1;
             this.part2MainTextBox.Tag = "";
             this.part2MainTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -220,7 +223,7 @@
             this.characterDomainUpDown.Location = new System.Drawing.Point(75, 7);
             this.characterDomainUpDown.Name = "characterDomainUpDown";
             this.characterDomainUpDown.Size = new System.Drawing.Size(58, 22);
-            this.characterDomainUpDown.TabIndex = 1;
+            this.characterDomainUpDown.TabIndex = 2;
             this.characterDomainUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // part1MainTextBox
@@ -231,7 +234,7 @@
             this.part1MainTextBox.MaxLength = 2;
             this.part1MainTextBox.Name = "part1MainTextBox";
             this.part1MainTextBox.Size = new System.Drawing.Size(67, 22);
-            this.part1MainTextBox.TabIndex = 0;
+            this.part1MainTextBox.TabIndex = 3;
             this.part1MainTextBox.Tag = "";
             this.part1MainTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -242,7 +245,7 @@
             this.plateTypeComboBox.Location = new System.Drawing.Point(95, 5);
             this.plateTypeComboBox.Name = "plateTypeComboBox";
             this.plateTypeComboBox.Size = new System.Drawing.Size(186, 22);
-            this.plateTypeComboBox.TabIndex = 5;
+            this.plateTypeComboBox.TabIndex = 0;
             this.plateTypeComboBox.Tag = "plateTypeId";
             // 
             // motorPlatePanel
@@ -354,7 +357,7 @@
             // 
             this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(544, 36);
+            this.label3.Location = new System.Drawing.Point(525, 27);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(53, 14);
             this.label3.TabIndex = 10;
@@ -377,7 +380,7 @@
             // 
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(773, 74);
+            this.label2.Location = new System.Drawing.Point(773, 63);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(44, 14);
             this.label2.TabIndex = 3;
@@ -396,7 +399,7 @@
             // dateEndMaskedTextBox
             // 
             this.dateEndMaskedTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.dateEndMaskedTextBox.Location = new System.Drawing.Point(620, 69);
+            this.dateEndMaskedTextBox.Location = new System.Drawing.Point(640, 55);
             this.dateEndMaskedTextBox.Mask = "0000/00/00";
             this.dateEndMaskedTextBox.Name = "dateEndMaskedTextBox";
             this.dateEndMaskedTextBox.Size = new System.Drawing.Size(127, 22);
@@ -406,7 +409,7 @@
             // dateStartMaskedTextBox
             // 
             this.dateStartMaskedTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.dateStartMaskedTextBox.Location = new System.Drawing.Point(620, 30);
+            this.dateStartMaskedTextBox.Location = new System.Drawing.Point(640, 27);
             this.dateStartMaskedTextBox.Mask = "0000/00/00";
             this.dateStartMaskedTextBox.Name = "dateStartMaskedTextBox";
             this.dateStartMaskedTextBox.Size = new System.Drawing.Size(127, 22);
@@ -417,16 +420,18 @@
             // 
             this.pageSizeComboBox.FormattingEnabled = true;
             this.pageSizeComboBox.Items.AddRange(new object[] {
-            "10"});
-            this.pageSizeComboBox.Location = new System.Drawing.Point(254, 178);
+            "10",
+            "20",
+            "50"});
+            this.pageSizeComboBox.Location = new System.Drawing.Point(6, 94);
             this.pageSizeComboBox.Name = "pageSizeComboBox";
-            this.pageSizeComboBox.Size = new System.Drawing.Size(53, 22);
+            this.pageSizeComboBox.Size = new System.Drawing.Size(56, 22);
             this.pageSizeComboBox.TabIndex = 18;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(323, 181);
+            this.label5.Location = new System.Drawing.Point(68, 97);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(145, 14);
             this.label5.TabIndex = 16;
@@ -437,7 +442,7 @@
             this.pageIndexComboBox.FormattingEnabled = true;
             this.pageIndexComboBox.Items.AddRange(new object[] {
             "1"});
-            this.pageIndexComboBox.Location = new System.Drawing.Point(472, 178);
+            this.pageIndexComboBox.Location = new System.Drawing.Point(6, 66);
             this.pageIndexComboBox.Name = "pageIndexComboBox";
             this.pageIndexComboBox.Size = new System.Drawing.Size(56, 22);
             this.pageIndexComboBox.TabIndex = 19;
@@ -445,7 +450,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(534, 181);
+            this.label4.Location = new System.Drawing.Point(68, 69);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(74, 14);
             this.label4.TabIndex = 17;
@@ -453,6 +458,7 @@
             // 
             // flowLayoutPanel2
             // 
+            this.flowLayoutPanel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.flowLayoutPanel2.Controls.Add(this.nextButton);
             this.flowLayoutPanel2.Controls.Add(this.previousButton);
             this.flowLayoutPanel2.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
@@ -485,12 +491,8 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(856, 623);
-            this.Controls.Add(this.flowLayoutPanel2);
-            this.Controls.Add(this.pageSizeComboBox);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.pageIndexComboBox);
-            this.Controls.Add(this.label4);
             this.Controls.Add(this.tabControl1);
+            this.Controls.Add(this.flowLayoutPanel2);
             this.Controls.Add(this.groupBox1);
             this.Name = "ReportTrafficForm";
             this.Text = "گزارش تردد ها";
@@ -511,7 +513,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.flowLayoutPanel2.ResumeLayout(false);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
 		}
 

@@ -70,10 +70,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="BaseBLL">
-      <HintPath>..\..\..\ojvar-orm\BLL\bin\Debug\BaseBLL.dll</HintPath>
+      <HintPath>..\DLL\BaseBLL.dll</HintPath>
     </Reference>
     <Reference Include="BaseDAL">
-      <HintPath>..\..\..\ojvar-orm\BLL\bin\Debug\BaseDAL.dll</HintPath>
+      <HintPath>..\DLL\BaseDAL.dll</HintPath>
     </Reference>
     <Reference Include="Stimulsoft.Base, Version=2013.2.1612.0, Culture=neutral, PublicKeyToken=ebe6666cba19647a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>

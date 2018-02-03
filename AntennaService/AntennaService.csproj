@@ -47,12 +47,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="BaseBLL, Version=1.2.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\ojvar-orm\BLL\bin\Debug\BaseBLL.dll</HintPath>
+    <Reference Include="BaseBLL">
+      <HintPath>..\DLL\BaseBLL.dll</HintPath>
     </Reference>
     <Reference Include="BaseDAL">
-      <HintPath>..\..\..\ojvar-orm\BLL\bin\Debug\BaseDAL.dll</HintPath>
+      <HintPath>..\DLL\BaseDAL.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />

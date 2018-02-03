@@ -1,4 +1,4 @@
-﻿ using BaseDAL.Model;
+﻿using BaseDAL.Model;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -21,19 +21,19 @@ namespace PetrolStation
         {
             prepare();
 
-
             //// Initilization
             //string exePath = System.Reflection.Assembly.GetExecutingAssembly().Location;
             //Common.Initializer.init(Path.Combine(Application.StartupPath, "log.txt"), exePath);
 
-
-
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            //// TEST
-            //Application.Run(new Forms.testForm());
-            //return;
+
+
+            //// TEST :: Remove or Comment after test
+            Application.Run(new Forms.Reports.ReportTrafficForm());
+            return;
+
             while (hasLogin != 2)
             {
                 Application.Run(new Forms.User.LoginForm());
