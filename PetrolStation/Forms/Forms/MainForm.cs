@@ -47,10 +47,51 @@ namespace PetrolStation.Forms.Forms
 			prepare ();
 		}
 
-		/// <summary>
-		/// Prepare
+        /// <summary>
+		/// Bind Events
 		/// </summary>
-		private void prepare ()
+		private void bindEvents()
+        {
+            // Menus	
+            logoffMenuItem.Click                += LogoffMenuItem_Click;
+            exitMenuItem.Click                  += ExitMenuItem_Click;
+
+            //Customer
+            customerMenuItem.Click              += CustomerMenuItem_Click;
+            customerShowMenuItem.Click          += CustomerShowMenuItem_Click;
+            customerSerachMenuItem.Click        += CustomerSerachMenuItem_Click;
+
+            //Car
+            carTypeMenuItem.Click               += CarTypeMenuItem_Click;
+            carSystemMenuItem.Click             += CarSystemMenuItem_Click;
+            carFuelMenuItem.Click               += CarFuelMenuItem_Click;
+            carLevelMenuItem.Click              += CarLevelMenuItem_Click;
+            carColorMenuItem.Click              += CarColorMenuItem_Click;
+
+            //Plate
+            plateCityMenuItem.Click             += PlateCityMenuItem_Click;
+            plateTypeMenuItem.Click             += PlateTypeMenuItem_Click;
+
+            //Lottery
+            lotteryToolStripMenuItem.Click      += LotteryToolStripMenuItem_Click;
+
+            //Report
+            reportCustomerMenuItem.Click        += ReportCustomerMenuItem_Click;
+            reportCarMenuItem.Click             += ReportCarMenuItem_Click;
+
+            //Report Traffic
+            stateReportToolStripMenuItem.Click  += StateReportToolStripMenuItem_Click;
+            countReportToolStripMenuItem.Click  += CountReportToolStripMenuItem_Click;
+
+
+            aboutToolStripMenuItem.Click        += AboutToolStripMenuItem_Click;
+        }
+
+        
+        /// <summary>
+        /// Prepare
+        /// </summary>
+        private void prepare ()
 		{
 			__Program.hasLogin	= 0;		// Default exit menu (Logoff)
 		
@@ -72,91 +113,68 @@ namespace PetrolStation.Forms.Forms
 			dateToolStripStatusLabel.Text = ExtensionsDateTime.getWeekDay(DateTime.Now) + "  " +  ExtensionsDateTime.toPersianDate(DateTime.Now); 
 
 		}		
-		/// <summary>
-		/// Bind Events
-		/// </summary>
-		private void bindEvents ()
-		{
-			// Menus	
-			logoffMenuItem.Click			+= LogoffMenuItem_Click;
-			exitMenuItem.Click				+= ExitMenuItem_Click;
-
-			//Customer
-			customerMenuItem.Click			+= CustomerMenuItem_Click;
-			customerShowMenuItem.Click		+= CustomerShowMenuItem_Click;
-			customerSerachMenuItem.Click	+= CustomerSerachMenuItem_Click;
-
-			//Car
-			carTypeMenuItem.Click			+= CarTypeMenuItem_Click;
-			carSystemMenuItem.Click			+= CarSystemMenuItem_Click;
-			carFuelMenuItem.Click			+= CarFuelMenuItem_Click;
-			carLevelMenuItem.Click			+= CarLevelMenuItem_Click;
-			carColorMenuItem.Click			+= CarColorMenuItem_Click;
-
-			//Plate
-			plateCityMenuItem.Click			+= PlateCityMenuItem_Click;
-			plateTypeMenuItem.Click			+= PlateTypeMenuItem_Click;	
-
-			//Lottery
-			lotteryToolStripMenuItem.Click += LotteryToolStripMenuItem_Click;
-	
-			//Report
-			reportCustomerMenuItem.Click	+= ReportCustomerMenuItem_Click;
-			reportCarMenuItem.Click			+= ReportCarMenuItem_Click;
-			reportTrafficMenuItem.Click		+=ReportTrafficMenuItem_Click;
-
-			aboutToolStripMenuItem.Click	+= AboutToolStripMenuItem_Click;
-		}
-
+		
+        /// <summary>
+        /// Lottery
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
 		private void LotteryToolStripMenuItem_Click (object sender, EventArgs e)
 		{
 			LotteryForm lotteryform = new LotteryForm ();
 			lotteryform.ShowDialog();
 		}
 
+        /// <summary>
+        /// Search Customer
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
 		private void CustomerSerachMenuItem_Click (object sender, EventArgs e)
 		{
 			CustomerSearchForm customerSerach = new CustomerSearchForm ();
 			customerSerach.ShowDialog();
 		}
 
+        /// <summary>
+        /// About
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
 		private void AboutToolStripMenuItem_Click (object sender, EventArgs e)
 		{
-			//writeToDB("E20041374718024919904493");
+			
 		}
-
-		private void writeToDB (string tagId)
-		{
-			int					interval		= 1;
-			Common.BLL.Entity.PetrolStation.User	serviceUser;
-
-			Common.BLL.Logic.PetrolStation.Traffic	lTraffic	= new Common.BLL.Logic.PetrolStation.Traffic (Common.Enum.EDatabase.PetrolStation);
-			Common.BLL.Entity.PetrolStation.Tag	tag			= new Common.BLL.Entity.PetrolStation.Tag ()
-			{
-				tag	= tagId
-			};
-
-			Common.BLL.Logic.PetrolStation.User	lUser	= new Common.BLL.Logic.PetrolStation.User (Common.Enum.EDatabase.PetrolStation);
-			CommandResult						opResult	= lUser.getServiceUser ();
-
-			serviceUser	= opResult.model as Common.BLL.Entity.PetrolStation.User;
 
 		
-			lTraffic.insertTagByService (tag, serviceUser, DateTime.Now, interval);
-		}
-		
-		private void ReportTrafficMenuItem_Click (object sender, EventArgs e)
-		{
-			ReportTrafficForm  trafficReportForm = new ReportTrafficForm ();
-			trafficReportForm.ShowDialog();			
-		}
+        /// <summary>
+        /// Count Report Traffic
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void CountReportToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ReportCountTrafficForm TCForm = new ReportCountTrafficForm();
+            TCForm.ShowDialog();
+        }
 
-		/// <summary>
-		/// Report Car and Tag 
-		/// </summary>
-		/// <param name="sender"></param>
-		/// <param name="e"></param>
-		private void ReportCarMenuItem_Click (object sender, EventArgs e)
+        /// <summary>
+        /// State Report Traffic
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void StateReportToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ReportTrafficForm trafficReportForm = new ReportTrafficForm();
+            trafficReportForm.ShowDialog();
+        }
+
+        /// <summary>
+        /// Report Car and Tag 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ReportCarMenuItem_Click (object sender, EventArgs e)
 		{				
 			Common.BLL.Logic.PetrolStation.Owner		lOwner = new Common.BLL.Logic.PetrolStation.Owner (Common.Enum.EDatabase.PetrolStation);
 			CommandResult opResult = lOwner.loadTag();

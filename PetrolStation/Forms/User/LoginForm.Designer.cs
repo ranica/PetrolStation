@@ -28,17 +28,38 @@
 		/// </summary>
 		private void InitializeComponent ()
 		{
+            this.loginButton = new System.Windows.Forms.Button();
+            this.exitButton = new System.Windows.Forms.Button();
             this.userDataGroupBox = new System.Windows.Forms.GroupBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.passwordTextBox = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.usernameTextBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.exitButton = new System.Windows.Forms.Button();
-            this.loginButton = new System.Windows.Forms.Button();
             this.userDataGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
+            // 
+            // loginButton
+            // 
+            this.loginButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.loginButton.Location = new System.Drawing.Point(129, 138);
+            this.loginButton.Name = "loginButton";
+            this.loginButton.Size = new System.Drawing.Size(110, 35);
+            this.loginButton.TabIndex = 1;
+            this.loginButton.Text = "ورود";
+            this.loginButton.UseVisualStyleBackColor = true;
+            // 
+            // exitButton
+            // 
+            this.exitButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.exitButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.exitButton.Location = new System.Drawing.Point(13, 138);
+            this.exitButton.Name = "exitButton";
+            this.exitButton.Size = new System.Drawing.Size(110, 35);
+            this.exitButton.TabIndex = 2;
+            this.exitButton.Text = "خروج";
+            this.exitButton.UseVisualStyleBackColor = true;
             // 
             // userDataGroupBox
             // 
@@ -50,7 +71,7 @@
             this.userDataGroupBox.Controls.Add(this.label2);
             this.userDataGroupBox.Controls.Add(this.usernameTextBox);
             this.userDataGroupBox.Controls.Add(this.label1);
-            this.userDataGroupBox.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.userDataGroupBox.ForeColor = System.Drawing.Color.Black;
             this.userDataGroupBox.Location = new System.Drawing.Point(19, 12);
             this.userDataGroupBox.Name = "userDataGroupBox";
             this.userDataGroupBox.Size = new System.Drawing.Size(423, 119);
@@ -85,7 +106,7 @@
             // 
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
-            this.label2.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label2.ForeColor = System.Drawing.Color.Black;
             this.label2.Location = new System.Drawing.Point(376, 73);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(42, 14);
@@ -108,44 +129,25 @@
             // 
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
-            this.label1.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label1.ForeColor = System.Drawing.Color.Black;
             this.label1.Location = new System.Drawing.Point(357, 41);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(57, 14);
             this.label1.TabIndex = 0;
             this.label1.Text = "نام کاربری";
             // 
-            // exitButton
-            // 
-            this.exitButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.exitButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.exitButton.Location = new System.Drawing.Point(13, 138);
-            this.exitButton.Name = "exitButton";
-            this.exitButton.Size = new System.Drawing.Size(110, 35);
-            this.exitButton.TabIndex = 2;
-            this.exitButton.Text = "خروج";
-            this.exitButton.UseVisualStyleBackColor = true;
-            // 
-            // loginButton
-            // 
-            this.loginButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.loginButton.Location = new System.Drawing.Point(129, 138);
-            this.loginButton.Name = "loginButton";
-            this.loginButton.Size = new System.Drawing.Size(110, 35);
-            this.loginButton.TabIndex = 1;
-            this.loginButton.Text = "ورود";
-            this.loginButton.UseVisualStyleBackColor = true;
-            // 
             // LoginForm
             // 
             this.AcceptButton = this.loginButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.LightSteelBlue;
             this.CancelButton = this.exitButton;
             this.ClientSize = new System.Drawing.Size(454, 185);
             this.Controls.Add(this.loginButton);
             this.Controls.Add(this.exitButton);
             this.Controls.Add(this.userDataGroupBox);
+            this.ForeColor = System.Drawing.Color.Black;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.MinimizeBox = false;

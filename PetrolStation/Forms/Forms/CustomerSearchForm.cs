@@ -38,8 +38,10 @@ namespace PetrolStation.Forms.Forms
 		private void bindEvents ()
 		{
 			plateTypeComboBox.SelectedIndexChanged	+= PlateTypeComboBox_SelectedIndexChanged;
-			plateRadioButton.CheckedChanged			+= PlateRadioButton_CheckedChanged;
-			nationalCodeRadioButton.CheckedChanged	+= NationalCodeRadioButton_CheckedChanged;
+            nationalCodeRadioButton.CheckedChanged  += NationalCodeRadioButton_CheckedChanged;
+
+            plateRadioButton.CheckedChanged			+= PlateRadioButton_CheckedChanged;
+			
 			serachButton.Click						+= SerachButton_Click;
 		}
 
@@ -48,7 +50,9 @@ namespace PetrolStation.Forms.Forms
 		/// </summary>
 		private void prepare ()
 		{
-			reloadCombo ();
+            plateDataGroupBox.Visible = false;
+
+            reloadCombo ();
 		}
 
 		private void reloadCombo ()
@@ -65,13 +69,14 @@ namespace PetrolStation.Forms.Forms
 				ownerTabPage.Controls.Clear();
 				carTabPage.Controls.Clear();
 				trafficTabPage.Controls.Clear();
-				nationalCodeMaskedTextBox.Enabled = true;
+                nationalCodeMaskedTextBox.Visible = true;
 				nationalCodeMaskedTextBox.Focus();
 				nationalCodeMaskedTextBox.Clear();
 			}
 			else
 			{
-				nationalCodeMaskedTextBox.Enabled = true;
+
+				nationalCodeMaskedTextBox.Visible = false;
 				nationalCodeMaskedTextBox.Clear();
 			}
 		}
@@ -214,12 +219,17 @@ namespace PetrolStation.Forms.Forms
 			{
 				nationalCode = natioanlcode
 			};
-			Common.BLL.Logic.PetrolStation.Owner lOwner = new Common.BLL.Logic.PetrolStation.Owner (Common.Enum.EDatabase.PetrolStation);
+			Common.BLL.Logic.PetrolStation.Owner lOwner = 
+                                                new Common.BLL.Logic.PetrolStation.Owner (Common.Enum.EDatabase.PetrolStation);
+
 			CommandResult opResult = lOwner.read (model, "nationalCode");
+
 			if (opResult.status == BaseDAL.Base.EnumCommandStatus.success)
 			{
 				UserControls.OwnerUserControl owner = new UserControls.OwnerUserControl (opResult.model);
+
                 ownerTabPage.Controls.Clear();
+
                 ownerTabPage.Controls.Add(owner);	
 			}
 		}
@@ -407,7 +417,8 @@ namespace PetrolStation.Forms.Forms
 			}			
 
 			return  result;		
-		}		
-		#endregion
-	}
+		}
+        #endregion
+
+    }
 }

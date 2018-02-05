@@ -14,13 +14,13 @@ namespace Common.BLL.Logic.PetrolStation
 
 		private const string C_spGetReportTrafficByNationalcode = "spGetReportTrafficByNationalcode";
 		private const string C_spGetReportTrafficByPlate = "spGetReportTrafficByPlate";
-		public const string C_spGetTrafficSearchByNationalcode = "spGetTrafficSearchByNationalcode";
-		public const string C_spGetTrafficSerachByPlate = "spGetTrafficSerachByPlate";
-		public const string C_spGetTrafficCountNationalcode = "spGetReportTrafficCountByNationalcode";
-		public const string C_spGetTrafficCountPlate = "spGetReportTrafficCountByPlate";
-		public const string C_spGetTrafficCount = "spGetReportTrafficCount";
-		public const string C_spTrafficDelete = "spTrafficDelete";		
-		public const string C_spCumulative = "spCumulative";
+		public  const string C_spGetTrafficSearchByNationalcode = "spGetTrafficSearchByNationalcode";
+		public  const string C_spGetTrafficSerachByPlate = "spGetTrafficSerachByPlate";
+		public  const string C_spGetTrafficCountNationalcode = "spGetReportTrafficCountByNationalcode";
+		public  const string C_spGetTrafficCountPlate = "spGetReportTrafficCountByPlate";
+		public  const string C_spGetTrafficCount = "spGetReportTrafficCount";
+		public  const string C_spTrafficDelete = "spTrafficDelete";		
+		public  const string C_spCumulative = "spCumulative";
         
         		
 		public const string C_spPaginateTraffic = "spGetPaginetTraffic";		
@@ -50,11 +50,11 @@ namespace Common.BLL.Logic.PetrolStation
 			{
 				// Register new traffic
 				result = BaseDAL.DBaseHelper.executeCommand (BaseDAL.Base.EnumExecuteType.procedureNonQuery, connection, C_spTrafficRegisterByService, true,
-					new KeyValuePair ("@uhfId", antennaId),
-					new KeyValuePair ("@tagData", tag.tag),
-					new KeyValuePair ("@insertedById", user.id),
-					new KeyValuePair ("@trafficDate", regDate),
-					new KeyValuePair ("@intervalTime", intervalTime)
+					new KeyValuePair ("@uhfId"          , antennaId),
+					new KeyValuePair ("@tagData"        , tag.tag),
+					new KeyValuePair ("@insertedById"   , user.id),
+					new KeyValuePair ("@trafficDate"    , regDate),
+					new KeyValuePair ("@intervalTime"   , intervalTime)
 					);
 			}
 			else
@@ -62,51 +62,64 @@ namespace Common.BLL.Logic.PetrolStation
 
 			return result;
 		}
-		/// <summary>
-		/// Load  Traffic
-		/// </summary>
-		/// <returns></returns>
-		public CommandResult loadTraffic (DateTime startDate, DateTime endDate, int pageIndex, int pageSize, int userId)
-		{
-			CommandResult result;
-			result = BaseDAL.DBaseHelper.executeCommand (BaseDAL.Base.EnumExecuteType.procedureReader, connection, C_spGetTraffic, true,
-				new KeyValuePair ("@startDate", startDate),
-				new KeyValuePair ("@endDate", endDate),
-				new KeyValuePair ("@pageIndex", pageIndex),
-				new KeyValuePair ("@pageSize", pageSize),
-				new KeyValuePair ("@userId", userId)
-
-                );
-
-			return result;
-		}
 
         /// <summary>
-		/// Load Cumulative
-		/// </summary>
-		/// <returns></returns>
-		public CommandResult loadCumulative(DateTime startDate, DateTime endDate)
+        /// Load Cumulative
+        /// </summary>
+        /// <returns></returns>
+        public CommandResult loadCumulative(DateTime startDate, DateTime endDate)
         {
             CommandResult result;
             result = BaseDAL.DBaseHelper.executeCommand(BaseDAL.Base.EnumExecuteType.procedureReader, connection, C_spCumulative, true,
-                new KeyValuePair("@startDate", startDate),
-                new KeyValuePair("@endDate", endDate)
+                new KeyValuePair("@startDate"   , startDate),
+                new KeyValuePair("@endDate"     , endDate)
                 );
 
             return result;
         }
 
         /// <summary>
+        /// Load  Traffic
+        /// </summary>
+        /// <returns></returns>
+        public CommandResult loadTraffic (DateTime startDate,
+                                          DateTime endDate, 
+                                          int pageIndex, 
+                                          int pageSize, 
+                                          int userId)
+		{
+			CommandResult result;
+			result = BaseDAL.DBaseHelper.executeCommand (BaseDAL.Base.EnumExecuteType.procedureReader, connection, C_spGetTraffic, true,
+				new KeyValuePair ("@startDate"  , startDate),
+				new KeyValuePair ("@endDate"    , endDate),
+				new KeyValuePair ("@pageIndex"  , pageIndex),
+				new KeyValuePair ("@pageSize"   , pageSize),
+				new KeyValuePair ("@userId"     , userId)
+
+                );
+
+			return result;
+		}
+
+       
+        /// <summary>
         /// Load Count Traffic
         /// </summary>
         /// <returns></returns>
-        public CommandResult loadTrafficCount (DateTime startDate, DateTime endDate)
-		{
+        public CommandResult loadTrafficCount (DateTime startDate,
+                                                  DateTime endDate,
+                                                  int pageIndex,
+                                                  int pageSize,
+                                                  int userId)
+        {
 			CommandResult result;
 			result = BaseDAL.DBaseHelper.executeCommand (BaseDAL.Base.EnumExecuteType.procedureReader, connection, C_spGetTrafficCount, true,
-				new KeyValuePair ("@startDate", startDate),
-				new KeyValuePair ("@endDate", endDate)
-				);
+				new KeyValuePair ("@startDate"  , startDate),
+				new KeyValuePair ("@endDate"    , endDate),
+                new KeyValuePair("@pageIndex"   , pageIndex),
+                new KeyValuePair("@pageSize"    , pageSize),
+                new KeyValuePair("@userId"      , userId)
+                );
 
 			return result;
 		}
@@ -116,14 +129,22 @@ namespace Common.BLL.Logic.PetrolStation
 		/// Load  Traffic by NationalCode
 		/// </summary>
 		/// <returns></returns>
-		public CommandResult loadTrafficByNationalcode (DateTime startDate, DateTime endDate, string nationalcode)
+		public CommandResult loadTByNC (DateTime startDate,
+                                        DateTime endDate, 
+                                        string nationalcode,
+                                        int pageIndex,
+                                        int pageSize,
+                                        int userId)
 		{
 			CommandResult result;
 			result = BaseDAL.DBaseHelper.executeCommand (BaseDAL.Base.EnumExecuteType.procedureReader, connection, C_spGetReportTrafficByNationalcode, true,
-				new KeyValuePair ("@startDate", startDate),
-				new KeyValuePair ("@endDate", endDate),
-				new KeyValuePair ("@nationalcode", nationalcode)
-				);
+				new KeyValuePair ("@startDate"      , startDate),
+				new KeyValuePair ("@endDate"        , endDate),
+				new KeyValuePair ("@nationalcode"   , nationalcode),
+                new KeyValuePair ("@pageIndex"       , pageIndex),
+                new KeyValuePair ("@pageSize"        , pageSize),
+                new KeyValuePair ("@userId"          , userId)
+                );
 
 			return result;
 		}
@@ -132,14 +153,22 @@ namespace Common.BLL.Logic.PetrolStation
 		/// Load Count Traffic by NationalCode
 		/// </summary>
 		/// <returns></returns>
-		public CommandResult loadReportTrafficCountByNationalcode (DateTime startDate, DateTime endDate, string nationalcode)
-		{
+		public CommandResult loadTCByNC(DateTime startDate,
+                                           DateTime endDate,
+                                           string nationalcode,
+                                           int pageIndex,
+                                           int pageSize,
+                                           int userId)
+        {
 			CommandResult result;
 			result = BaseDAL.DBaseHelper.executeCommand (BaseDAL.Base.EnumExecuteType.procedureReader, connection, C_spGetTrafficCountNationalcode, true,
-				new KeyValuePair ("@startDate", startDate),
-				new KeyValuePair ("@endDate", endDate),
-				new KeyValuePair ("@nationalcode", nationalcode)
-				);
+				new KeyValuePair ("@startDate"      , startDate),
+				new KeyValuePair ("@endDate"        , endDate),
+                new KeyValuePair ("@nationalcode"   , nationalcode),
+                new KeyValuePair ("@pageIndex"      , pageIndex),
+                new KeyValuePair ("@pageSize"       , pageSize),
+                new KeyValuePair ("@userId"         , userId)
+                );
 
 			return result;
 		}
@@ -150,14 +179,23 @@ namespace Common.BLL.Logic.PetrolStation
 		/// Load Count Traffic by Plate
 		/// </summary>
 		/// <returns></returns>
-		public CommandResult loadReportTrafficCountByPlate (DateTime startDate, DateTime endDate, string plate)
+		public CommandResult loadTCByP (DateTime startDate,
+                                         DateTime endDate,
+                                         string plate,
+                                         int pageIndex,
+                                         int pageSize,
+                                         int userId)
 		{
-			CommandResult result;
+
+            CommandResult result;
 			result = BaseDAL.DBaseHelper.executeCommand (BaseDAL.Base.EnumExecuteType.procedureReader, connection, C_spGetTrafficCountPlate, true,
-				new KeyValuePair ("@startDate", startDate),
-				new KeyValuePair ("@endDate", endDate),
-				new KeyValuePair ("@plate", plate)
-				);
+				new KeyValuePair ("@startDate"      , startDate),
+				new KeyValuePair ("@endDate"        , endDate),
+				new KeyValuePair ("@plate"          , plate),
+                new KeyValuePair ("@pageIndex"      , pageIndex),
+                new KeyValuePair ("@pageSize"       , pageSize),
+                new KeyValuePair ("@userId"         , userId)
+                );
 
 			return result;
 		}
@@ -166,14 +204,22 @@ namespace Common.BLL.Logic.PetrolStation
 		/// Load  Traffic by Plate
 		/// </summary>
 		/// <returns></returns>
-		public CommandResult loadTrafficByPlate (DateTime startDate, DateTime endDate, string plate)
-		{
+		public CommandResult loadTByP(DateTime startDate,
+                                      DateTime endDate,
+                                      string plate,
+                                      int pageIndex,
+                                      int pageSize,
+                                      int userId)
+        {
 			CommandResult result;
 			result = BaseDAL.DBaseHelper.executeCommand (BaseDAL.Base.EnumExecuteType.procedureReader, connection, C_spGetReportTrafficByPlate, true,
-				new KeyValuePair ("@startDate", startDate),
-				new KeyValuePair ("@endDate", endDate),
-				new KeyValuePair ("@plate", plate)
-				);
+				new KeyValuePair ("@startDate"      , startDate),
+				new KeyValuePair ("@endDate"        , endDate),
+				new KeyValuePair ("@plate"          , plate),
+                new KeyValuePair ("@pageIndex"      , pageIndex),
+                new KeyValuePair ("@pageSize"       , pageSize),
+                new KeyValuePair ("@userId"         , userId)
+                );
 
 			return result;
 		}
@@ -245,8 +291,8 @@ namespace Common.BLL.Logic.PetrolStation
         {
             CommandResult result;
             result = BaseDAL.DBaseHelper.executeCommand(BaseDAL.Base.EnumExecuteType.procedureReader, connection, C_spPaginateTraffic, true,
-                new KeyValuePair("@pageIndex", pageIndex),
-                new KeyValuePair("@pageSize", pageSize)
+                new KeyValuePair("@pageIndex"   , pageIndex),
+                new KeyValuePair("@pageSize"    , pageSize)
                 );
 
             return result;

@@ -28,42 +28,44 @@
 		/// </summary>
 		private void InitializeComponent ()
 		{
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-			this.carGrid = new System.Windows.Forms.DataGridView();
-			((System.ComponentModel.ISupportInitialize)(this.carGrid)).BeginInit();
-			this.SuspendLayout();
-			// 
-			// carGrid
-			// 
-			this.carGrid.AllowUserToAddRows = false;
-			this.carGrid.AllowUserToDeleteRows = false;
-			dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(253)))), ((int)(((byte)(255)))));
-			this.carGrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-			this.carGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            this.carGrid = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.carGrid)).BeginInit();
+            this.SuspendLayout();
+            // 
+            // carGrid
+            // 
+            this.carGrid.AllowUserToAddRows = false;
+            this.carGrid.AllowUserToDeleteRows = false;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(253)))), ((int)(((byte)(255)))));
+            this.carGrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.carGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-			this.carGrid.BackgroundColor = System.Drawing.Color.White;
-			this.carGrid.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-			this.carGrid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-			this.carGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-			this.carGrid.Location = new System.Drawing.Point(5, 4);
-			this.carGrid.MultiSelect = false;
-			this.carGrid.Name = "carGrid";
-			this.carGrid.ReadOnly = true;
-			this.carGrid.RowTemplate.Height = 24;
-			this.carGrid.Size = new System.Drawing.Size(839, 295);
-			this.carGrid.TabIndex = 1;
-			// 
-			// CarUserControl
-			// 
-			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.Controls.Add(this.carGrid);
-			this.Name = "CarUserControl";
-			this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-			this.Size = new System.Drawing.Size(854, 308);
-			((System.ComponentModel.ISupportInitialize)(this.carGrid)).EndInit();
-			this.ResumeLayout(false);
+            this.carGrid.BackgroundColor = System.Drawing.Color.White;
+            this.carGrid.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.carGrid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.carGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.carGrid.Location = new System.Drawing.Point(11, 11);
+            this.carGrid.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.carGrid.MultiSelect = false;
+            this.carGrid.Name = "carGrid";
+            this.carGrid.ReadOnly = true;
+            this.carGrid.RowTemplate.Height = 24;
+            this.carGrid.Size = new System.Drawing.Size(524, 328);
+            this.carGrid.TabIndex = 1;
+            // 
+            // CarUserControl
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.carGrid);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Name = "CarUserControl";
+            this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.Size = new System.Drawing.Size(548, 355);
+            ((System.ComponentModel.ISupportInitialize)(this.carGrid)).EndInit();
+            this.ResumeLayout(false);
 
 		}
 

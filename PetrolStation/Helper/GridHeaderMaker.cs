@@ -243,14 +243,16 @@ namespace PetrolStation.Helper
 			// Add fields
 			gridCols.columns.AddRange (new GridColumnModel[]
 				{
-                    new GridColumnModel ("trafficDate",     "تاریخ تردد",           false, true,0, 150),
+                    new GridColumnModel ("trafficDate",    "تاریخ تردد",           false, true,0, 150),
+                    new GridColumnModel ("total",          "کل رکورد ها",          false, true,0, 150),
                     new GridColumnModel ("Row",            "ردیف",				    true, true, 0, 60),                    
-                    new GridColumnModel ("name",            "نام",				    true, true, 1, 100),
-					new GridColumnModel ("lastname",        "نام خانوادگی",	    true, true, 2, 120),					
-					new GridColumnModel ("plate",           "شماره پلاک",		    true, true, 3, 120),				
-					new GridColumnModel ("trafficDate_Shamsi",	"تاریخ تردد",	    true, true, 4, 230),
-                    new GridColumnModel ("nationalCode",    "کد ملی",               true, true, 5, 100),
-                    new GridColumnModel ("mobile",          "موبایل",               true, true, 6, 100),
+                    new GridColumnModel ("name",           "نام",				    true, true, 1, 100),
+					new GridColumnModel ("lastname",       "نام خانوادگی",	        true, true, 2, 120),					
+					new GridColumnModel ("plate",          "شماره پلاک",		        true, true, 3, 120),				
+					new GridColumnModel ("trafficDate_Shamsi","تاریخ تردد",	        true, true, 4, 180),
+					new GridColumnModel ("nameUHF",        "نام جایگاه",	        true, true, 5, 80),
+                    new GridColumnModel ("nationalCode",   "کد ملی",                true, true, 6, 100),
+                    new GridColumnModel ("mobile",         "موبایل",                true, true, 7, 100),
 
 
                 });
@@ -273,14 +275,16 @@ namespace PetrolStation.Helper
 			// Add fields
 			gridCols.columns.AddRange (new GridColumnModel[]
 				{										
-					new GridColumnModel ("id",				 "id",				    false, true, 0, 60),
-					new GridColumnModel ("Row",            "ردیف",				    true, true, 0, 80),
+					new GridColumnModel ("id",				"id",				    false, true, 0, 60),
+					new GridColumnModel ("total",           "کل رکوردها",          false, true, 0, 60),
+					new GridColumnModel ("Row",             "ردیف",				    true, true, 0, 60),
 					new GridColumnModel ("name",            "نام",				    true, true, 1, 100),
 					new GridColumnModel ("lastname",        "نام خانوادگی",	    true, true, 2, 100),
 					new GridColumnModel ("nationalCode",    "کد ملی",			    true, true, 3, 100),
 					new GridColumnModel ("mobile",	        "موبایل",			    true, true, 4, 100),
 					new GridColumnModel ("plate",           "شماره پلاک",		    true, true, 5, 100),
-					new GridColumnModel ("total",		"تعداد تردد ها",	        true, true, 6, 100)		
+					new GridColumnModel ("nameUHF",           "نام جایگاه",		    true, true, 6, 100),
+					new GridColumnModel ("totalTraffic",	"تعداد تردد ها",	    true, true, 7, 100),		
 					
 
 				});

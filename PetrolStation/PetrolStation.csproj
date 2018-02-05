@@ -12,6 +12,7 @@
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
+    <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -24,7 +25,6 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
@@ -66,7 +66,7 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>mainIcon.ico</ApplicationIcon>
+    <ApplicationIcon>icon_dbz_icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="BaseBLL">
@@ -254,6 +254,12 @@
     <Compile Include="Forms\General\SuperForm.Designer.cs">
       <DependentUpon>SuperForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Reports\ReportCountTrafficForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Reports\ReportCountTrafficForm.Designer.cs">
+      <DependentUpon>ReportCountTrafficForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Reports\ReportTrafficForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -374,6 +380,9 @@
     <EmbeddedResource Include="Forms\General\SuperForm.resx">
       <DependentUpon>SuperForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Reports\ReportCountTrafficForm.resx">
+      <DependentUpon>ReportCountTrafficForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Reports\ReportTrafficForm.resx">
       <DependentUpon>ReportTrafficForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -430,6 +439,7 @@
     <None Include="Resources\formBK.jpg" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="icon_dbz_icon.ico" />
     <Content Include="mainIcon.ico" />
     <Content Include="DLL\SLABHIDDevice.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -447,6 +457,8 @@
     <None Include="Resources\Image1.bmp" />
     <None Include="Resources\loading25.gif" />
     <None Include="Resources\roseBK.jpg" />
+    <None Include="Resources\download.jpg" />
+    <None Include="Resources\background.jpg" />
     <Content Include="Resources\spiffygif.gif" />
     <None Include="Resources\malulin_.png" />
     <None Include="Resources\motor.png" />

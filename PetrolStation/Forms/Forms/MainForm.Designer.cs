@@ -28,7 +28,12 @@
 		/// </summary>
 		private void InitializeComponent ()
 		{
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
+            this.mainStatusStrip = new System.Windows.Forms.StatusStrip();
+            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.userToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.versionToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.nameTtoolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.dateToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.mainMenu = new System.Windows.Forms.MenuStrip();
             this.fileMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.logoffMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -51,6 +56,8 @@
             this.reportCustomerMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reportCarMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reportTrafficMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.stateReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.countReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lotteryMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lotteryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.settingMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -60,15 +67,55 @@
             this.تنظیماتپیامکToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.mainStatusStrip = new System.Windows.Forms.StatusStrip();
-            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.userToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
-            this.versionToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
-            this.nameTtoolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
-            this.dateToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
-            this.mainMenu.SuspendLayout();
             this.mainStatusStrip.SuspendLayout();
+            this.mainMenu.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // mainStatusStrip
+            // 
+            this.mainStatusStrip.BackColor = System.Drawing.Color.Gainsboro;
+            this.mainStatusStrip.Font = new System.Drawing.Font("B Yekan", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.mainStatusStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.mainStatusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatusLabel1,
+            this.userToolStripStatusLabel,
+            this.versionToolStripStatusLabel,
+            this.nameTtoolStripStatusLabel,
+            this.dateToolStripStatusLabel});
+            this.mainStatusStrip.Location = new System.Drawing.Point(0, 461);
+            this.mainStatusStrip.Name = "mainStatusStrip";
+            this.mainStatusStrip.Size = new System.Drawing.Size(864, 26);
+            this.mainStatusStrip.TabIndex = 1;
+            // 
+            // toolStripStatusLabel1
+            // 
+            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(57, 21);
+            this.toolStripStatusLabel1.Text = "نام کاربر:";
+            // 
+            // userToolStripStatusLabel
+            // 
+            this.userToolStripStatusLabel.Name = "userToolStripStatusLabel";
+            this.userToolStripStatusLabel.Size = new System.Drawing.Size(63, 21);
+            this.userToolStripStatusLabel.Text = "کاربر جاری";
+            // 
+            // versionToolStripStatusLabel
+            // 
+            this.versionToolStripStatusLabel.Name = "versionToolStripStatusLabel";
+            this.versionToolStripStatusLabel.Size = new System.Drawing.Size(150, 21);
+            this.versionToolStripStatusLabel.Text = "اطلاعات برنامه(نسخه و . .. )";
+            // 
+            // nameTtoolStripStatusLabel
+            // 
+            this.nameTtoolStripStatusLabel.Name = "nameTtoolStripStatusLabel";
+            this.nameTtoolStripStatusLabel.Size = new System.Drawing.Size(42, 21);
+            this.nameTtoolStripStatusLabel.Text = "امروز:";
+            // 
+            // dateToolStripStatusLabel
+            // 
+            this.dateToolStripStatusLabel.Name = "dateToolStripStatusLabel";
+            this.dateToolStripStatusLabel.Size = new System.Drawing.Size(68, 21);
+            this.dateToolStripStatusLabel.Text = "تاریخ امروز";
             // 
             // mainMenu
             // 
@@ -232,9 +279,24 @@
             // 
             // reportTrafficMenuItem
             // 
+            this.reportTrafficMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.stateReportToolStripMenuItem,
+            this.countReportToolStripMenuItem});
             this.reportTrafficMenuItem.Name = "reportTrafficMenuItem";
             this.reportTrafficMenuItem.Size = new System.Drawing.Size(131, 28);
             this.reportTrafficMenuItem.Text = "تردد ها";
+            // 
+            // stateReportToolStripMenuItem
+            // 
+            this.stateReportToolStripMenuItem.Name = "stateReportToolStripMenuItem";
+            this.stateReportToolStripMenuItem.Size = new System.Drawing.Size(156, 28);
+            this.stateReportToolStripMenuItem.Text = "وضعیت تردد";
+            // 
+            // countReportToolStripMenuItem
+            // 
+            this.countReportToolStripMenuItem.Name = "countReportToolStripMenuItem";
+            this.countReportToolStripMenuItem.Size = new System.Drawing.Size(156, 28);
+            this.countReportToolStripMenuItem.Text = "تعداد تردد";
             // 
             // lotteryMenuItem
             // 
@@ -300,56 +362,12 @@
             this.aboutToolStripMenuItem.Size = new System.Drawing.Size(133, 28);
             this.aboutToolStripMenuItem.Text = "درباره ...";
             // 
-            // mainStatusStrip
-            // 
-            this.mainStatusStrip.Font = new System.Drawing.Font("B Yekan", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.mainStatusStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.mainStatusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripStatusLabel1,
-            this.userToolStripStatusLabel,
-            this.versionToolStripStatusLabel,
-            this.nameTtoolStripStatusLabel,
-            this.dateToolStripStatusLabel});
-            this.mainStatusStrip.Location = new System.Drawing.Point(0, 461);
-            this.mainStatusStrip.Name = "mainStatusStrip";
-            this.mainStatusStrip.Size = new System.Drawing.Size(864, 26);
-            this.mainStatusStrip.TabIndex = 1;
-            // 
-            // toolStripStatusLabel1
-            // 
-            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(57, 21);
-            this.toolStripStatusLabel1.Text = "نام کاربر:";
-            // 
-            // userToolStripStatusLabel
-            // 
-            this.userToolStripStatusLabel.Name = "userToolStripStatusLabel";
-            this.userToolStripStatusLabel.Size = new System.Drawing.Size(63, 21);
-            this.userToolStripStatusLabel.Text = "کاربر جاری";
-            // 
-            // versionToolStripStatusLabel
-            // 
-            this.versionToolStripStatusLabel.Name = "versionToolStripStatusLabel";
-            this.versionToolStripStatusLabel.Size = new System.Drawing.Size(150, 21);
-            this.versionToolStripStatusLabel.Text = "اطلاعات برنامه(نسخه و . .. )";
-            // 
-            // nameTtoolStripStatusLabel
-            // 
-            this.nameTtoolStripStatusLabel.Name = "nameTtoolStripStatusLabel";
-            this.nameTtoolStripStatusLabel.Size = new System.Drawing.Size(42, 21);
-            this.nameTtoolStripStatusLabel.Text = "امروز:";
-            // 
-            // dateToolStripStatusLabel
-            // 
-            this.dateToolStripStatusLabel.Name = "dateToolStripStatusLabel";
-            this.dateToolStripStatusLabel.Size = new System.Drawing.Size(68, 21);
-            this.dateToolStripStatusLabel.Text = "تاریخ امروز";
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.BackgroundImage = global::PetrolStation.Properties.Resources.background;
             this.ClientSize = new System.Drawing.Size(864, 487);
             this.Controls.Add(this.mainStatusStrip);
             this.Controls.Add(this.mainMenu);
@@ -359,10 +377,10 @@
             this.Name = "MainForm";
             this.Text = "ورود به سامانه";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.mainMenu.ResumeLayout(false);
-            this.mainMenu.PerformLayout();
             this.mainStatusStrip.ResumeLayout(false);
             this.mainStatusStrip.PerformLayout();
+            this.mainMenu.ResumeLayout(false);
+            this.mainMenu.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -407,5 +425,7 @@
 		private System.Windows.Forms.ToolStripMenuItem lotteryToolStripMenuItem;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
         private System.Windows.Forms.ToolStripStatusLabel userToolStripStatusLabel;
+        private System.Windows.Forms.ToolStripMenuItem stateReportToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem countReportToolStripMenuItem;
     }
 }

@@ -1275,8 +1275,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.White;
-            this.BackgroundImage = global::PetrolStation.Properties.Resources.formBK;
+            this.BackColor = System.Drawing.Color.LightSteelBlue;
             this.ClientSize = new System.Drawing.Size(776, 550);
             this.Controls.Add(this.nextButton);
             this.Controls.Add(this.previousButton);

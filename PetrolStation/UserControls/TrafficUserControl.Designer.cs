@@ -28,33 +28,35 @@
 		/// </summary>
 		private void InitializeComponent ()
 		{
-			this.trafficGrid = new System.Windows.Forms.DataGridView();
-			((System.ComponentModel.ISupportInitialize)(this.trafficGrid)).BeginInit();
-			this.SuspendLayout();
-			// 
-			// trafficGrid
-			// 
-			this.trafficGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.trafficGrid = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.trafficGrid)).BeginInit();
+            this.SuspendLayout();
+            // 
+            // trafficGrid
+            // 
+            this.trafficGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-			this.trafficGrid.BackgroundColor = System.Drawing.Color.White;
-			this.trafficGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-			this.trafficGrid.Location = new System.Drawing.Point(13, 9);
-			this.trafficGrid.Name = "trafficGrid";
-			this.trafficGrid.RowTemplate.Height = 24;
-			this.trafficGrid.Size = new System.Drawing.Size(820, 286);
-			this.trafficGrid.TabIndex = 0;
-			// 
-			// TrafficUserControl
-			// 
-			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.Controls.Add(this.trafficGrid);
-			this.Name = "TrafficUserControl";
-			this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-			this.Size = new System.Drawing.Size(854, 308);
-			((System.ComponentModel.ISupportInitialize)(this.trafficGrid)).EndInit();
-			this.ResumeLayout(false);
+            this.trafficGrid.BackgroundColor = System.Drawing.Color.White;
+            this.trafficGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.trafficGrid.Location = new System.Drawing.Point(12, 10);
+            this.trafficGrid.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.trafficGrid.Name = "trafficGrid";
+            this.trafficGrid.RowTemplate.Height = 24;
+            this.trafficGrid.Size = new System.Drawing.Size(524, 328);
+            this.trafficGrid.TabIndex = 0;
+            // 
+            // TrafficUserControl
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.trafficGrid);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Name = "TrafficUserControl";
+            this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.Size = new System.Drawing.Size(548, 355);
+            ((System.ComponentModel.ISupportInitialize)(this.trafficGrid)).EndInit();
+            this.ResumeLayout(false);
 
 		}
 
