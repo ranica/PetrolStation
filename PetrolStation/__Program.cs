@@ -30,9 +30,9 @@ namespace PetrolStation
 
 
 
-            //// TEST :: Remove or Comment after test
-            //Application.Run(new Forms.Forms.CustomerSearchForm());
-            //return;
+            // TEST :: Remove or Comment after test
+            Application.Run(new Forms.Reports.ReportTrafficForm());
+            return;
 
             while (hasLogin != 2)
             {

@@ -88,6 +88,7 @@ namespace PetrolStation.Forms.Reports
         /// </summary>
         private void prepare()
         {
+            motorPlatePanel.Visible = true;
             String beginDate = ExtensionsDateTime.toPersianDate(DateTime.Now.AddMonths(-9));
             String endDate = ExtensionsDateTime.toPersianDate(DateTime.Now);
 
@@ -249,7 +250,7 @@ namespace PetrolStation.Forms.Reports
                         mainPlatePanel.Visible = false;
                         motorPlatePanel.Visible = false;
                         malulinPlatePanel.Visible = true;
-                        malulinPlatePanel.Location = new Point(mainPlatePanel.Location.X, mainPlatePanel.Location.Y);
+                        //malulinPlatePanel.Location = new Point(mainPlatePanel.Location.X, mainPlatePanel.Location.Y);
 
                     }
                     break;
@@ -258,7 +259,7 @@ namespace PetrolStation.Forms.Reports
                         mainPlatePanel.Visible = false;
                         malulinPlatePanel.Visible = false;
                         motorPlatePanel.Visible = true;
-                        motorPlatePanel.Location = new Point(mainPlatePanel.Location.X, mainPlatePanel.Location.Y);
+                        //motorPlatePanel.Location = new Point(mainPlatePanel.Location.X, mainPlatePanel.Location.Y);
                     }
                     break;
 
@@ -713,13 +714,6 @@ namespace PetrolStation.Forms.Reports
             {
                 LoggerExtensions.log(ex);
             }
-
-            
-           
-            //DataTable resultData = ExtensionsDateTable.makePersianDate(opResult.model as DataTable, "_Shamsi", true);
-            //stateTabPage.Controls.Clear();
-            //UserControls.StateTrafficUserControl stateTraffic = new UserControls.StateTrafficUserControl(resultData);
-            //stateTabPage.Controls.Add(stateTraffic);
         }
 
         #endregion
@@ -747,7 +741,6 @@ namespace PetrolStation.Forms.Reports
         /// <summary>
         /// Update Ui
         /// </summary>
-
         private void updateUi()
         {
             int page = Convert.ToInt16(pageIndexComboBox.Text);
@@ -763,7 +756,6 @@ namespace PetrolStation.Forms.Reports
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-
         private void NextButton_Click(object sender, EventArgs e)
         {
             int page = 1;

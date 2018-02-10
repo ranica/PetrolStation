@@ -277,7 +277,9 @@ namespace PetrolStation.Helper
 				{										
 					new GridColumnModel ("id",				"id",				    false, true, 0, 60),
 					new GridColumnModel ("total",           "کل رکوردها",          false, true, 0, 60),
-					new GridColumnModel ("Row",             "ردیف",				    true, true, 0, 60),
+					new GridColumnModel ("plateId",           "کد پلاک",            false, true, 0, 60),
+
+                    new GridColumnModel ("Row",             "ردیف",				    true, true, 0, 60),
 					new GridColumnModel ("name",            "نام",				    true, true, 1, 100),
 					new GridColumnModel ("lastname",        "نام خانوادگی",	    true, true, 2, 100),
 					new GridColumnModel ("nationalCode",    "کد ملی",			    true, true, 3, 100),

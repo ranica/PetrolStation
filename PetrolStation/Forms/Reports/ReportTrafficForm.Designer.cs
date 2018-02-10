@@ -28,7 +28,6 @@
 		/// </summary>
 		private void InitializeComponent ()
 		{
-            this.showButton = new System.Windows.Forms.Button();
             this.mainTabControl = new System.Windows.Forms.TabControl();
             this.stateTabPage = new System.Windows.Forms.TabPage();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
@@ -36,7 +35,6 @@
             this.previousButton = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.nationalCodeMaskedTextBox = new System.Windows.Forms.MaskedTextBox();
             this.plateDataGroupBox = new System.Windows.Forms.GroupBox();
             this.mainPlatePanel = new System.Windows.Forms.Panel();
             this.code1Numeric = new System.Windows.Forms.DomainUpDown();
@@ -44,13 +42,16 @@
             this.characterDomainUpDown = new System.Windows.Forms.DomainUpDown();
             this.part1MainTextBox = new System.Windows.Forms.TextBox();
             this.plateTypeComboBox = new System.Windows.Forms.ComboBox();
-            this.motorPlatePanel = new System.Windows.Forms.Panel();
-            this.part2MotorTextBox = new System.Windows.Forms.TextBox();
-            this.part1MotorTextBox = new System.Windows.Forms.TextBox();
             this.malulinPlatePanel = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.code2Numeric = new System.Windows.Forms.DomainUpDown();
             this.part2MaluinTextBox = new System.Windows.Forms.TextBox();
             this.part1MalulinTextBox = new System.Windows.Forms.TextBox();
+            this.motorPlatePanel = new System.Windows.Forms.Panel();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.part2MotorTextBox = new System.Windows.Forms.TextBox();
+            this.part1MotorTextBox = new System.Windows.Forms.TextBox();
+            this.nationalCodeMaskedTextBox = new System.Windows.Forms.MaskedTextBox();
             this.pageSizeComboBox = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -59,31 +60,20 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.showButton = new System.Windows.Forms.Button();
             this.dateEndMaskedTextBox = new System.Windows.Forms.MaskedTextBox();
             this.dateStartMaskedTextBox = new System.Windows.Forms.MaskedTextBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.mainTabControl.SuspendLayout();
             this.flowLayoutPanel2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             this.plateDataGroupBox.SuspendLayout();
             this.mainPlatePanel.SuspendLayout();
-            this.motorPlatePanel.SuspendLayout();
             this.malulinPlatePanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.motorPlatePanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
-            // 
-            // showButton
-            // 
-            this.showButton.ForeColor = System.Drawing.Color.Black;
-            this.showButton.Location = new System.Drawing.Point(6, 19);
-            this.showButton.Name = "showButton";
-            this.showButton.Size = new System.Drawing.Size(129, 34);
-            this.showButton.TabIndex = 3;
-            this.showButton.Text = "نمایش";
-            this.showButton.UseVisualStyleBackColor = true;
             // 
             // mainTabControl
             // 
@@ -91,11 +81,11 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.mainTabControl.Controls.Add(this.stateTabPage);
-            this.mainTabControl.Location = new System.Drawing.Point(10, 151);
+            this.mainTabControl.Location = new System.Drawing.Point(10, 192);
             this.mainTabControl.Name = "mainTabControl";
             this.mainTabControl.RightToLeftLayout = true;
             this.mainTabControl.SelectedIndex = 0;
-            this.mainTabControl.Size = new System.Drawing.Size(837, 391);
+            this.mainTabControl.Size = new System.Drawing.Size(835, 350);
             this.mainTabControl.TabIndex = 7;
             // 
             // stateTabPage
@@ -103,7 +93,7 @@
             this.stateTabPage.Location = new System.Drawing.Point(4, 23);
             this.stateTabPage.Name = "stateTabPage";
             this.stateTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.stateTabPage.Size = new System.Drawing.Size(829, 364);
+            this.stateTabPage.Size = new System.Drawing.Size(827, 323);
             this.stateTabPage.TabIndex = 0;
             this.stateTabPage.Text = "وضعیت تردد";
             this.stateTabPage.UseVisualStyleBackColor = true;
@@ -154,9 +144,9 @@
             this.groupBox1.Controls.Add(this.dateEndMaskedTextBox);
             this.groupBox1.Controls.Add(this.dateStartMaskedTextBox);
             this.groupBox1.ForeColor = System.Drawing.Color.Black;
-            this.groupBox1.Location = new System.Drawing.Point(12, 12);
+            this.groupBox1.Location = new System.Drawing.Point(4, 13);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(843, 157);
+            this.groupBox1.Size = new System.Drawing.Size(843, 167);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "گزارش گیری براساس";
@@ -164,24 +154,12 @@
             // flowLayoutPanel1
             // 
             this.flowLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.flowLayoutPanel1.Controls.Add(this.nationalCodeMaskedTextBox);
             this.flowLayoutPanel1.Controls.Add(this.plateDataGroupBox);
+            this.flowLayoutPanel1.Controls.Add(this.nationalCodeMaskedTextBox);
             this.flowLayoutPanel1.Location = new System.Drawing.Point(254, 53);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(268, 99);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(268, 111);
             this.flowLayoutPanel1.TabIndex = 0;
-            // 
-            // nationalCodeMaskedTextBox
-            // 
-            this.nationalCodeMaskedTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.nationalCodeMaskedTextBox.Location = new System.Drawing.Point(79, 3);
-            this.nationalCodeMaskedTextBox.Mask = "0000000000";
-            this.nationalCodeMaskedTextBox.Name = "nationalCodeMaskedTextBox";
-            this.nationalCodeMaskedTextBox.Size = new System.Drawing.Size(186, 22);
-            this.nationalCodeMaskedTextBox.TabIndex = 0;
-            this.nationalCodeMaskedTextBox.Tag = "nationalCode";
-            this.nationalCodeMaskedTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.nationalCodeMaskedTextBox.Visible = false;
             // 
             // plateDataGroupBox
             // 
@@ -189,12 +167,12 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.plateDataGroupBox.Controls.Add(this.mainPlatePanel);
             this.plateDataGroupBox.Controls.Add(this.plateTypeComboBox);
-            this.plateDataGroupBox.Controls.Add(this.motorPlatePanel);
             this.plateDataGroupBox.Controls.Add(this.malulinPlatePanel);
-            this.plateDataGroupBox.Location = new System.Drawing.Point(-16, 31);
+            this.plateDataGroupBox.Controls.Add(this.motorPlatePanel);
+            this.plateDataGroupBox.Location = new System.Drawing.Point(9, 3);
             this.plateDataGroupBox.Name = "plateDataGroupBox";
-            this.plateDataGroupBox.Size = new System.Drawing.Size(281, 74);
-            this.plateDataGroupBox.TabIndex = 8;
+            this.plateDataGroupBox.Size = new System.Drawing.Size(256, 80);
+            this.plateDataGroupBox.TabIndex = 0;
             this.plateDataGroupBox.TabStop = false;
             this.plateDataGroupBox.Visible = false;
             // 
@@ -205,10 +183,10 @@
             this.mainPlatePanel.Controls.Add(this.part2MainTextBox);
             this.mainPlatePanel.Controls.Add(this.characterDomainUpDown);
             this.mainPlatePanel.Controls.Add(this.part1MainTextBox);
-            this.mainPlatePanel.Location = new System.Drawing.Point(35, 20);
+            this.mainPlatePanel.Location = new System.Drawing.Point(5, 41);
             this.mainPlatePanel.Name = "mainPlatePanel";
             this.mainPlatePanel.Size = new System.Drawing.Size(246, 37);
-            this.mainPlatePanel.TabIndex = 4;
+            this.mainPlatePanel.TabIndex = 0;
             // 
             // code1Numeric
             // 
@@ -216,7 +194,7 @@
             this.code1Numeric.Location = new System.Drawing.Point(194, 7);
             this.code1Numeric.Name = "code1Numeric";
             this.code1Numeric.Size = new System.Drawing.Size(49, 22);
-            this.code1Numeric.TabIndex = 0;
+            this.code1Numeric.TabIndex = 3;
             this.code1Numeric.Tag = "plateCityId";
             this.code1Numeric.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -228,7 +206,7 @@
             this.part2MainTextBox.MaxLength = 3;
             this.part2MainTextBox.Name = "part2MainTextBox";
             this.part2MainTextBox.Size = new System.Drawing.Size(56, 22);
-            this.part2MainTextBox.TabIndex = 1;
+            this.part2MainTextBox.TabIndex = 2;
             this.part2MainTextBox.Tag = "";
             this.part2MainTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -242,7 +220,7 @@
             this.characterDomainUpDown.Location = new System.Drawing.Point(72, 7);
             this.characterDomainUpDown.Name = "characterDomainUpDown";
             this.characterDomainUpDown.Size = new System.Drawing.Size(57, 22);
-            this.characterDomainUpDown.TabIndex = 2;
+            this.characterDomainUpDown.TabIndex = 1;
             this.characterDomainUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // part1MainTextBox
@@ -253,7 +231,7 @@
             this.part1MainTextBox.MaxLength = 2;
             this.part1MainTextBox.Name = "part1MainTextBox";
             this.part1MainTextBox.Size = new System.Drawing.Size(61, 22);
-            this.part1MainTextBox.TabIndex = 3;
+            this.part1MainTextBox.TabIndex = 0;
             this.part1MainTextBox.Tag = "";
             this.part1MainTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -261,47 +239,11 @@
             // 
             this.plateTypeComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.plateTypeComboBox.FormattingEnabled = true;
-            this.plateTypeComboBox.Location = new System.Drawing.Point(95, -3);
+            this.plateTypeComboBox.Location = new System.Drawing.Point(64, 12);
             this.plateTypeComboBox.Name = "plateTypeComboBox";
             this.plateTypeComboBox.Size = new System.Drawing.Size(186, 22);
             this.plateTypeComboBox.TabIndex = 0;
             this.plateTypeComboBox.Tag = "plateTypeId";
-            // 
-            // motorPlatePanel
-            // 
-            this.motorPlatePanel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.motorPlatePanel.Controls.Add(this.pictureBox2);
-            this.motorPlatePanel.Controls.Add(this.part2MotorTextBox);
-            this.motorPlatePanel.Controls.Add(this.part1MotorTextBox);
-            this.motorPlatePanel.Location = new System.Drawing.Point(38, 21);
-            this.motorPlatePanel.Name = "motorPlatePanel";
-            this.motorPlatePanel.Size = new System.Drawing.Size(243, 35);
-            this.motorPlatePanel.TabIndex = 2;
-            this.motorPlatePanel.Visible = false;
-            // 
-            // part2MotorTextBox
-            // 
-            this.part2MotorTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.part2MotorTextBox.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.part2MotorTextBox.Location = new System.Drawing.Point(156, 6);
-            this.part2MotorTextBox.MaxLength = 6;
-            this.part2MotorTextBox.Name = "part2MotorTextBox";
-            this.part2MotorTextBox.Size = new System.Drawing.Size(67, 22);
-            this.part2MotorTextBox.TabIndex = 1;
-            this.part2MotorTextBox.Tag = "";
-            this.part2MotorTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // part1MotorTextBox
-            // 
-            this.part1MotorTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.part1MotorTextBox.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.part1MotorTextBox.Location = new System.Drawing.Point(20, 6);
-            this.part1MotorTextBox.MaxLength = 6;
-            this.part1MotorTextBox.Name = "part1MotorTextBox";
-            this.part1MotorTextBox.Size = new System.Drawing.Size(67, 22);
-            this.part1MotorTextBox.TabIndex = 0;
-            this.part1MotorTextBox.Tag = "";
-            this.part1MotorTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // malulinPlatePanel
             // 
@@ -310,17 +252,28 @@
             this.malulinPlatePanel.Controls.Add(this.code2Numeric);
             this.malulinPlatePanel.Controls.Add(this.part2MaluinTextBox);
             this.malulinPlatePanel.Controls.Add(this.part1MalulinTextBox);
-            this.malulinPlatePanel.Location = new System.Drawing.Point(36, 21);
+            this.malulinPlatePanel.Location = new System.Drawing.Point(6, 41);
             this.malulinPlatePanel.Name = "malulinPlatePanel";
-            this.malulinPlatePanel.Size = new System.Drawing.Size(242, 37);
-            this.malulinPlatePanel.TabIndex = 3;
+            this.malulinPlatePanel.Size = new System.Drawing.Size(245, 37);
+            this.malulinPlatePanel.TabIndex = 0;
             this.malulinPlatePanel.Visible = false;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox1.BackgroundImage = global::PetrolStation.Properties.Resources.malulin_;
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox1.Location = new System.Drawing.Point(71, 2);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(45, 35);
+            this.pictureBox1.TabIndex = 13;
+            this.pictureBox1.TabStop = false;
             // 
             // code2Numeric
             // 
             this.code2Numeric.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.code2Numeric.Items.Add("79");
-            this.code2Numeric.Location = new System.Drawing.Point(188, 5);
+            this.code2Numeric.Location = new System.Drawing.Point(191, 5);
             this.code2Numeric.Name = "code2Numeric";
             this.code2Numeric.Size = new System.Drawing.Size(49, 22);
             this.code2Numeric.TabIndex = 2;
@@ -331,7 +284,7 @@
             // 
             this.part2MaluinTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.part2MaluinTextBox.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.part2MaluinTextBox.Location = new System.Drawing.Point(118, 5);
+            this.part2MaluinTextBox.Location = new System.Drawing.Point(121, 5);
             this.part2MaluinTextBox.MaxLength = 3;
             this.part2MaluinTextBox.Name = "part2MaluinTextBox";
             this.part2MaluinTextBox.Size = new System.Drawing.Size(67, 22);
@@ -343,13 +296,72 @@
             // 
             this.part1MalulinTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.part1MalulinTextBox.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.part1MalulinTextBox.Location = new System.Drawing.Point(-4, 5);
+            this.part1MalulinTextBox.Location = new System.Drawing.Point(6, 5);
             this.part1MalulinTextBox.MaxLength = 2;
             this.part1MalulinTextBox.Name = "part1MalulinTextBox";
-            this.part1MalulinTextBox.Size = new System.Drawing.Size(67, 22);
+            this.part1MalulinTextBox.Size = new System.Drawing.Size(60, 22);
             this.part1MalulinTextBox.TabIndex = 0;
             this.part1MalulinTextBox.Tag = "";
             this.part1MalulinTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // motorPlatePanel
+            // 
+            this.motorPlatePanel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.motorPlatePanel.Controls.Add(this.pictureBox2);
+            this.motorPlatePanel.Controls.Add(this.part2MotorTextBox);
+            this.motorPlatePanel.Controls.Add(this.part1MotorTextBox);
+            this.motorPlatePanel.Location = new System.Drawing.Point(10, 40);
+            this.motorPlatePanel.Name = "motorPlatePanel";
+            this.motorPlatePanel.Size = new System.Drawing.Size(240, 35);
+            this.motorPlatePanel.TabIndex = 0;
+            this.motorPlatePanel.Visible = false;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox2.BackgroundImage = global::PetrolStation.Properties.Resources.motor;
+            this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox2.Location = new System.Drawing.Point(100, 0);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(49, 32);
+            this.pictureBox2.TabIndex = 12;
+            this.pictureBox2.TabStop = false;
+            // 
+            // part2MotorTextBox
+            // 
+            this.part2MotorTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.part2MotorTextBox.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.part2MotorTextBox.Location = new System.Drawing.Point(155, 6);
+            this.part2MotorTextBox.MaxLength = 6;
+            this.part2MotorTextBox.Name = "part2MotorTextBox";
+            this.part2MotorTextBox.Size = new System.Drawing.Size(67, 22);
+            this.part2MotorTextBox.TabIndex = 1;
+            this.part2MotorTextBox.Tag = "";
+            this.part2MotorTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // part1MotorTextBox
+            // 
+            this.part1MotorTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.part1MotorTextBox.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.part1MotorTextBox.Location = new System.Drawing.Point(17, 6);
+            this.part1MotorTextBox.MaxLength = 6;
+            this.part1MotorTextBox.Name = "part1MotorTextBox";
+            this.part1MotorTextBox.Size = new System.Drawing.Size(67, 22);
+            this.part1MotorTextBox.TabIndex = 0;
+            this.part1MotorTextBox.Tag = "";
+            this.part1MotorTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // nationalCodeMaskedTextBox
+            // 
+            this.nationalCodeMaskedTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.nationalCodeMaskedTextBox.Location = new System.Drawing.Point(79, 89);
+            this.nationalCodeMaskedTextBox.Mask = "0000000000";
+            this.nationalCodeMaskedTextBox.Name = "nationalCodeMaskedTextBox";
+            this.nationalCodeMaskedTextBox.Size = new System.Drawing.Size(186, 22);
+            this.nationalCodeMaskedTextBox.TabIndex = 0;
+            this.nationalCodeMaskedTextBox.Tag = "nationalCode";
+            this.nationalCodeMaskedTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.nationalCodeMaskedTextBox.Visible = false;
             // 
             // pageSizeComboBox
             // 
@@ -358,7 +370,7 @@
             "10",
             "20",
             "50"});
-            this.pageSizeComboBox.Location = new System.Drawing.Point(6, 94);
+            this.pageSizeComboBox.Location = new System.Drawing.Point(6, 91);
             this.pageSizeComboBox.Name = "pageSizeComboBox";
             this.pageSizeComboBox.Size = new System.Drawing.Size(56, 22);
             this.pageSizeComboBox.TabIndex = 5;
@@ -400,7 +412,7 @@
             this.pageIndexComboBox.FormattingEnabled = true;
             this.pageIndexComboBox.Items.AddRange(new object[] {
             "1"});
-            this.pageIndexComboBox.Location = new System.Drawing.Point(6, 66);
+            this.pageIndexComboBox.Location = new System.Drawing.Point(6, 63);
             this.pageIndexComboBox.Name = "pageIndexComboBox";
             this.pageIndexComboBox.Size = new System.Drawing.Size(56, 22);
             this.pageIndexComboBox.TabIndex = 4;
@@ -434,6 +446,16 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "از تاریخ:";
             // 
+            // showButton
+            // 
+            this.showButton.ForeColor = System.Drawing.Color.Black;
+            this.showButton.Location = new System.Drawing.Point(6, 19);
+            this.showButton.Name = "showButton";
+            this.showButton.Size = new System.Drawing.Size(129, 34);
+            this.showButton.TabIndex = 3;
+            this.showButton.Text = "نمایش";
+            this.showButton.UseVisualStyleBackColor = true;
+            // 
             // dateEndMaskedTextBox
             // 
             this.dateEndMaskedTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -454,37 +476,15 @@
             this.dateStartMaskedTextBox.TabIndex = 0;
             this.dateStartMaskedTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // pictureBox2
-            // 
-            this.pictureBox2.BackgroundImage = global::PetrolStation.Properties.Resources.motor;
-            this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox2.Location = new System.Drawing.Point(101, 0);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(49, 32);
-            this.pictureBox2.TabIndex = 12;
-            this.pictureBox2.TabStop = false;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox1.BackgroundImage = global::PetrolStation.Properties.Resources.malulin_;
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox1.Location = new System.Drawing.Point(68, 2);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(45, 35);
-            this.pictureBox1.TabIndex = 13;
-            this.pictureBox1.TabStop = false;
-            // 
             // ReportTrafficForm
             // 
-            this.AcceptButton = this.showButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.ClientSize = new System.Drawing.Size(856, 595);
+            this.ClientSize = new System.Drawing.Size(852, 595);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.mainTabControl);
             this.Controls.Add(this.flowLayoutPanel2);
-            this.Controls.Add(this.groupBox1);
             this.Name = "ReportTrafficForm";
             this.Text = "گزارش تردد ها";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ReportTrafficForm_FormClosing);
@@ -497,52 +497,51 @@
             this.plateDataGroupBox.ResumeLayout(false);
             this.mainPlatePanel.ResumeLayout(false);
             this.mainPlatePanel.PerformLayout();
-            this.motorPlatePanel.ResumeLayout(false);
-            this.motorPlatePanel.PerformLayout();
             this.malulinPlatePanel.ResumeLayout(false);
             this.malulinPlatePanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.motorPlatePanel.ResumeLayout(false);
+            this.motorPlatePanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
 
 		}
 
 		#endregion
-
-		private System.Windows.Forms.GroupBox groupBox1;
-		private System.Windows.Forms.MaskedTextBox dateStartMaskedTextBox;
-		private System.Windows.Forms.MaskedTextBox dateEndMaskedTextBox;
-		private System.Windows.Forms.Button showButton;
-		private System.Windows.Forms.Label label2;
-		private System.Windows.Forms.Label label1;
 		private System.Windows.Forms.TabControl mainTabControl;
 		private System.Windows.Forms.TabPage stateTabPage;
-		private System.Windows.Forms.Label label3;
-		private System.Windows.Forms.ComboBox typeComboBox;
-		private System.Windows.Forms.GroupBox plateDataGroupBox;
-		private System.Windows.Forms.MaskedTextBox nationalCodeMaskedTextBox;
-		private System.Windows.Forms.Panel mainPlatePanel;
-		private System.Windows.Forms.DomainUpDown code1Numeric;
-		private System.Windows.Forms.TextBox part2MainTextBox;
-		private System.Windows.Forms.DomainUpDown characterDomainUpDown;
-		private System.Windows.Forms.TextBox part1MainTextBox;
-		private System.Windows.Forms.ComboBox plateTypeComboBox;
-		private System.Windows.Forms.Panel motorPlatePanel;
-		private System.Windows.Forms.PictureBox pictureBox2;
-		private System.Windows.Forms.TextBox part2MotorTextBox;
-		private System.Windows.Forms.TextBox part1MotorTextBox;
-		private System.Windows.Forms.Panel malulinPlatePanel;
-		private System.Windows.Forms.PictureBox pictureBox1;
-		private System.Windows.Forms.DomainUpDown code2Numeric;
-		private System.Windows.Forms.TextBox part2MaluinTextBox;
-		private System.Windows.Forms.TextBox part1MalulinTextBox;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
-        private System.Windows.Forms.ComboBox pageSizeComboBox;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.ComboBox pageIndexComboBox;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
         private System.Windows.Forms.Button nextButton;
         private System.Windows.Forms.Button previousButton;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.GroupBox plateDataGroupBox;
+        private System.Windows.Forms.Panel mainPlatePanel;
+        private System.Windows.Forms.DomainUpDown code1Numeric;
+        private System.Windows.Forms.TextBox part2MainTextBox;
+        private System.Windows.Forms.DomainUpDown characterDomainUpDown;
+        private System.Windows.Forms.TextBox part1MainTextBox;
+        private System.Windows.Forms.ComboBox plateTypeComboBox;
+        private System.Windows.Forms.Panel malulinPlatePanel;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.DomainUpDown code2Numeric;
+        private System.Windows.Forms.TextBox part2MaluinTextBox;
+        private System.Windows.Forms.TextBox part1MalulinTextBox;
+        private System.Windows.Forms.Panel motorPlatePanel;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.TextBox part2MotorTextBox;
+        private System.Windows.Forms.TextBox part1MotorTextBox;
+        private System.Windows.Forms.MaskedTextBox nationalCodeMaskedTextBox;
+        private System.Windows.Forms.ComboBox pageSizeComboBox;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ComboBox typeComboBox;
+        private System.Windows.Forms.ComboBox pageIndexComboBox;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button showButton;
+        private System.Windows.Forms.MaskedTextBox dateEndMaskedTextBox;
+        private System.Windows.Forms.MaskedTextBox dateStartMaskedTextBox;
     }
 }

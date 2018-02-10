@@ -80,8 +80,6 @@ namespace PetrolStation.Forms.Reports
 
             pageIndexComboBox.SelectedIndexChanged  += PageIndexComboBox_SelectedIndexChanged;
             pageSizeComboBox.SelectedIndexChanged   += PageSizeComboBox_SelectedIndexChanged;
-           
-
         }
 
         /// <summary>
@@ -99,7 +97,6 @@ namespace PetrolStation.Forms.Reports
             reloadCombo();
 
             tryToReadTraffic();
-
         }
 
         /// <summary>
@@ -187,7 +184,7 @@ namespace PetrolStation.Forms.Reports
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void PlateTypeComboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
+        {           
             int palteType = (int)plateTypeComboBox.SelectedValue;
             SelectPlateType(palteType);
         }
@@ -249,7 +246,7 @@ namespace PetrolStation.Forms.Reports
                         mainPlatePanel.Visible = false;
                         motorPlatePanel.Visible = false;
                         malulinPlatePanel.Visible = true;
-                        malulinPlatePanel.Location = new Point(mainPlatePanel.Location.X, mainPlatePanel.Location.Y);
+                        //malulinPlatePanel.Location = new Point(mainPlatePanel.Location.X, mainPlatePanel.Location.Y);
 
                     }
                     break;
@@ -258,7 +255,7 @@ namespace PetrolStation.Forms.Reports
                         mainPlatePanel.Visible = false;
                         malulinPlatePanel.Visible = false;
                         motorPlatePanel.Visible = true;
-                        motorPlatePanel.Location = new Point(mainPlatePanel.Location.X, mainPlatePanel.Location.Y);
+                        //motorPlatePanel.Location = new Point(mainPlatePanel.Location.X, mainPlatePanel.Location.Y);
                     }
                     break;
 
@@ -777,7 +774,6 @@ namespace PetrolStation.Forms.Reports
             {
                 LoggerExtensions.log(ex);
             }
-
         }
 
         /// <summary>
@@ -799,7 +795,6 @@ namespace PetrolStation.Forms.Reports
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-
         private void NextButton_Click(object sender, EventArgs e)
         {
             int page = 1;
