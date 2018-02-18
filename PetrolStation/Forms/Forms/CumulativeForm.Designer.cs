@@ -1,6 +1,6 @@
 ﻿namespace PetrolStation.Forms.Forms
 {
-	partial class LotteryForm
+	partial class CumulativeForm
 	{
 		/// <summary>
 		/// Required designer variable.

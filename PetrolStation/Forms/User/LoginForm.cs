@@ -85,7 +85,7 @@ namespace PetrolStation.Forms.User
 		private void ExitButton_Click (object sender, EventArgs e)
 		{
 			__Program.hasLogin	= 2;
-			Close ();
+            Close ();
 		}
 
 		/// <summary>

@@ -25,17 +25,24 @@ namespace PetrolStation.UserControls
 
 			Init();
 		}	
-
+        /// <summary>
+        /// Initialize
+        /// </summary>
 		private void Init ()
 		{
 			prepare();
 		}
-
+        /// <summary>
+        /// Prepare
+        /// </summary>
 		private void prepare ()
 		{
 			showData();
 		}
 
+        /// <summary>
+        /// Show Data in Grid
+        /// </summary>
 		private void showData ()
 		{
 			countTrafficGrid.DataSource = tableResult;

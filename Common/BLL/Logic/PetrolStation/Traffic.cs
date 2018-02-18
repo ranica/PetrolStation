@@ -21,6 +21,8 @@ namespace Common.BLL.Logic.PetrolStation
 		public  const string C_spGetTrafficCount = "spGetReportTrafficCount";
 		public  const string C_spTrafficDelete = "spTrafficDelete";		
 		public  const string C_spCumulative = "spCumulative";
+
+		public  const string C_spChartTraffic = "spChartTraffic";
         
         		
 		public const string C_spPaginateTraffic = "spGetPaginetTraffic";		
@@ -82,6 +84,21 @@ namespace Common.BLL.Logic.PetrolStation
         /// Load  Traffic
         /// </summary>
         /// <returns></returns>
+        public CommandResult getTraffic(DateTime startDate, int userId)
+        {
+            CommandResult result;
+            result = BaseDAL.DBaseHelper.executeCommand(BaseDAL.Base.EnumExecuteType.procedureReader, connection, C_spGetTraffic, true,
+                new KeyValuePair("@startDate", startDate),
+                new KeyValuePair("@userId", userId)
+                );
+
+            return result;
+        }
+
+        /// <summary>
+        /// Load  Traffic
+        /// </summary>
+        /// <returns></returns>
         public CommandResult loadTraffic (DateTime startDate,
                                           DateTime endDate, 
                                           int pageIndex, 
@@ -89,7 +106,7 @@ namespace Common.BLL.Logic.PetrolStation
                                           int userId)
 		{
 			CommandResult result;
-			result = BaseDAL.DBaseHelper.executeCommand (BaseDAL.Base.EnumExecuteType.procedureReader, connection, C_spGetTraffic, true,
+			result = BaseDAL.DBaseHelper.executeCommand (BaseDAL.Base.EnumExecuteType.procedureReader, connection, C_spGetReportTraffic, true,
 				new KeyValuePair ("@startDate"  , startDate),
 				new KeyValuePair ("@endDate"    , endDate),
 				new KeyValuePair ("@pageIndex"  , pageIndex),
@@ -298,8 +315,20 @@ namespace Common.BLL.Logic.PetrolStation
             return result;
         }
 
+        /// <summary>
+        /// Load  Paginate Traffic  by Page Index and Page Size
+        /// </summary>
+        /// <returns></returns>
+        public CommandResult fillChart(DateTime dat, int userId)
+        {
+            CommandResult result;
+            result = BaseDAL.DBaseHelper.executeCommand(BaseDAL.Base.EnumExecuteType.procedureReader, connection, C_spChartTraffic, true,
+                new KeyValuePair("@beginDate", dat),
+                new KeyValuePair("@userId", userId)
+                );
 
-
+            return result;
+        }
 
         #endregion
     }

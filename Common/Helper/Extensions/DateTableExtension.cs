@@ -75,6 +75,61 @@ namespace System
 
             return table;
         }
+
+
+
+        /// <summary>
+        /// Convert All Gregorian dates to Shamsi date
+        /// </summary>
+        /// <param name="table"></param>
+        /// <returns></returns>
+        public static DataTable makeWeekDay(this DataTable table, string postfix = "_WeekDay", bool dateTime = false)
+        {
+            /*
+				1- Find datetime columns
+				2- Add _shamsi columns
+				3- Convert dates
+			*/
+
+            PersianCalendar pc = new PersianCalendar();
+            string[] weeks = new string[]{
+                "يك شنبه"
+                ,"دو شنبه"
+                ,"سه شنبه"
+                ,"چهار شنبه"
+                ,"پنج شنبه"
+                ,"جمعه"
+                ,"شنبه"
+            };
+            
+            List<string> cols = new List<string>();
+
+            if ((null != table) && (0 < table.Rows.Count))
+            {
+                /// I used loop by for syntax because Columns collection does change after adding new column and we have an exeption on it.
+                for (int i = 0; i < table.Columns.Count; i++)
+                    if (table.Columns[i].DataType == typeof(DateTime))
+                    {
+                        // Add to list
+                        cols.Add(table.Columns[i].ColumnName);
+
+                        // Create a new column
+                        table.Columns.Add(table.Columns[i].ColumnName + postfix, typeof(string));
+                        table.Columns[table.Columns[i].ColumnName + postfix].SetOrdinal(table.Columns[i].Ordinal + 1);
+                    }
+
+                // Convert data
+                foreach (DataRow row in table.Rows)
+                    foreach (string col in cols)
+                        if ((null != row[col]) && (row[col].GetType() != typeof(DBNull)))
+                            if (dateTime)
+                                row[col + postfix] = weeks[(((int)pc.GetDayOfWeek(DateTime.Parse(row[col].ToString()))) % 7)];
+                            //else
+                            //    row[col + postfix] = DateTime.Parse(row[col].ToString()).toPersianDate();
+            }
+
+            return table;
+        }
         #endregion
     }
 }

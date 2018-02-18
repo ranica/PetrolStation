@@ -299,7 +299,7 @@ namespace PetrolStation.Helper
 			/// <summary>
 		/// Make header Lottery Form
 		/// </summary>
-		public static CommandResult makeHeaderLotteryForm ()
+		public static CommandResult makeHeaderCumulativeForm()
 		{
 			CommandResult				result;
 			GridColumnCollectionModel	gridCols	= new GridColumnCollectionModel ();
@@ -315,12 +315,12 @@ namespace PetrolStation.Helper
 					new GridColumnModel ("mobile",	        "موبایل",			true, true, 4, 100),
 					new GridColumnModel ("plate",           "شماره پلاک",		true, true, 5, 100),
 					new GridColumnModel ("month",           "ماه قرعه کشی",		true, true, 6, 150),
-					new GridColumnModel ("total",			"تعداد تردد ها",	true, true, 7, 100)					
+					new GridColumnModel ("total",			"امتیاز تردد",	    true, true, 7, 100)					
 
 				});
 
 			// Save to db
-			result  = gridCols.saveToDB ("LotteryForm");
+			result  = gridCols.saveToDB ("CumulativeForm");
 
 			return result;
 		}
@@ -443,7 +443,37 @@ namespace PetrolStation.Helper
 
 			return result;
 		}
-		
-		#endregion
-	}
+
+        /// <summary>
+		/// Make header Dashboard Traffic Main Form
+		/// </summary>
+		public static CommandResult makeHeaderDashboardUserControl()
+        {
+            CommandResult result;
+            GridColumnCollectionModel gridCols = new GridColumnCollectionModel();
+
+            // Add fields
+            gridCols.columns.AddRange(new GridColumnModel[]
+                {
+                    new GridColumnModel ("trafficDate",    "تاریخ تردد",           false, true,0, 150),
+                    new GridColumnModel ("total",          "کل رکورد ها",          false, true,0, 150),
+                    new GridColumnModel ("nameUHF",        "نام جایگاه",            false, true, 0, 80),
+                    new GridColumnModel ("nationalCode",   "کد ملی",                false, true, 0, 100),
+                    new GridColumnModel ("Row",            "ردیف",                  true, true, 0, 50),
+                    new GridColumnModel ("name",           "نام",                   true, true, 1, 100),
+                    new GridColumnModel ("lastname",       "نام خانوادگی",          true, true, 2, 115),
+                    new GridColumnModel ("plate",          "شماره پلاک",             true, true, 3, 105),
+                    new GridColumnModel ("trafficDate_Shamsi","تاریخ تردد",         true, true, 4, 170),
+                    new GridColumnModel ("mobile",         "موبایل",                true, true, 5, 100),
+
+                });
+
+            // Save to db
+            result = gridCols.saveToDB("DashboardUserControl");
+
+            return result;
+        }
+
+        #endregion
+    }
 }

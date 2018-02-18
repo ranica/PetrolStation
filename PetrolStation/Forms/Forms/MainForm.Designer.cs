@@ -28,6 +28,8 @@
 		/// </summary>
 		private void InitializeComponent ()
 		{
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             this.mainStatusStrip = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.userToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
@@ -67,8 +69,19 @@
             this.تنظیماتپیامکToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.trafficChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.mainTabControl = new System.Windows.Forms.TabControl();
+            this.dashboardTabPage = new System.Windows.Forms.TabPage();
             this.mainStatusStrip.SuspendLayout();
             this.mainMenu.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.tableLayoutPanel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trafficChart)).BeginInit();
+            this.mainTabControl.SuspendLayout();
             this.SuspendLayout();
             // 
             // mainStatusStrip
@@ -82,9 +95,9 @@
             this.versionToolStripStatusLabel,
             this.nameTtoolStripStatusLabel,
             this.dateToolStripStatusLabel});
-            this.mainStatusStrip.Location = new System.Drawing.Point(0, 461);
+            this.mainStatusStrip.Location = new System.Drawing.Point(0, 629);
             this.mainStatusStrip.Name = "mainStatusStrip";
-            this.mainStatusStrip.Size = new System.Drawing.Size(864, 26);
+            this.mainStatusStrip.Size = new System.Drawing.Size(1082, 26);
             this.mainStatusStrip.TabIndex = 1;
             // 
             // toolStripStatusLabel1
@@ -131,7 +144,7 @@
             this.helpMenuItem});
             this.mainMenu.Location = new System.Drawing.Point(0, 0);
             this.mainMenu.Name = "mainMenu";
-            this.mainMenu.Size = new System.Drawing.Size(864, 32);
+            this.mainMenu.Size = new System.Drawing.Size(1082, 32);
             this.mainMenu.TabIndex = 0;
             // 
             // fileMenuItem
@@ -362,13 +375,104 @@
             this.aboutToolStripMenuItem.Size = new System.Drawing.Size(133, 28);
             this.aboutToolStripMenuItem.Text = "درباره ...";
             // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel1.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Inset;
+            this.tableLayoutPanel1.ColumnCount = 2;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 39.29924F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 60.70076F));
+            this.tableLayoutPanel1.Controls.Add(this.pictureBox1, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 0);
+            this.tableLayoutPanel1.Font = new System.Drawing.Font("B Yekan", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(12, 40);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 1;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1058, 586);
+            this.tableLayoutPanel1.TabIndex = 2;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox1.BackgroundImage = global::PetrolStation.Properties.Resources.background;
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox1.Location = new System.Drawing.Point(5, 5);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(633, 576);
+            this.pictureBox1.TabIndex = 3;
+            this.pictureBox1.TabStop = false;
+            // 
+            // tableLayoutPanel2
+            // 
+            this.tableLayoutPanel2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel2.ColumnCount = 1;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel2.Controls.Add(this.trafficChart, 0, 1);
+            this.tableLayoutPanel2.Controls.Add(this.mainTabControl, 0, 0);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(646, 5);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            this.tableLayoutPanel2.RowCount = 2;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 71.81373F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 28.18627F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(407, 576);
+            this.tableLayoutPanel2.TabIndex = 4;
+            // 
+            // trafficChart
+            // 
+            this.trafficChart.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.trafficChart.BorderlineColor = System.Drawing.SystemColors.Window;
+            chartArea1.Name = "ChartArea1";
+            this.trafficChart.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.trafficChart.Legends.Add(legend1);
+            this.trafficChart.Location = new System.Drawing.Point(3, 416);
+            this.trafficChart.Name = "trafficChart";
+            this.trafficChart.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Bright;
+            this.trafficChart.Size = new System.Drawing.Size(401, 157);
+            this.trafficChart.TabIndex = 4;
+            this.trafficChart.Text = "chart1";
+            // 
+            // mainTabControl
+            // 
+            this.mainTabControl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.mainTabControl.Controls.Add(this.dashboardTabPage);
+            this.mainTabControl.Location = new System.Drawing.Point(3, 3);
+            this.mainTabControl.Name = "mainTabControl";
+            this.mainTabControl.RightToLeftLayout = true;
+            this.mainTabControl.SelectedIndex = 0;
+            this.mainTabControl.Size = new System.Drawing.Size(401, 407);
+            this.mainTabControl.TabIndex = 3;
+            // 
+            // dashboardTabPage
+            // 
+            this.dashboardTabPage.Location = new System.Drawing.Point(4, 29);
+            this.dashboardTabPage.Name = "dashboardTabPage";
+            this.dashboardTabPage.Padding = new System.Windows.Forms.Padding(3);
+            this.dashboardTabPage.Size = new System.Drawing.Size(393, 374);
+            this.dashboardTabPage.TabIndex = 1;
+            this.dashboardTabPage.Text = "داشبورد کاربری من";
+            this.dashboardTabPage.UseVisualStyleBackColor = true;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.BackgroundImage = global::PetrolStation.Properties.Resources.background;
-            this.ClientSize = new System.Drawing.Size(864, 487);
+            this.ClientSize = new System.Drawing.Size(1082, 655);
+            this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.mainStatusStrip);
             this.Controls.Add(this.mainMenu);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
@@ -381,6 +485,11 @@
             this.mainStatusStrip.PerformLayout();
             this.mainMenu.ResumeLayout(false);
             this.mainMenu.PerformLayout();
+            this.tableLayoutPanel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.tableLayoutPanel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.trafficChart)).EndInit();
+            this.mainTabControl.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -427,5 +536,11 @@
         private System.Windows.Forms.ToolStripStatusLabel userToolStripStatusLabel;
         private System.Windows.Forms.ToolStripMenuItem stateReportToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem countReportToolStripMenuItem;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
+        private System.Windows.Forms.TabControl mainTabControl;
+        private System.Windows.Forms.TabPage dashboardTabPage;
+        private System.Windows.Forms.DataVisualization.Charting.Chart trafficChart;
     }
 }

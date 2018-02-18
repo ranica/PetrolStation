@@ -17,11 +17,15 @@ namespace PetrolStation.Forms.Reports
         #region Variables
         Common.BLL.Entity.PetrolStation.Plate plateModel
                                             = new Common.BLL.Entity.PetrolStation.Plate();
-        private DataTable resultDataTable;
+        //private DataTable resultDataTable;
+       
+        private bool _selectItem = false;
+        private bool loadData = true;
+
         private Thread readTrafficThread;
         private TimeSpan _readInterval;
-        private bool _selectItem = false;
-        private bool loadData = true;        
+
+        private object obj = new object();
 
         #endregion
 
@@ -69,17 +73,17 @@ namespace PetrolStation.Forms.Reports
         /// </summary>
         private void bindEvents()
         {
-            this.FormClosing                        += ReportTrafficForm_FormClosing;
+            this.FormClosing += ReportTrafficForm_FormClosing;
 
-            showButton.Click                        += showButton_Click;
-            typeComboBox.SelectedIndexChanged       += TypeComboBox_SelectedIndexChanged;
-            plateTypeComboBox.SelectedIndexChanged  += PlateTypeComboBox_SelectedIndexChanged;
+            showButton.Click += showButton_Click;
+            typeComboBox.SelectedIndexChanged += TypeComboBox_SelectedIndexChanged;
+            plateTypeComboBox.SelectedIndexChanged += PlateTypeComboBox_SelectedIndexChanged;
 
-            nextButton.Click                        += NextButton_Click;
-            previousButton.Click                    += PreviousButton_Click;
+            nextButton.Click += NextButton_Click;
+            previousButton.Click += PreviousButton_Click;
 
-            pageIndexComboBox.SelectedIndexChanged  += PageIndexComboBox_SelectedIndexChanged;
-            pageSizeComboBox.SelectedIndexChanged   += PageSizeComboBox_SelectedIndexChanged;
+            pageIndexComboBox.SelectedIndexChanged += PageIndexComboBox_SelectedIndexChanged;
+            pageSizeComboBox.SelectedIndexChanged += PageSizeComboBox_SelectedIndexChanged;
 
         }
 
@@ -88,7 +92,6 @@ namespace PetrolStation.Forms.Reports
         /// </summary>
         private void prepare()
         {
-            motorPlatePanel.Visible = true;
             String beginDate = ExtensionsDateTime.toPersianDate(DateTime.Now.AddMonths(-9));
             String endDate = ExtensionsDateTime.toPersianDate(DateTime.Now);
 
@@ -97,6 +100,9 @@ namespace PetrolStation.Forms.Reports
             typeComboBox.SelectedIndex = 0;
 
             reloadCombo();
+            pageIndexComboBox.SelectedIndex = 0;
+
+            //startLoadThread();
 
             tryToReadTraffic();
 
@@ -120,39 +126,52 @@ namespace PetrolStation.Forms.Reports
         /// </summary>
         private void tryToReadTraffic()
         {
-            //readTrafficThread = new Thread(new ThreadStart(delegate
-            //{
-            //try
-            //{
-            //    while (true)
-            //    {
-            //        Thread.Sleep(readInterval);
-
-            string dateStart = dateStartMaskedTextBox.Text.Trim();
-            string dateEnd = dateEndMaskedTextBox.Text.Trim();
-
-            if (ExtensionsDateTime.isValidDate(dateStart) && ExtensionsDateTime.isValidDate(dateEnd))
+            lock (obj)
             {
-                DateTime begin_date = ExtensionsDateTime.persianToMiladi(dateStart);
-                DateTime end_date = ExtensionsDateTime.persianToMiladi(dateEnd);
-                if (!_selectItem)
-                {                                          
-                   loadTraffic(begin_date, end_date); 
+                string dateStart = dateStartMaskedTextBox.Text.Trim();
+                string dateEnd = dateEndMaskedTextBox.Text.Trim();
+
+                if (ExtensionsDateTime.isValidDate(dateStart) && ExtensionsDateTime.isValidDate(dateEnd))
+                {
+                    DateTime begin_date = ExtensionsDateTime.persianToMiladi(dateStart);
+                    DateTime end_date = ExtensionsDateTime.persianToMiladi(dateEnd);
+
+                    if (!_selectItem)
+                    {
+                        loadTraffic(begin_date, end_date);
+                    }
                 }
 
+                if (readInterval != TimeSpan.Parse(ConfigurationManager.AppSettings["Interval"]))
+                {
+                    readInterval = TimeSpan.Parse(ConfigurationManager.AppSettings["Interval"]);
+                }
             }
+        }
 
-            if (readInterval != TimeSpan.Parse(ConfigurationManager.AppSettings["Interval"]))
-                readInterval = TimeSpan.Parse(ConfigurationManager.AppSettings["Interval"]);
-            //}
-            //    }
-            //    catch (Exception ex)
-            //    {
-            //        LoggerExtensions.log(ex);
-            //    }
-            //}));
+        /// <summary>
+        /// Start reload thread
+        /// </summary>
+        private void startLoadThread()
+        {
+            readTrafficThread = new Thread(new ThreadStart(delegate
+            {
+                try
+                {
+                    while (true)
+                    {
+                        Thread.Sleep(readInterval);
 
-            //readTrafficThread.Start();
+                        tryToReadTraffic();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    LoggerExtensions.log(ex);
+                }
+            }));
+
+            readTrafficThread.Start();
         }
 
         /// <summary>
@@ -284,7 +303,7 @@ namespace PetrolStation.Forms.Reports
             part1MainTextBox.ForeColor =
             part2MainTextBox.ForeColor = foreColorPart;
         }
-       
+
         /// <summary>
         /// Show Report 
         /// </summary>
@@ -294,8 +313,8 @@ namespace PetrolStation.Forms.Reports
         {
             try
             {
-                pageIndexComboBox.SelectedIndex = 0;
-                loadData = true;                
+
+                loadData = true;
 
                 string dateStart = dateStartMaskedTextBox.Text.Trim();
                 string dateEnd = dateEndMaskedTextBox.Text.Trim();
@@ -307,7 +326,7 @@ namespace PetrolStation.Forms.Reports
 
                     if (typeComboBox.SelectedIndex == 0)
                     {
-                        loadTraffic(begin_date, end_date);                       
+                        loadTraffic(begin_date, end_date);
                     }
                     else if (typeComboBox.SelectedIndex == 1)
                     {
@@ -364,7 +383,7 @@ namespace PetrolStation.Forms.Reports
                         else
                             MessageBox.Show(opResult.model.ToString(), "اخطار", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
-                    
+
                 }
 
                 else
@@ -375,7 +394,7 @@ namespace PetrolStation.Forms.Reports
                 }
 
                 updateUi();
-                
+
             }
             catch (Exception ex)
             {
@@ -496,7 +515,7 @@ namespace PetrolStation.Forms.Reports
 
             return result;
         }
-        
+
 
         #region Load Traffic
         /// <summary>
@@ -505,34 +524,41 @@ namespace PetrolStation.Forms.Reports
         /// <param name="total"></param>
         private void updatePagesCount(int total, int pageSize, TabPage tabPage)
         {
-            int count = (total / pageSize) + (total % pageSize == 0 ? 0 : 1);
-
-            if (count == 0)
+            try
             {
-                count = 1;
+                int count = (total / pageSize) + (total % pageSize == 0 ? 0 : 1);
+
+                if (count == 0)
+                {
+                    count = 1;
+                }
+
+                int currentPage;
+
+                if (!int.TryParse(pageIndexComboBox.Text, out currentPage))
+                {
+                    return;
+                }
+
+                pageIndexComboBox.Items.Clear();
+                for (int i = 1; i <= count; i++)
+                {
+                    pageIndexComboBox.Items.Add(i.ToString());
+                }
+
+                currentPage = (int)Math.Min(count, currentPage);
+
+                loadData = false;
+
+                pageIndexComboBox.SelectedIndex = currentPage - 1;
+            }
+            catch (Exception ex)
+            {
+
+                LoggerExtensions.log(ex);
             }
 
-            int currentPage;
-
-            if (!int.TryParse(pageIndexComboBox.Text, out currentPage))
-            {
-                return;
-            }
-
-            pageIndexComboBox.Items.Clear();
-            for (int i = 1; i <= count; i++)
-            {
-                pageIndexComboBox.Items.Add(i.ToString());
-            }
-
-            currentPage = (int)Math.Min(count, currentPage);
-            
-            loadData = false;
-            
-            pageIndexComboBox.SelectedIndex = currentPage - 1;
         }
-        
-       
 
         /// <summary>
         /// Load Traffic
@@ -544,17 +570,19 @@ namespace PetrolStation.Forms.Reports
 
             int PI;
             int PS;
+            int pageIndex = 0;
+            int pageSize = 0;
+
             try
             {
                
                 if (!int.TryParse(pageIndexComboBox.Text, out PI) ||
-                    !int.TryParse(pageSizeComboBox.Text, out PS))
+                !int.TryParse(pageSizeComboBox.Text, out PS))
                 {
                     MessageBox.Show("شماره صفحه و تعداد سطرها را مشخص نمایید", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
                     return;
                 }
-
 
                 if (!loadData)
                 {
@@ -563,18 +591,22 @@ namespace PetrolStation.Forms.Reports
                     return;
                 }
 
+                pageSize = PS;
+                pageIndex = PI;
+
 
                 Common.BLL.Logic.PetrolStation.Traffic lTraffic =
-                new Common.BLL.Logic.PetrolStation.Traffic(Common.Enum.EDatabase.PetrolStation);
+                                            new Common.BLL.Logic.PetrolStation.Traffic(Common.Enum.EDatabase.PetrolStation);
 
-                CommandResult opResult = lTraffic.loadTraffic(begindate, enddate, PI, PS, Common.GlobalData.UserManager.currentUser.id);
+                CommandResult opResult = lTraffic.loadTraffic(begindate, enddate, pageIndex, pageSize, Common.GlobalData.UserManager.currentUser.id);
                 DataTable resultData = ExtensionsDateTable.makePersianDate(opResult.model as DataTable, "_Shamsi", true);
 
+               
                 if (resultData.Rows.Count > 0)
                 {
                     int total = Convert.ToInt32(resultData.Rows[0]["total"]);
 
-                    updatePagesCount(total, PS, mainTabControl.SelectedTab);
+                    updatePagesCount(total, pageSize, mainTabControl.SelectedTab);
                 }
 
                 #region Add Result Grid
@@ -585,8 +617,8 @@ namespace PetrolStation.Forms.Reports
                 stateTabPage.Controls.Add(stateTraffic);
                 stateTraffic.Dock = DockStyle.Fill;
                 #endregion
-
                 
+
             }
             catch (Exception ex)
             {
@@ -595,7 +627,7 @@ namespace PetrolStation.Forms.Reports
 
         }
 
-       
+
         /// <summary>
         /// Load Traffic By National code
         /// </summary>
@@ -648,7 +680,7 @@ namespace PetrolStation.Forms.Reports
                 stateTraffic.Dock = DockStyle.Fill;
                 #endregion
 
-                
+
             }
             catch (Exception ex)
             {
@@ -717,7 +749,7 @@ namespace PetrolStation.Forms.Reports
         }
 
         #endregion
-             
+
 
         /// <summary>
         /// Closing Report Form
@@ -789,11 +821,13 @@ namespace PetrolStation.Forms.Reports
             {
                 pageIndexComboBox.SelectedIndex = page;
                 updateUi();
+                showButton_Click(null, null);
             }
             else if (++page < pageIndexComboBox.Items.Count)
             {
                 pageIndexComboBox.SelectedIndex = page - 1;
                 updateUi();
+                showButton_Click(null, null);
             }
         }
 
@@ -807,6 +841,7 @@ namespace PetrolStation.Forms.Reports
             {
                 pageIndexComboBox.SelectedIndex = page - 1;
                 updateUi();
+                showButton_Click(null, null);
             }
         }
 
@@ -817,21 +852,21 @@ namespace PetrolStation.Forms.Reports
         /// <param name="e"></param>
         private void printButton_Click(object sender, EventArgs e)
         {
-            try
-            {
-                StiReport mainreport = new StiReport();
+            //try
+            //{
+            //    StiReport mainreport = new StiReport();
 
-                mainreport.RegBusinessObject("traffic", resultDataTable);
-                mainreport.Load(Application.StartupPath + "\\Reports\\traffic.mrt");
-                mainreport.Compile();
-                mainreport["myDate"] = ExtensionsDateTime.toPersianDate(DateTime.Now);
-                mainreport.Render();
-                mainreport.Show();
-            }
-            catch (Exception ex)
-            {
-                LoggerExtensions.log(ex);
-            }
+            //    mainreport.RegBusinessObject("traffic", resultDataTable);
+            //    mainreport.Load(Application.StartupPath + "\\Reports\\traffic.mrt");
+            //    mainreport.Compile();
+            //    mainreport["myDate"] = ExtensionsDateTime.toPersianDate(DateTime.Now);
+            //    mainreport.Render();
+            //    mainreport.Show();
+            //}
+            //catch (Exception ex)
+            //{
+            //    LoggerExtensions.log(ex);
+            //}
 
         }
 

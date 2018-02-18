@@ -31,8 +31,8 @@ namespace PetrolStation
 
 
             // TEST :: Remove or Comment after test
-            Application.Run(new Forms.Reports.ReportTrafficForm());
-            return;
+            //Application.Run(new Forms.testForm());
+            //return;
 
             while (hasLogin != 2)
             {
@@ -68,10 +68,11 @@ namespace PetrolStation
             //Helper.GridHeaderMaker.makeHeaderSearchOwner();
 
             //Helper.GridHeaderMaker.makeHeaderTrafficUserControls();
-            Helper.GridHeaderMaker.makeHeaderReportTraffic();
-            //Helper.GridHeaderMaker.makeHeaderLotteryForm();
+            //Helper.GridHeaderMaker.makeHeaderReportTraffic();
+            //Helper.GridHeaderMaker.makeHeaderCumulativeForm();
 
-            Helper.GridHeaderMaker.makeHeaderReportCountTraffic();
+            //Helper.GridHeaderMaker.makeHeaderDashboardUserControl();
+            //Helper.GridHeaderMaker.makeHeaderReportCountTraffic();
             //Helper.GridHeaderMaker.makeHeaderOwner();
             //Helper.GridHeaderMaker.makeHeaderCarColor();
             //Helper.GridHeaderMaker.makeHeaderCarLevel();

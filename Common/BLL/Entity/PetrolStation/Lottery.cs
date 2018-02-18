@@ -127,7 +127,7 @@ namespace Common.BLL.Entity.PetrolStation
 		}
 
 		[BaseBLL.Base.Field(nullable=true,sqlDBType=System.Data.SqlDbType.Int,primary=false,usage=BaseBLL.Base.EnumUsage.read | BaseBLL.Base.EnumUsage.update | BaseBLL.Base.EnumUsage.create,foreignLogicType=typeof (BLL.Logic.PetrolStation.User),foreignField="id")]
-		public Nullable<System.Int32> updateById
+		public Nullable<System.Int32> updatedById
 		{
 			get;
 			set;
@@ -141,7 +141,7 @@ namespace Common.BLL.Entity.PetrolStation
 		{
 			get
 			{
-				if ((null == _User_updateById) && (updateById.HasValue) && (AutoLoadForeignKeys))
+				if ((null == _User_updateById) && (updatedById.HasValue) && (AutoLoadForeignKeys))
 					load_User_updateById ();
 				return _User_updateById;
 			}
@@ -156,7 +156,7 @@ namespace Common.BLL.Entity.PetrolStation
 			BLL.Entity.PetrolStation.User	entity;
 			BLL.Logic.PetrolStation.User	logic;
 
-			entity	= new BLL.Entity.PetrolStation.User () { id = updateById.Value };
+			entity	= new BLL.Entity.PetrolStation.User () { id = updatedById.Value };
 			logic	= new BLL.Logic.PetrolStation.User ("PetrolStation");
 			logic.read (entity);
 

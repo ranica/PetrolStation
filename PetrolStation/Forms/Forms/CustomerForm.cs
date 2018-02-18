@@ -47,7 +47,7 @@ namespace PetrolStation.Forms.Forms
 
 		private const int		C_BufferSize	= 1024;
 		public static int		existOwner		= 0;
-		AntennaClient anntenaClient ;
+		//AntennaClient anntenaClient ;
 		
 
 		#endregion

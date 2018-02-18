@@ -20,7 +20,7 @@ namespace PetrolStation.UserControls
 			set;
 		}
 
-        bool turn = false;
+        //bool turn = false;
 
         #endregion
 

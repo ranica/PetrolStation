@@ -17,8 +17,8 @@ namespace PetrolStation.Forms.Reports
         #region Variables
         Common.BLL.Entity.PetrolStation.Plate plateModel
                                             = new Common.BLL.Entity.PetrolStation.Plate();
-        private DataTable resultDataTable;
-        private Thread readTrafficThread;
+        //private DataTable resultDataTable;
+        //private Thread readTrafficThread;
         private TimeSpan _readInterval;
         private bool _selectItem = false;       
         private bool loadDataCount = true;
@@ -288,21 +288,21 @@ namespace PetrolStation.Forms.Reports
         /// <param name="e"></param>
         private void printButton_Click(object sender, EventArgs e)
         {
-            try
-            {
-                StiReport mainreport = new StiReport();
+            //try
+            //{
+            //    StiReport mainreport = new StiReport();
 
-                mainreport.RegBusinessObject("traffic", resultDataTable);
-                mainreport.Load(Application.StartupPath + "\\Reports\\traffic.mrt");
-                mainreport.Compile();
-                mainreport["myDate"] = ExtensionsDateTime.toPersianDate(DateTime.Now);
-                mainreport.Render();
-                mainreport.Show();
-            }
-            catch (Exception ex)
-            {
-                LoggerExtensions.log(ex);
-            }
+            //    mainreport.RegBusinessObject("traffic", resultDataTable);
+            //    mainreport.Load(Application.StartupPath + "\\Reports\\traffic.mrt");
+            //    mainreport.Compile();
+            //    mainreport["myDate"] = ExtensionsDateTime.toPersianDate(DateTime.Now);
+            //    mainreport.Render();
+            //    mainreport.Show();
+            //}
+            //catch (Exception ex)
+            //{
+            //    LoggerExtensions.log(ex);
+            //}
 
         }
 
@@ -767,8 +767,8 @@ namespace PetrolStation.Forms.Reports
         {
             try
             {
-                if (null != readTrafficThread)
-                    readTrafficThread.Abort();
+                //if (null != readTrafficThread)
+                //    readTrafficThread.Abort();
             }
             catch (Exception ex)
             {
