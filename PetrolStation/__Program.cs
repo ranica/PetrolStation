@@ -30,7 +30,7 @@ namespace PetrolStation
 
 
 
-            // TEST :: Remove or Comment after test
+            //TEST::Remove or Comment after test
             //Application.Run(new Forms.testForm());
             //return;
 

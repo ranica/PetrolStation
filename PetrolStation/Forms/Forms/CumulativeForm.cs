@@ -17,11 +17,12 @@ namespace PetrolStation.Forms.Forms
     {
         #region Variable
 
-        Common.BLL.Entity.PetrolStation.Base__Month monthModel = 
+        Common.BLL.Entity.PetrolStation.Base__Month monthModel =
                                                     new Common.BLL.Entity.PetrolStation.Base__Month();
         DataTable resultDataTable;
 
         static Random rand = new Random();
+        DateTime startDate, endDate = new DateTime();
         #endregion
 
         #region Method
@@ -49,10 +50,27 @@ namespace PetrolStation.Forms.Forms
             startButton.Click += StartButton_Click;
             printButton.Click += PrintButton_Click;
 
+            monthComboBox.SelectedIndexChanged += MonthComboBox_SelectedIndexChanged;
+
             monthRadioButton.CheckedChanged += MonthRadioButton_CheckedChanged;
             yearRadioButton.CheckedChanged += YearRadioButton_CheckedChanged;
         }
+        /// <summary>
+        /// Month ComboBox for data ComboBox Date
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
 
+        private void MonthComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            reloadMaskDate();
+        }
+
+        /// <summary>
+        /// Checked Year RadioButton
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void YearRadioButton_CheckedChanged(object sender, EventArgs e)
         {
             if (yearRadioButton.Checked)
@@ -64,6 +82,11 @@ namespace PetrolStation.Forms.Forms
                 yearTextBox.Enabled = false;
         }
 
+        /// <summary>
+        /// Checked Month RadioButton
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void MonthRadioButton_CheckedChanged(object sender, EventArgs e)
         {
             if (monthRadioButton.Checked)
@@ -78,19 +101,62 @@ namespace PetrolStation.Forms.Forms
         private void prepare()
         {
             reloadCombo();
+            reloadAntenna();
+        }
+        /// <summary>
+        /// Reload Antenna Name by User Id
+        /// </summary>
+        private void reloadAntenna()
+        {
+            //Common.BLL.Logic.PetrolStation.UHFPermit lUHFPermit = new 
+            //                            Common.BLL.Logic.PetrolStation.UHFPermit(Common.Enum.EDatabase.PetrolStation);
+
+            //DataTable myTable = lUHFPermit.getUHF(Convert.ToInt16(Common.GlobalData.UserManager.currentUser.id));
+
+
+            //if (myTable.Rows.Count > 0)
+            //{
+               
+            //    for (int i = 0; i < myTable.Rows.Count; i++)
+            //    {
+            //        antennaComboBox.
+
+            //    }
+            //}
         }
 
         /// <summary>
-        /// Relaod Data fr Combo Box
+        /// Reload Data from ComboBox
         /// </summary>
         private void reloadCombo()
         {
-            Common.BLL.Logic.PetrolStation.Base__Month lMonth = new Common.BLL.Logic.PetrolStation.Base__Month(Common.Enum.EDatabase.PetrolStation);
+            Common.BLL.Logic.PetrolStation.Base__Month lMonth = new 
+                                        Common.BLL.Logic.PetrolStation.Base__Month(Common.Enum.EDatabase.PetrolStation);
+
             DataTable resultMonth = lMonth.allData("", "", false).model as DataTable;
             monthComboBox.fillByTable(resultMonth, "id", "month");
+
+            reloadMaskDate();
         }
 
-        
+        /// <summary>
+        /// Reload Mask Textbox Dates
+        /// </summary>
+        private void reloadMaskDate()
+        {
+            BaseBLL.General.FormModelHelper<Common.BLL.Entity.PetrolStation.Base__Month>.fillModel(dataGroupBox, monthModel);
+            startDate = ExtensionsDateTime.persianToMiladi(DateTime.Now.toPersianDate().Substring(0, 4) + "/" + monthModel.code + "/1");
+
+            begindateTextBox.Text = DateTime.Now.toPersianDate().Substring(0, 4) +
+                                    (monthModel.code.ToString().Length < 2 ? "0" + monthModel.code.ToString() : monthModel.code.ToString()) +
+                                    "01";
+            endDate = ExtensionsDateTime.getMiladiEndDate(Convert.ToInt32(monthModel.code));
+            endDateTextBox.Text = DateTime.Now.toPersianDate().Substring(0, 4) +
+                                (monthModel.code.ToString().Length < 2 ? "0" + monthModel.code.ToString() : monthModel.code.ToString()) +
+                                ExtensionsDateTime.getMiladiDay(Convert.ToInt32(monthModel.code));
+        }
+
+
         /// <summary>
         /// Start Lottery
         /// </summary>
@@ -100,10 +166,7 @@ namespace PetrolStation.Forms.Forms
         {
             try
             {
-
-                DateTime startDate = new DateTime();
-                DateTime endDate = new DateTime();
-
+                int countLottery = 0;
                 Lottery<string> lottery = new Lottery<string>();
                 //List<int> winnerKey = new List<int>();
 
@@ -113,16 +176,18 @@ namespace PetrolStation.Forms.Forms
                 //Validate Date
                 if (monthRadioButton.Checked)
                 {
-                    startDate   = ExtensionsDateTime.persianToMiladi(DateTime.Now.toPersianDate().Substring(0, 4) + "/" + monthModel.code + "/1");
-                    endDate     = ExtensionsDateTime.getMiladiEndDate(Convert.ToInt32(monthModel.code));
+                    startDate = ExtensionsDateTime.persianToMiladi(begindateTextBox.Text);
+                    endDate = ExtensionsDateTime.persianToMiladi(endDateTextBox.Text);
+                    //startDate = ExtensionsDateTime.persianToMiladi(DateTime.Now.toPersianDate().Substring(0, 4) + "/" + monthModel.code + "/1");
+                    //endDate = ExtensionsDateTime.getMiladiEndDate(Convert.ToInt32(monthModel.code));
                 }
                 else
                 {
                     CommandResult result = validateDate();
                     if (result.status == BaseDAL.Base.EnumCommandStatus.success)
                     {
-                        startDate   = ExtensionsDateTime.persianToMiladi(DateTime.Now.toPersianDate().Substring(0, 4) + "/1/1");
-                        endDate     = ExtensionsDateTime.persianToMiladi(DateTime.Now.toPersianDate().Substring(0, 4) + "/12/29");
+                        startDate = ExtensionsDateTime.persianToMiladi(DateTime.Now.toPersianDate().Substring(0, 4) + "/1/1");
+                        endDate = ExtensionsDateTime.persianToMiladi(DateTime.Now.toPersianDate().Substring(0, 4) + "/12/29");
                     }
                     else
                         MessageBox.Show(result.model.ToString(), "خطا", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -145,32 +210,40 @@ namespace PetrolStation.Forms.Forms
                         {
                             DataTable resultData = opResult.model as DataTable;
 
+                            //while (lottery.Count() <= StringExtension.toInt(numberTextBox.Text.Trim(), 0))
+                            //{ 
+
                             for (int i = 0; i < StringExtension.toInt(numberTextBox.Text.Trim(), 0); i++)
                             {
                                 int count = Convert.ToInt32(resultData.Rows[resultData.Rows.Count - 1]["total"].ToString());
                                 int r = rand.Next(1, count);
 
-
+                                
                                 foreach (DataRow row in ((DataTable)opResult.model).Rows)
                                 {
-
                                     if (Convert.ToInt16(row["total"]) >= r)
                                     {
                                         if (!lottery.Compare(row["nationalCode"].ToString()))
                                         {
-                                            lottery.Add(row["total"].ToString(), row["nationalCode"].ToString());
-                                            saveDataLottery(row["id"], row["total"], startDate, endDate);
+                                            lottery.Add(row["countValue"].ToString(), row["nationalCode"].ToString());
+                                            if (lottery.Count() > StringExtension.toInt(numberTextBox.Text.Trim(), 0))
+                                            {
+                                                GetDataLottery(startDate, endDate);
+                                                break;
+                                            }
+                                            saveDataLottery(row["id"], row["countValue"], startDate, endDate);
                                         }
                                     }
                                 }//end foreach
+                               
 
                             }// end for
 
-                            GetDataLottery(startDate, endDate);
+
                         }
                         else
                             MessageBox.Show("اطلاعاتی برای قرعه کشی وجود ندارد", "اطلاعات", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        
+
                     }
                     else
                     {
@@ -180,7 +253,7 @@ namespace PetrolStation.Forms.Forms
                     #endregion
 
                 }
-               
+
 
             }
             catch (Exception ex)
@@ -274,7 +347,7 @@ namespace PetrolStation.Forms.Forms
                 LoggerExtensions.log(ex);
                 return false;
             }
-           
+
         }
 
         /// <summary>
@@ -324,7 +397,7 @@ namespace PetrolStation.Forms.Forms
                 LoggerExtensions.log(ex);
                 return false;
             }
-            
+
         }
 
         /// <summary>
@@ -354,8 +427,14 @@ namespace PetrolStation.Forms.Forms
 
                 LoggerExtensions.log(ex);
             }
-          
+
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(DateTime.Now.ToString());
+        }
+
         /// <summary>
         /// Validate Date
         /// </summary>      

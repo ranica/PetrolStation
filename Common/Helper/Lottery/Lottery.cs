@@ -49,6 +49,16 @@ namespace Common.Helper.Lottery
         {
             c_tickets.Add(new c_Ticket(key, code));
         }
+        /// <summary>
+        /// return count list Lottey
+        /// </summary>
+        /// <param name="key"></param>
+        /// <param name="code"></param>
+        /// <returns></returns>
+        public int Count()
+        {
+           return c_tickets.Count();
+        }
 
         /// <summary>
         /// Compare duplicate code

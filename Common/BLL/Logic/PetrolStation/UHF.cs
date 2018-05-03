@@ -16,15 +16,15 @@ namespace Common.BLL.Logic.PetrolStation
         /// </summary>
         /// <param name="AntennaHost"></param>
         /// <returns></returns>
-		public CommandResult getAntenna(string AntennaHost)
+		public CommandResult getAntenna(string AntennaName)
         {
             CommandResult result;
 
             Common.BLL.Entity.PetrolStation.UHF antenna = new Entity.PetrolStation.UHF()
             {
-                IP = AntennaHost
+                antennaName = AntennaName
             };
-            result = read(antenna, "IP");
+            result = read(antenna, "antennaName");
 
             if (antenna.id > 0)
             {
@@ -67,6 +67,9 @@ namespace Common.BLL.Logic.PetrolStation
             }
             return result;
         }
+
+
+        
 
     }
 }

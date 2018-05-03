@@ -20,7 +20,7 @@ namespace System
 		public static bool isValidDate (this string dateStr, string separator = "/")
 		{
 			bool result = false;
-			string[] datePart = dateStr.Split (new string[] { separator }, StringSplitOptions.RemoveEmptyEntries);
+			string[] datePart = dateStr.Split (new string[] { "/" , "-" }, StringSplitOptions.RemoveEmptyEntries);
 
 			if (datePart.Length == 3)
 			{
@@ -515,6 +515,17 @@ namespace System
 				result = persianToMiladi (DateTime.Now.toPersianDate ().Substring (0, 4) + "/" + numMonth + "/30");
 			return result;
 		}
-		#endregion
-	}
+
+        public static string getMiladiDay(this int numMonth)
+        {
+
+            string result = "";
+            if (numMonth >= 1 && numMonth < 6)
+                result = "31";
+            else if (numMonth > 5 && numMonth < 13)
+                result = "30";
+            return result;
+        }
+        #endregion
+    }
 }

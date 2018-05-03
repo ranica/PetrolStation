@@ -87,7 +87,8 @@ namespace PetrolStation.Forms.Reports
         /// </summary>
         private void prepare()
         {
-            String beginDate = ExtensionsDateTime.toPersianDate(DateTime.Now.AddMonths(-9));
+            //String beginDate = ExtensionsDateTime.toPersianDate(DateTime.Now.AddMonths(-9));
+            String beginDate = ExtensionsDateTime.toPersianDate(DateTime.Now);
             String endDate = ExtensionsDateTime.toPersianDate(DateTime.Now);
 
             dateStartMaskedTextBox.Text = beginDate;
@@ -595,7 +596,8 @@ namespace PetrolStation.Forms.Reports
 
                     if (resultData.Rows.Count > 0)
                     {
-                        int total = Convert.ToInt32(resultData.Rows[0]["total"]);
+                    //int total = Convert.ToInt32(resultData.Rows[0]["total"]);
+                    int total = 100;
 
                         updatePagesCount(total, PS, mainTabControl.SelectedTab);
                     }
@@ -660,7 +662,8 @@ namespace PetrolStation.Forms.Reports
 
                     if (resultData.Rows.Count > 0)
                     {
-                        int total = Convert.ToInt32(resultData.Rows[0]["total"]);
+                        //int total = Convert.ToInt32(resultData.Rows[0]["total"]);
+                        int total = 100;
 
                         updatePagesCount(total, PS, mainTabControl.SelectedTab);
                     }
@@ -724,7 +727,8 @@ namespace PetrolStation.Forms.Reports
 
                 if (resultData.Rows.Count > 0)
                 {
-                    int total = Convert.ToInt32(resultData.Rows[0]["total"]);
+                    //int total = Convert.ToInt32(resultData.Rows[0]["total"]);
+                    int total = 100;
 
                     updatePagesCount(total, PS, mainTabControl.SelectedTab);
                 }

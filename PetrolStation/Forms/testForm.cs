@@ -24,7 +24,7 @@ namespace PetrolStation.Forms
             InitializeComponent();
             //fillChart();
 
-            fillChartByDB();
+            //fillChartByDB();
         }
 
         private void fillChartByDB()
@@ -38,7 +38,7 @@ namespace PetrolStation.Forms
             //chart1.DataSource = resultData;
 
             Series series = this.chart1.Series.Add("تردد ها");
-            series.ChartType = SeriesChartType.SplineArea;
+            series.ChartType = SeriesChartType.RangeColumn;
             series.Color = Color.SteelBlue;
             series.Font = new Font("BYekan", 15.0f, FontStyle.Italic); //changes nothing
 
@@ -196,6 +196,109 @@ namespace PetrolStation.Forms
             }
 
             #endregion
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            fillMultiColumnChart();
+            //FillCurveChart();
+
+        }
+
+        
+        /// <summary>
+        /// Fill Multi Column Chart
+        /// </summary>
+        private void fillMultiColumnChart()
+        {
+            Series[] seriesArray = new Series[2];
+           
+            int countAntenna = 0;
+            int[] UHFArray = new int[10];
+            DataTable[] dtArray = new DataTable[10];
+           
+            Common.BLL.Logic.PetrolStation.UHFPermit lUHFPermit =
+                                                        new Common.BLL.Logic.PetrolStation.UHFPermit(Common.Enum.EDatabase.PetrolStation);
+
+            DataTable myTable = lUHFPermit.getUHF(Convert.ToInt16("6"));
+
+
+           if (myTable.Rows.Count > 0)
+            {
+                countAntenna = myTable.Rows.Count;
+
+                for (int i = 0; i < myTable.Rows.Count; i++)
+                {
+                    // Add point.
+                    UHFArray[i]  = Convert.ToInt16(myTable.Rows[i]["uhfId"]);
+                    dtArray[i] =lUHFPermit.DrawChart(UHFArray[i]);
+                   
+                }
+            }
+            //carGrid.DataSource = dtArray[0];
+            //dataGridView1.DataSource = dtArray[1];
+
+            
+
+            curveChart.Series.Clear();
+
+
+
+            for (int k = 0; k < countAntenna; k++)
+            {
+                seriesArray[k] = this.curveChart.Series.Add("آنتن  " + (k + 1).ToString());
+                seriesArray[k].Color = Color.FromArgb(240,k*250, k*200);
+            }
+
+           
+            for (int i = 0; i < countAntenna; i++)
+            {
+                seriesArray[i].ChartType = SeriesChartType.RangeColumn;
+                seriesArray[i].Font = new Font("BYekan", 15.0f, FontStyle.Italic); //changes nothing
+            }
+            
+           
+
+            for (int i = 0; i < countAntenna; i++)
+            {
+                // Add series.
+                SetChart(dtArray[i], seriesArray[i]);
+            }
+
+           
+        }
+
+        private void SetChart(DataTable dataTable, Series series)
+        {
+            for (int i = 0; i < dataTable.Rows.Count; i++)
+            {
+                // Add point.
+                series.Points.AddXY(dataTable.Rows[i]["dat_WeekDay"].ToString(), dataTable.Rows[i]["count"]);
+
+            }
+        }
+
+      
+
+        private void FillCurveChart()
+        {
+            curveChart.Series.Clear();
+            curveChart.Series.Add("Series1");
+            curveChart.Series["Series1"].XValueType = ChartValueType.DateTime;
+            curveChart.Series["Series1"].Points.AddXY(DateTime.Now, 12.00m);
+            curveChart.Series["Series1"].Points.AddXY(DateTime.Now.AddDays(1), 13m);
+            curveChart.Series["Series1"].Points.AddXY(DateTime.Now.AddDays(2), 8m);
+            curveChart.Series["Series1"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            curveChart.Series["Series1"].BorderWidth = 3;
+            curveChart.ChartAreas["0"].AxisX.Interval = 1;
+
+            curveChart.Series.Add("Series2");
+            curveChart.Series["Series2"].XValueType = ChartValueType.DateTime;
+            curveChart.Series["Series2"].Points.AddXY(DateTime.Now, 5.00m);
+            curveChart.Series["Series2"].Points.AddXY(DateTime.Now.AddDays(1), 7m);
+            curveChart.Series["Series2"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            curveChart.Series["Series2"].BorderWidth = 3;
+            curveChart.ChartAreas["0"].AxisX.Interval = 1;
         }
     }
 }

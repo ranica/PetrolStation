@@ -125,8 +125,12 @@ namespace PetrolStation.Forms.Forms
             {
                 name = "DB-Version"
             };
-            Common.BLL.Logic.PetrolStation.System__Data lSystemData = new Common.BLL.Logic.PetrolStation.System__Data(Common.Enum.EDatabase.PetrolStation);
+
+            Common.BLL.Logic.PetrolStation.System__Data lSystemData = 
+                                    new Common.BLL.Logic.PetrolStation.System__Data(Common.Enum.EDatabase.PetrolStation);
+
             CommandResult opResult = lSystemData.read(model, "name");
+
             if (opResult.status == BaseDAL.Base.EnumCommandStatus.success)
                 versionToolStripStatusLabel.Text = model.value;
 
@@ -135,10 +139,11 @@ namespace PetrolStation.Forms.Forms
 
             // Get Version
             string version = Assembly.GetExecutingAssembly().GetName().Version.ToString();
+
             versionToolStripStatusLabel.Text = version;
             dateToolStripStatusLabel.Text = ExtensionsDateTime.getWeekDay(DateTime.Now) + "  " + ExtensionsDateTime.toPersianDate(DateTime.Now);
 
-            createChart();
+            //createChart();
 
             startLoadThread();
 
@@ -149,54 +154,16 @@ namespace PetrolStation.Forms.Forms
         /// </summary>
         private void createChart()
         {
-            series = this.trafficChart.Series.Add("تردد ها");
+            series = this.curveChart.Series.Add("تردد ها");
             series.ChartType = SeriesChartType.RangeColumn;
             series.Color = Color.SteelBlue;
             //series.Font = new Font("BYekan", 15.0f, FontStyle.Italic); //changes nothing
             series.Font = new System.Drawing.Font("Trebuchet MS", 9F);
 
-            trafficChart.Titles.Add("نمودار تردد های هفته جاری");
+            curveChart.Titles.Add("نمودار تردد های هفته جاری");
         }
 
-        /// <summary>
-        /// Load Info Chart Traffic
-        /// </summary> 
-        private void fillChart()
-        {
-            Common.BLL.Logic.PetrolStation.Traffic lTraffic =
-                                        new Common.BLL.Logic.PetrolStation.Traffic(Common.Enum.EDatabase.PetrolStation);
-
-            CommandResult opResult = lTraffic.fillChart(DateTime.Now, Common.GlobalData.UserManager.currentUser.id);
-
-            DataTable resultData = ExtensionsDateTable.makeWeekDay(opResult.model as DataTable, "_WeekDay", true);
-
-            // Add remaining days
-            //if (7 > resultData.Rows.Count)
-            //{
-            //    int lastRow = resultData.Rows.Count - 1;
-            //    DateTime? lastDate = resultData.Rows[lastRow]["dat"].ToString().toDateTime();
-
-            //    for (int i = lastRow; i < 7; ++i)
-            //    {
-            //        lastDate.Value.AddDays(1);
-
-            //        resultData.Rows.Add(lastDate, 0);
-            //    }
-            //}
-            
-            Invoke((Action)delegate
-            {
-                series.Points.Clear();
-
-                // Add series.
-                for (int i = 0; i < resultData.Rows.Count; i++)
-                {
-                    // Add point.
-                    series.Points.AddXY(resultData.Rows[i]["dat_WeekDay"].ToString(), resultData.Rows[i]["count"]);
-                }
-
-            });
-        }
+        
 
         /// <summary>
         /// Start reload thread
@@ -213,7 +180,9 @@ namespace PetrolStation.Forms.Forms
 
                         tryToReadTraffic();
 
-                        fillChart();
+                        //fillChart();
+                        fillMultiColumnChart();
+
                     }
                 }
                 catch (Exception ex)
@@ -224,6 +193,120 @@ namespace PetrolStation.Forms.Forms
 
             readTrafficThread.Start();
         }
+
+        /// <summary>
+        /// Set Chart by series
+        /// </summary>
+        /// <param name="dataTable"></param>
+        /// <param name="series"></param>
+        private void SetChart(DataTable dataTable, Series series)
+        {
+            for (int i = 0; i < dataTable.Rows.Count; i++)
+            {
+                // Add point.
+                series.Points.AddXY(dataTable.Rows[i]["dat_WeekDay"].ToString(), dataTable.Rows[i]["count"]);
+
+            }
+        }
+
+        /// <summary>
+        /// Fill Multi Column Chart
+        /// </summary>
+        private void fillMultiColumnChart()
+        {
+            Series[] seriesArray = new Series[2];
+
+            int countAntenna = 0;
+            int[] UHFArray = new int[10];
+            DataTable[] dtArray = new DataTable[10];
+
+            Common.BLL.Logic.PetrolStation.UHFPermit lUHFPermit =
+                                                        new Common.BLL.Logic.PetrolStation.UHFPermit(Common.Enum.EDatabase.PetrolStation);
+
+            DataTable myTable = lUHFPermit.getUHF(Convert.ToInt16(Common.GlobalData.UserManager.currentUser.id));
+
+
+            if (myTable.Rows.Count > 0)
+            {
+                countAntenna = myTable.Rows.Count;
+
+                for (int i = 0; i < myTable.Rows.Count; i++)
+                {
+                    // Add point.
+                    UHFArray[i] = Convert.ToInt16(myTable.Rows[i]["uhfId"]);
+                    dtArray[i] = lUHFPermit.DrawChart(UHFArray[i]);
+
+                }
+            }
+
+            Invoke((Action)delegate
+            {
+                curveChart.Series.Clear();
+
+
+                for (int k = 0; k < countAntenna; k++)
+                {
+                    seriesArray[k] = this.curveChart.Series.Add("آنتن  " + (k + 1).ToString());
+                    seriesArray[k].Color = Color.FromArgb(240, k * 250, k * 200);
+                }
+
+
+                for (int i = 0; i < countAntenna; i++)
+                {
+                    seriesArray[i].ChartType = SeriesChartType.RangeColumn;
+                    seriesArray[i].Font = new Font("BYekan", 15.0f, FontStyle.Italic); //changes nothing
+                }
+
+
+                for (int i = 0; i < countAntenna; i++)
+                {
+                    // Add series.
+                    SetChart(dtArray[i], seriesArray[i]);
+                }
+            });
+
+
+        }
+
+        /// <summary>
+        /// Load Info Chart Traffic
+        /// </summary> 
+        //private void fillChart()
+        //{
+        //    Common.BLL.Logic.PetrolStation.Traffic lTraffic =
+        //                                new Common.BLL.Logic.PetrolStation.Traffic(Common.Enum.EDatabase.PetrolStation);
+
+        //    CommandResult opResult = lTraffic.fillChart(DateTime.Now, Common.GlobalData.UserManager.currentUser.id);
+
+        //    DataTable resultData = ExtensionsDateTable.makeWeekDay(opResult.model as DataTable, "_WeekDay", true);
+
+        //    // Add remaining days
+        //    //if (7 > resultData.Rows.Count)
+        //    //{
+        //    //    int lastRow = resultData.Rows.Count - 1;
+        //    //    DateTime? lastDate = resultData.Rows[lastRow]["dat"].ToString().toDateTime();
+
+        //    //    for (int i = lastRow; i < 7; ++i)
+        //    //    {
+        //    //        lastDate.Value.AddDays(1);
+
+        //    //        resultData.Rows.Add(lastDate, 0);
+        //    //    }
+        //    //}
+
+        //    Invoke((Action)delegate
+        //    {
+        //        series.Points.Clear();
+
+        //        // Add series.
+        //        for (int i = 0; i < resultData.Rows.Count; i++)
+        //        {
+        //            // Add point.
+        //            series.Points.AddXY(resultData.Rows[i]["dat_WeekDay"].ToString(), resultData.Rows[i]["count"]);
+        //        }
+
+        //    });
+        //}
 
         /// <summary>
         /// Try To Read Traffic

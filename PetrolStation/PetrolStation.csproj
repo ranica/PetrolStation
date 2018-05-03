@@ -469,6 +469,8 @@
     <None Include="Resources\roseBK.jpg" />
     <None Include="Resources\download.jpg" />
     <None Include="Resources\background.jpg" />
+    <None Include="Resources\pic_gas.jpg" />
+    <None Include="Resources\pic_petrol.jpg" />
     <Content Include="Resources\spiffygif.gif" />
     <None Include="Resources\malulin_.png" />
     <None Include="Resources\motor.png" />

@@ -143,11 +143,13 @@
     <Compile Include="Helper\Extensions\StringExtension.cs" />
     <Compile Include="Helper\Logger\Logger.cs" />
     <Compile Include="Helper\Lottery\Lottery.cs" />
+    <Compile Include="Helper\Security\SSTCryptographer.cs" />
     <Compile Include="Helper\Security\StringCypher.cs" />
     <Compile Include="Helper\Setting\SettingHelper.cs" />
     <Compile Include="Helper\Windows\RegistryHelper.cs" />
     <Compile Include="Helper\Windows\ServiceHelper.cs" />
     <Compile Include="Initializer.cs" />
+    <Compile Include="Model\Chart\ChartModel.cs" />
     <Compile Include="Model\GridColumnCollectionModel.cs" />
     <Compile Include="Model\GridColumnModel.cs" />
     <Compile Include="Model\Setting\SettingModel.cs" />

@@ -153,9 +153,9 @@ namespace PetrolStation.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap previous {
+        internal static System.Drawing.Bitmap pic_gas {
             get {
-                object obj = ResourceManager.GetObject("previous", resourceCulture);
+                object obj = ResourceManager.GetObject("pic_gas", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -163,9 +163,19 @@ namespace PetrolStation.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap roseBK {
+        internal static System.Drawing.Bitmap pic_petrol {
             get {
-                object obj = ResourceManager.GetObject("roseBK", resourceCulture);
+                object obj = ResourceManager.GetObject("pic_petrol", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap previous {
+            get {
+                object obj = ResourceManager.GetObject("previous", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

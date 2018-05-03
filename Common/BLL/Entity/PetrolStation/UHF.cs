@@ -8,8 +8,85 @@ namespace Common.BLL.Entity.PetrolStation
 	public class UHF : BaseBLL.Entity.BaseByViewId
 	{
 		
+//
+	// Genereted Property of UHFPermit
+	//
+	#region Relation - UHFPermit (Has-Many relation)
+		private System.Data.DataTable _get_UHFPermit_uhfId;
+		public System.Data.DataTable getUHFPermit_uhfId
+		{
+			get
+			{
+				if ((_get_UHFPermit_uhfId == null) && (AutoLoadForeignKeys))
+					loadUHFPermit_uhfId ();
+
+				return _get_UHFPermit_uhfId;
+			}
+			set
+			{
+				_get_UHFPermit_uhfId	= value;
+			}
+		}
+
+		public void loadUHFPermit_uhfId (int pageIndex = -1, int pageSize = 100)
+		{
+			CommandResult	opResult;
+
+			BLL.Logic.PetrolStation.UHFPermit	logic	= new BLL.Logic.PetrolStation.UHFPermit ("PetrolStation");
+			if (pageIndex == -1)
+				opResult	= logic.allData ("uhfId = @uhfId", "", false, true, new KeyValuePair ("@uhfId", id));
+			else
+				opResult	= logic.allByPaging ( pageIndex, pageSize, "uhfId = @uhfId", "", false, true, new KeyValuePair ("@uhfId", id));
+
+			if (opResult.status == BaseDAL.Base.EnumCommandStatus.success)
+				_get_UHFPermit_uhfId	= opResult.model as System.Data.DataTable;
+		}
+	#endregion
+//
+	// Genereted Property of Traffic
+	//
+	#region Relation - Traffic (Has-Many relation)
+		private System.Data.DataTable _get_Traffic_uhfId;
+		public System.Data.DataTable getTraffic_uhfId
+		{
+			get
+			{
+				if ((_get_Traffic_uhfId == null) && (AutoLoadForeignKeys))
+					loadTraffic_uhfId ();
+
+				return _get_Traffic_uhfId;
+			}
+			set
+			{
+				_get_Traffic_uhfId	= value;
+			}
+		}
+
+		public void loadTraffic_uhfId (int pageIndex = -1, int pageSize = 100)
+		{
+			CommandResult	opResult;
+
+			BLL.Logic.PetrolStation.Traffic	logic	= new BLL.Logic.PetrolStation.Traffic ("PetrolStation");
+			if (pageIndex == -1)
+				opResult	= logic.allData ("uhfId = @uhfId", "", false, true, new KeyValuePair ("@uhfId", id));
+			else
+				opResult	= logic.allByPaging ( pageIndex, pageSize, "uhfId = @uhfId", "", false, true, new KeyValuePair ("@uhfId", id));
+
+			if (opResult.status == BaseDAL.Base.EnumCommandStatus.success)
+				_get_Traffic_uhfId	= opResult.model as System.Data.DataTable;
+		}
+	#endregion
+        		
+
 		[BaseBLL.Base.Field(nullable=true,sqlDBType=System.Data.SqlDbType.VarChar,primary=false,usage=BaseBLL.Base.EnumUsage.read | BaseBLL.Base.EnumUsage.update | BaseBLL.Base.EnumUsage.create,size=50)]
 		public System.String name
+		{
+			get;
+			set;
+		}
+
+		[BaseBLL.Base.Field(nullable=true,sqlDBType=System.Data.SqlDbType.VarChar,primary=false,usage=BaseBLL.Base.EnumUsage.read | BaseBLL.Base.EnumUsage.update | BaseBLL.Base.EnumUsage.create,size=50)]
+		public System.String antennaName
 		{
 			get;
 			set;
@@ -74,7 +151,7 @@ namespace Common.BLL.Entity.PetrolStation
 			BLL.Logic.PetrolStation.User	logic;
 
 			entity	= new BLL.Entity.PetrolStation.User () { id = insertedById };
-			logic	= new BLL.Logic.PetrolStation.User ("GasStation");
+			logic	= new BLL.Logic.PetrolStation.User ("PetrolStation");
 			logic.read (entity);
 
 			_User_insertedById	= entity;
@@ -119,7 +196,7 @@ namespace Common.BLL.Entity.PetrolStation
 			BLL.Logic.PetrolStation.User	logic;
 
 			entity	= new BLL.Entity.PetrolStation.User () { id = updatedById.Value };
-			logic	= new BLL.Logic.PetrolStation.User ("GasStation");
+			logic	= new BLL.Logic.PetrolStation.User ("PetrolStation");
 			logic.read (entity);
 
 			_User_updatedById	= entity;

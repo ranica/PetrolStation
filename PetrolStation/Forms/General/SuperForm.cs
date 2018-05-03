@@ -17,10 +17,10 @@ namespace PetrolStation.Forms.General
 			InitializeComponent ();
 
 			#region Initialize
-			CultureInfo TypeOfLanguage = CultureInfo.CreateSpecificCulture ("fa-IR");
-			System.Threading.Thread.CurrentThread.CurrentCulture = TypeOfLanguage;
-			InputLanguage l = InputLanguage.FromCulture (TypeOfLanguage);
-			InputLanguage.CurrentInputLanguage = l;
+			////CultureInfo TypeOfLanguage = CultureInfo.CreateSpecificCulture ("fa-IR");
+			//System.Threading.Thread.CurrentThread.CurrentCulture = TypeOfLanguage;
+			//InputLanguage l = InputLanguage.FromCulture (TypeOfLanguage);
+			//InputLanguage.CurrentInputLanguage = l;
 
 			//SetStyle (ControlStyles.OptimizedDoubleBuffer, true);
 			//DoubleBuffered	= true;

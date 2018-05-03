@@ -51,7 +51,8 @@ namespace Common.BLL.Logic.PetrolStation
 			if ((null != tag) && (null != user))
 			{
 				// Register new traffic
-				result = BaseDAL.DBaseHelper.executeCommand (BaseDAL.Base.EnumExecuteType.procedureNonQuery, connection, C_spTrafficRegisterByService, true,
+				result = BaseDAL.DBaseHelper.executeCommand (BaseDAL.Base.EnumExecuteType.procedureNonQuery,
+                    connection, C_spTrafficRegisterByService, true,
 					new KeyValuePair ("@uhfId"          , antennaId),
 					new KeyValuePair ("@tagData"        , tag.tag),
 					new KeyValuePair ("@insertedById"   , user.id),
@@ -106,7 +107,8 @@ namespace Common.BLL.Logic.PetrolStation
                                           int userId)
 		{
 			CommandResult result;
-			result = BaseDAL.DBaseHelper.executeCommand (BaseDAL.Base.EnumExecuteType.procedureReader, connection, C_spGetReportTraffic, true,
+			result = BaseDAL.DBaseHelper.executeCommand (BaseDAL.Base.EnumExecuteType.procedureReader, 
+                                                            connection, C_spGetReportTraffic, true,
 				new KeyValuePair ("@startDate"  , startDate),
 				new KeyValuePair ("@endDate"    , endDate),
 				new KeyValuePair ("@pageIndex"  , pageIndex),
@@ -130,7 +132,8 @@ namespace Common.BLL.Logic.PetrolStation
                                                   int userId)
         {
 			CommandResult result;
-			result = BaseDAL.DBaseHelper.executeCommand (BaseDAL.Base.EnumExecuteType.procedureReader, connection, C_spGetTrafficCount, true,
+			result = BaseDAL.DBaseHelper.executeCommand (BaseDAL.Base.EnumExecuteType.procedureReader,
+                                                    connection, C_spGetTrafficCount, true,
 				new KeyValuePair ("@startDate"  , startDate),
 				new KeyValuePair ("@endDate"    , endDate),
                 new KeyValuePair("@pageIndex"   , pageIndex),
@@ -323,8 +326,7 @@ namespace Common.BLL.Logic.PetrolStation
         {
             CommandResult result;
             result = BaseDAL.DBaseHelper.executeCommand(BaseDAL.Base.EnumExecuteType.procedureReader, connection, C_spChartTraffic, true,
-                new KeyValuePair("@beginDate", dat),
-                new KeyValuePair("@userId", userId)
+                  new KeyValuePair("@userId", userId)
                 );
 
             return result;

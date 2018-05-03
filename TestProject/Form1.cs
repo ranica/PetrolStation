@@ -2,39 +2,26 @@
 using Common.Helper.Antenna;
 using Common.Network.Core;
 using System;
+using System.Collections.Generic;
+using System.ComponentModel;
 using System.Configuration;
-using System.Data.SqlClient;
-using System.Diagnostics;
-using System.ServiceProcess;
+using System.Data;
+using System.Drawing;
+using System.IO;
+using System.Linq;
 using System.Text;
 using System.Threading;
+using System.Windows.Forms;
 
-namespace AntennaService
+namespace TestProject
 {
-    public partial class AntennaService : ServiceBase
+    public partial class Form1 : Form
     {
-        #region Constants
-        /// <summary>
-        /// Antenna Event Source name 
-        /// </summary>
-        public const string C_ANTENNA_EVENT_SOURCE = "PetrolAntennaService";
-
-        /// <summary>
-        /// Antenna Event Log name 
-        /// </summary>
-        public const string C_ANTENNA_EVENT_LOG = "PetrolAntennaLog";
-
-        /// <summary>
-        /// Buffer size
-        /// </summary>
-        private const int C_BufferSize = 1024;
-        #endregion
-
         #region	Variables
         /// <summary>
         /// Event Log 
         /// </summary>
-        private EventLog eventLog;
+        //private EventLog eventLog;
 
         private byte tag_flag = 0;
         private int tagCount = 0;
@@ -46,7 +33,7 @@ namespace AntennaService
         private ManualResetEvent mrs = null;
         private Thread tagReadThread = null;
 
-        private SqlConnection dbConnection = null;
+        //private SqlConnection dbConnection = null;
         private string antName = "";
         private int antPort = 0;
         private int serverPort = 0;
@@ -59,37 +46,28 @@ namespace AntennaService
         private Common.BLL.Entity.PetrolStation.User serviceUser;
         private Common.BLL.Entity.PetrolStation.UHF antenna;
         #endregion
-
-        #region Methods
-
-        /// <summary>
-        /// Constrcutor 
-        /// </summary>
-        public AntennaService()
+        public Form1()
         {
             InitializeComponent();
 
-            //System.Diagnostics.Debugger.Launch();
             init();
         }
 
-        /// <summary>
-        /// Initialize 
-        /// </summary>
         private void init()
         {
             prepare();
         }
 
-        /// <summary>
-        /// Prepare 
-        /// </summary>
         private void prepare()
         {
+
+            string path = System.Reflection.Assembly.GetExecutingAssembly().Location;
+            Common.Initializer.init(Path.Combine(Application.StartupPath, "log.txt"), path);
+
             antName = ConfigurationManager.AppSettings["AntennaName"];
 
             mrs = new ManualResetEvent(true);
-            makeEventLog();
+            
 
             #region Get Service User
             Common.BLL.Logic.PetrolStation.User lUser = new Common.BLL.Logic.PetrolStation.User(
@@ -121,61 +99,20 @@ namespace AntennaService
             #endregion
         }
 
-        /// <summary>
-        /// Make event log 
-        /// </summary>
-        private void makeEventLog()
-        {
-            try
-            {
-                eventLog = new EventLog();
-                eventLog.Source = C_ANTENNA_EVENT_SOURCE;
-                eventLog.Log = C_ANTENNA_EVENT_LOG;
 
-                if (!EventLog.Exists(C_ANTENNA_EVENT_LOG))
-                    EventLog.CreateEventSource(C_ANTENNA_EVENT_SOURCE, C_ANTENNA_EVENT_LOG);
-                //else 
-                //	EventLog.Delete(C_ANTENNA_EVENT_LOG);
-            }
-            catch (Exception ex)
-            {
-                LoggerExtensions.log(ex);
-                System.Windows.Forms.MessageBox.Show(ex.Message);
-            }
-        }
 
-        /// <summary>
-        /// Write log 
-        /// </summary>
-        /// <param name="log"></param>
-        private void writeLog(string log)
+        private void startButton_Click(object sender, EventArgs e)
         {
-            if (null != eventLog)
-            {
-                log += "\r\n" + DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss");
-                eventLog.WriteEntry(log);
-            }
-        }
-
-        /// <summary>
-        /// On Start 
-        /// </summary>
-        /// <param name="args"></param>
-        protected override void OnStart(string[] args)
-        {
-            //  System.Diagnostics.Debugger.Launch();
             #region Parse Args
             try
             {
-                writeLog("Service Starting . . .");
-
-
-                //antPort = ConfigurationManager.AppSettings["AntennaPort"].toInt(0);
-                //antHost = ConfigurationManager.AppSettings["AntennaHost"];
+                listBox1.Items.Insert(0, "Service Starting . . .");
+                               
 
                 serverPort = ConfigurationManager.AppSettings["ServerPort"].toInt(0);
                 interval = ConfigurationManager.AppSettings["Interval"].toInt(15);
                 powerInterval = ConfigurationManager.AppSettings["IntervalRF"].toInt(15);
+                //dbConnection = new SqlConnection(ConfigurationManager.AppSettings["ConnectionString"]);
 
 
                 tryToConnect();
@@ -183,31 +120,25 @@ namespace AntennaService
             catch (Exception ex)
             {
                 LoggerExtensions.log(ex);
-                writeLog("ERR: INVALID CONFIG DATA");
+                writeLog( "ERR: INVALID CONFIG DATA");
             }
             #endregion
         }
 
-        /// <summary>
-        /// On Stop 
-        /// </summary>
-        protected override void OnStop()
+        private void stopButton_Click(object sender, EventArgs e)
         {
             stop();
         }
-
         /// <summary>
         /// On Stop 
         /// </summary>
         private void stop()
         {
             antennaWrapper?.CloseCommPort();
-            antennaWrapper = null;
-
-            //stopClientListener();
+            stopClientListener();
             stopConnectThread();
 
-            writeLog("INF: Service Stopped successfully");
+            writeLog( "INF: Service Stopped successfully");
         }
 
         /// <summary>
@@ -223,24 +154,6 @@ namespace AntennaService
             {
                 LoggerExtensions.log(ex);
             }
-        }
-
-        /// <summary>
-        /// On Continue
-        /// </summary>
-        protected override void OnContinue()
-        {
-            resume();
-            base.OnContinue();
-        }
-
-        /// <summary>
-        /// On Pause
-        /// </summary>
-        protected override void OnPause()
-        {
-            pause();
-            base.OnPause();
         }
 
         /// <summary>
@@ -266,23 +179,20 @@ namespace AntennaService
         /// </summary>
         private void tryToConnect()
         {
-            //writeLog("Try connect before stop");
-
-            stop();
-
-            try
+            if (null != connectThread)
             {
-                connectThread?.Abort();
+                try
+                {
+                    connectThread.Abort();
+                }
+                finally
+                {
+                    connectThread = null;
+                }
             }
-            catch (Exception)
-            {
-                writeLog("Err1 / Try connect");
-            }
-           // writeLog("Try connect after stop");
 
 
             //System.Diagnostics.Debugger.Launch();	
-            connectThread = null;
             connectThread = new Thread(new ThreadStart(connectToAntenna));
             connectThread.Start();
         }
@@ -301,10 +211,10 @@ namespace AntennaService
                 // Try to start client listener
                 if (result)
                 {
-                    //startTagListenThread();
+                    startTagListenThread();
 
-                    writeLog("INF: Connect To Antenna");
-                    //writeLog("INF: start client listener");
+                    writeLog( "INF: Connect To Antenna");
+                    
                     //startClientListener(sPort);
                     break;
                 }
@@ -360,13 +270,20 @@ namespace AntennaService
                         LoggerExtensions.log(ex);
 
                         reconnect = true;
+                        
                         writeLog("ERR " + ex.Message);
                     }
 
                     if (reconnect)
                     {
-                        writeLog("Reconnect !");
-
+                        try
+                        {
+                            tagReadThread?.Abort();
+                        }
+                        finally
+                        {
+                            tagReadThread = null;
+                        }
 
                         tryToConnect();
                     }
@@ -378,7 +295,24 @@ namespace AntennaService
             {
 
                 LoggerExtensions.log(ex);
-            }            
+            }
+        }
+
+        private void writeLog(string v)
+        {
+            if (InvokeRequired)
+            {
+                this.Invoke((Action)delegate
+                {
+
+                    writeLog(v);
+                });
+
+
+                return;
+            }
+
+            listBox1.Items.Insert(0, v);
         }
 
         /// <summary>
@@ -444,7 +378,7 @@ namespace AntennaService
             catch (Exception ex)
             {
                 LoggerExtensions.log(ex);
-            }           
+            }
         }
 
         /// <summary>
@@ -455,7 +389,7 @@ namespace AntennaService
         {
             try
             {
-                //writeLog("Enter DB");
+                writeLog("Enter DB");
                 Common.BLL.Logic.PetrolStation.Traffic lTraffic = new Common.BLL.Logic.PetrolStation.Traffic(Common.Enum.EDatabase.PetrolStation);
                 Common.BLL.Entity.PetrolStation.Tag tag = new Common.BLL.Entity.PetrolStation.Tag()
                 {
@@ -463,14 +397,16 @@ namespace AntennaService
                 };
 
                 lTraffic.insertTagByService(antenna.id, tag, serviceUser, DateTime.Now, interval);
+                //lTraffic.insertTagByService(antenna.id, tag, serviceUser, DateTime.Now, interval);
 
-                //writeLog("Exit DB");
+                writeLog("Exit DB");
             }
             catch (Exception ex)
             {
                 writeLog("Exception DB");
                 LoggerExtensions.log(ex);
             }
+
         }
 
         /// <summary>
@@ -499,7 +435,6 @@ namespace AntennaService
             else
             {
                 hasError = false;
-                startTagListenThread();
                 //tryToSetPower();
 
                 writeLog("INF: Service Started Successfully");
@@ -508,19 +443,7 @@ namespace AntennaService
             return !hasError;
         }
 
-        /// <summary>
-        /// Start Client Listener
-        /// </summary>
-        private void startClientListener(int port)
-        {
-            if (null == tcpServer)
-            {
-                tcpServer = new NetTcpServer(port, C_BufferSize);
-                tcpServer.onReceiveData += TcpServer_onReceiveData;
-                tcpServer.start();
-                writeLog("INF: start tcpServer ");
-            }
-        }
+       
 
         /// <summary>
         /// Stop Client Listener
@@ -544,9 +467,9 @@ namespace AntennaService
             //Helper.ClientMethodParser.parseCmd (client, data);
         }
 
-       /// <summary>
-       /// Try to Set Power Antenna
-       /// </summary>
+        /// <summary>
+        /// Try to Set Power Antenna
+        /// </summary>
         private void tryToSetPower()
         {
             powerThread = new Thread(new ThreadStart(() =>
@@ -567,7 +490,7 @@ namespace AntennaService
                     {
                         if (antennaWrapper.SetRf(255, setRF, 0, 0, 0) == MR6100.SUCCESS_RETURN)
                         {
-                            writeLog("Set Power success = " + setRF.ToString() );
+                            writeLog("Set Power success = " + setRF.ToString());
                         }
                     }
                     else
@@ -578,9 +501,7 @@ namespace AntennaService
                     LoggerExtensions.log(ex);
                 }
             }));
-            powerThread.Start();            
-        }     
-
-        #endregion
+            powerThread.Start();
+        }
     }
 }
